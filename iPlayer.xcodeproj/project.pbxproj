@@ -112,6 +112,8 @@
 		AD77CDE01D0FEFB700F914D8 /* 菊花台.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */; };
 		AD77CDE21D0FF57E00F914D8 /* 送别.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE11D0FF57E00F914D8 /* 送别.txt */; };
 		AD77CDE41D0FFC1B00F914D8 /* 花儿为什么这样红.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */; };
+		AD77CDE71D1016B400F914D8 /* bg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE51D1016B400F914D8 /* bg1.jpg */; };
+		AD77CDE81D1016B400F914D8 /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE61D1016B400F914D8 /* bg2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +251,8 @@
 		AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "菊花台.txt"; sourceTree = "<group>"; };
 		AD77CDE11D0FF57E00F914D8 /* 送别.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "送别.txt"; sourceTree = "<group>"; };
 		AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "花儿为什么这样红.txt"; sourceTree = "<group>"; };
+		AD77CDE51D1016B400F914D8 /* bg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg1.jpg; sourceTree = "<group>"; };
+		AD77CDE61D1016B400F914D8 /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +303,8 @@
 		21A1E4211C12BEE40048BBE4 /* iPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				AD77CDE51D1016B400F914D8 /* bg1.jpg */,
+				AD77CDE61D1016B400F914D8 /* bg2.jpg */,
 				21A1E4251C12BEE40048BBE4 /* AppDelegate.h */,
 				21A1E4261C12BEE40048BBE4 /* AppDelegate.m */,
 				21A1E4281C12BEE40048BBE4 /* ViewController.h */,
@@ -532,6 +538,11 @@
 					21A1E41E1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = D3C83SFDM7;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					21A1E43A1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -641,6 +652,7 @@
 				21A1E4F31C12BF110048BBE4 /* 083_B4KM56_M.wav in Resources */,
 				21A1E4DC1C12BF110048BBE4 /* 060_C3KM56_M.wav in Resources */,
 				21A1E4E21C12BF110048BBE4 /* 066_F#3KM56_M.wav in Resources */,
+				AD77CDE71D1016B400F914D8 /* bg1.jpg in Resources */,
 				21A1E4EB1C12BF110048BBE4 /* 075_D#4KM56_M.wav in Resources */,
 				21A1E4BD1C12BF110048BBE4 /* 029_F0KM56_M.wav in Resources */,
 				21A1E50A1C12BF110048BBE4 /* 106_A#6KM56_M.wav in Resources */,
@@ -654,6 +666,7 @@
 				21A1E4BC1C12BF110048BBE4 /* 028_E0KM56_M.wav in Resources */,
 				21A1E4B51C12BF110048BBE4 /* 梁祝.txt in Resources */,
 				21A1E4FA1C12BF110048BBE4 /* 090_F#5KM56_M.wav in Resources */,
+				AD77CDE81D1016B400F914D8 /* bg2.jpg in Resources */,
 				21A1E4E11C12BF110048BBE4 /* 065_F3KM56_M.wav in Resources */,
 				21A1E4D71C12BF110048BBE4 /* 055_G2KM56_M.wav in Resources */,
 				21A1E4D21C12BF110048BBE4 /* 050_D2KM56_M.wav in Resources */,

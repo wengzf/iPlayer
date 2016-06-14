@@ -9,7 +9,7 @@
         <!--Navigation Controller-->
         <scene sceneID="gmq-UD-gMF">
             <objects>
-                <navigationController id="WhB-nv-YSD" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="WhB-nv-YSD" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="biC-IV-z0M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -21,7 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Xi-cY-5V8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="-90"/>
+            <point key="canvasLocation" x="57" y="-90"/>
         </scene>
         <!--Music Square-->
         <scene sceneID="tne-QT-ifu">
@@ -35,12 +35,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bHq-35-HRG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4eV-6p-4Gq">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="LdV-Sa-gpW" style="IBUITableViewCellStyleDefault" id="YZA-MQ-8Rh">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YZA-MQ-8Rh" id="0Gm-r0-QJp">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -54,7 +58,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -67,12 +73,16 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="4eV-6p-4Gq" secondAttribute="trailing" id="DuB-vi-ngQ"/>
                             <constraint firstItem="4eV-6p-4Gq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Gwm-OR-p8I"/>
+                            <constraint firstItem="bHq-35-HRG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KO0-Ry-DpY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4eV-6p-4Gq" secondAttribute="bottom" id="MrE-D3-Sot"/>
+                            <constraint firstItem="bHq-35-HRG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NOT-aq-EF9"/>
                             <constraint firstItem="4eV-6p-4Gq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="VAp-OT-jIt"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4eV-6p-4Gq" secondAttribute="bottom" id="X5B-1m-0sk"/>
                             <constraint firstItem="4eV-6p-4Gq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Xsd-lT-2A6"/>
+                            <constraint firstAttribute="trailing" secondItem="bHq-35-HRG" secondAttribute="trailing" id="bd1-Ka-J11"/>
                             <constraint firstItem="4eV-6p-4Gq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="ewB-6R-Z0U"/>
                             <constraint firstAttribute="trailing" secondItem="4eV-6p-4Gq" secondAttribute="trailing" id="gSY-M4-cJT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bHq-35-HRG" secondAttribute="bottom" id="uBL-3b-qcj"/>
                             <constraint firstItem="4eV-6p-4Gq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xHw-Z5-5nz"/>
                         </constraints>
                         <variation key="default">
@@ -92,4 +102,7 @@
             <point key="canvasLocation" x="462" y="-90"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg1.jpg" width="565" height="979"/>
+    </resources>
 </document>

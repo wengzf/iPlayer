@@ -9,6 +9,19 @@
 #import "MusicPlayViewController.h"
 
 
+#define WIDTH  self.view.frame.size.width
+#define HEIGHT  self.view.frame.size.height
+
+#define ScreenBounds [UIScreen mainScreen].bounds
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth  [UIScreen mainScreen].bounds.size.width
+
+#define RGBA(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define RGB(r,g,b)    [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define UIColorWithHex(x) RGB(((x)&0xFF0000) >> 16, ((x)&0xFF00) >> 8 ,  ((x)&0xFF))
+
+
+
 @implementation MusicNoteButton
 
 - (id)initWithFrame:(CGRect)frame
@@ -84,7 +97,7 @@
     [super viewDidLoad];
 
     btnHeight = 120;
-    speed = (btnHeight+30) / self.musicRule.baseUnitTime / 2;
+    speed = (btnHeight+10) / self.musicRule.baseUnitTime;
     
     // 重用机制数组
     {
@@ -128,7 +141,7 @@
         resButton = [[MusicNoteButton alloc] initWithFrame:CGRectMake(0, 0, 80, btnHeight)];
         resButton.pitchFileNameArr = self.pitchFileNameArr;
         resButton.basePitchOffset = self.basePitchOffset;
-        resButton.backgroundColor = [UIColor orangeColor];
+        resButton.backgroundColor = [UIColor whiteColor];
     }
     resButton.alpha = 1.0;
     [self.view addSubview:resButton];
@@ -147,15 +160,14 @@
     // 退出
     {
         MusicNoteButton *btn = [curRunningArr firstObject];
-        if (btn.frame.origin.y > 450) {
+        if (btn.frame.origin.y > ScreenHeight-btnHeight) {
             
 //            [btn btnClked];
             
-            [reuseButtonArr  addObject:btn];
+            [reuseButtonArr addObject:btn];
             [btn removeFromSuperview];
             [curRunningArr removeObjectAtIndex:0];
             
-            [btn btnClked];
         }
     }
     
@@ -167,9 +179,7 @@
         
         if (note && note.showTime <= curTime) {             // 数组不为空
             MusicNoteButton *button = [self reuseButton];
-            if (button == nil) {
-                printf("%f %f\n",curTime,note.showTime);
-            }
+
             button.note = note;
             button.pos = arc4random() % 4;
             
@@ -192,15 +202,15 @@
             int posx = screenWid/4*btn.pos;
             int posy = (curTime - btn.note.showTime) * speed;
             
-            printf("%d %d\n",posx, posy);
+//            printf("%d %d\n",posx, posy);
             
             CGRect frame = btn.frame;
             frame.origin.x = posx;
             frame.origin.y = posy;
             btn.frame = frame;
             
-            if (btn.frame.origin.y>280) {
-                btn.alpha = 1 - (btn.frame.origin.y -280) /120;
+            if (btn.frame.origin.y > ScreenHeight-btnHeight) {
+                btn.alpha = 1.3 - (btn.frame.origin.y-ScreenHeight+btnHeight) / btnHeight;
             }
         }
     }
@@ -210,9 +220,6 @@
 
 
 - (IBAction)backBtnClked:(id)sender {
-    
-    // 
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

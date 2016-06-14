@@ -61,7 +61,6 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -72,8 +71,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    self.navigationController.hidesBottomBarWhenPushed = YES;
-    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
