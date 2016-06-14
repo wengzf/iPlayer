@@ -16,10 +16,10 @@
 		21A1E4351C12BEE40048BBE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E4331C12BEE40048BBE4 /* LaunchScreen.storyboard */; };
 		21A1E4401C12BEE40048BBE4 /* iPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E43F1C12BEE40048BBE4 /* iPlayerTests.m */; };
 		21A1E44B1C12BEE40048BBE4 /* iPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E44A1C12BEE40048BBE4 /* iPlayerUITests.m */; };
-		21A1E4B41C12BF110048BBE4 /* chuanyueshikongdesinian.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45A1C12BF110048BBE4 /* chuanyueshikongdesinian.txt */; };
-		21A1E4B51C12BF110048BBE4 /* liangzhu.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45B1C12BF110048BBE4 /* liangzhu.txt */; };
-		21A1E4B61C12BF110048BBE4 /* molihua.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45C1C12BF110048BBE4 /* molihua.txt */; };
-		21A1E4B71C12BF110048BBE4 /* ruyiyuerqu.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45D1C12BF110048BBE4 /* ruyiyuerqu.txt */; };
+		21A1E4B41C12BF110048BBE4 /* 穿越时空的思念.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45A1C12BF110048BBE4 /* 穿越时空的思念.txt */; };
+		21A1E4B51C12BF110048BBE4 /* 梁祝.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45B1C12BF110048BBE4 /* 梁祝.txt */; };
+		21A1E4B61C12BF110048BBE4 /* 茉莉花.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45C1C12BF110048BBE4 /* 茉莉花.txt */; };
+		21A1E4B71C12BF110048BBE4 /* 如意玉儿曲.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45D1C12BF110048BBE4 /* 如意玉儿曲.txt */; };
 		21A1E4B81C12BF110048BBE4 /* 024_C0KM56_M.wav in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45F1C12BF110048BBE4 /* 024_C0KM56_M.wav */; };
 		21A1E4B91C12BF110048BBE4 /* 025_C#0KM56_M.wav in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E4601C12BF110048BBE4 /* 025_C#0KM56_M.wav */; };
 		21A1E4BA1C12BF110048BBE4 /* 026_D0KM56_M.wav in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E4611C12BF110048BBE4 /* 026_D0KM56_M.wav */; };
@@ -109,6 +109,9 @@
 		21A1E5121C12C9800048BBE4 /* MusicNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E5111C12C9800048BBE4 /* MusicNote.m */; };
 		21A1E5161C12EB830048BBE4 /* MusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E5141C12EB830048BBE4 /* MusicPlayViewController.m */; };
 		21A1E5171C12EB830048BBE4 /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E5151C12EB830048BBE4 /* MusicPlayViewController.xib */; };
+		AD77CDE01D0FEFB700F914D8 /* 菊花台.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */; };
+		AD77CDE21D0FF57E00F914D8 /* 送别.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE11D0FF57E00F914D8 /* 送别.txt */; };
+		AD77CDE41D0FFC1B00F914D8 /* 花儿为什么这样红.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,10 +149,10 @@
 		21A1E4461C12BEE40048BBE4 /* iPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A1E44A1C12BEE40048BBE4 /* iPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPlayerUITests.m; sourceTree = "<group>"; };
 		21A1E44C1C12BEE40048BBE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21A1E45A1C12BF110048BBE4 /* chuanyueshikongdesinian.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chuanyueshikongdesinian.txt; sourceTree = "<group>"; };
-		21A1E45B1C12BF110048BBE4 /* liangzhu.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = liangzhu.txt; sourceTree = "<group>"; };
-		21A1E45C1C12BF110048BBE4 /* molihua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = molihua.txt; sourceTree = "<group>"; };
-		21A1E45D1C12BF110048BBE4 /* ruyiyuerqu.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ruyiyuerqu.txt; sourceTree = "<group>"; };
+		21A1E45A1C12BF110048BBE4 /* 穿越时空的思念.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "穿越时空的思念.txt"; sourceTree = "<group>"; };
+		21A1E45B1C12BF110048BBE4 /* 梁祝.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "梁祝.txt"; sourceTree = "<group>"; };
+		21A1E45C1C12BF110048BBE4 /* 茉莉花.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "茉莉花.txt"; sourceTree = "<group>"; };
+		21A1E45D1C12BF110048BBE4 /* 如意玉儿曲.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "如意玉儿曲.txt"; sourceTree = "<group>"; };
 		21A1E45F1C12BF110048BBE4 /* 024_C0KM56_M.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 024_C0KM56_M.wav; sourceTree = "<group>"; };
 		21A1E4601C12BF110048BBE4 /* 025_C#0KM56_M.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "025_C#0KM56_M.wav"; sourceTree = "<group>"; };
 		21A1E4611C12BF110048BBE4 /* 026_D0KM56_M.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 026_D0KM56_M.wav; sourceTree = "<group>"; };
@@ -243,6 +246,9 @@
 		21A1E5141C12EB830048BBE4 /* MusicPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayViewController.m; sourceTree = "<group>"; };
 		21A1E5151C12EB830048BBE4 /* MusicPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicPlayViewController.xib; sourceTree = "<group>"; };
 		21A1E5181C12EDC70048BBE4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "菊花台.txt"; sourceTree = "<group>"; };
+		AD77CDE11D0FF57E00F914D8 /* 送别.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "送别.txt"; sourceTree = "<group>"; };
+		AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "花儿为什么这样红.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,9 +303,9 @@
 				21A1E4261C12BEE40048BBE4 /* AppDelegate.m */,
 				21A1E4281C12BEE40048BBE4 /* ViewController.h */,
 				21A1E4291C12BEE40048BBE4 /* ViewController.m */,
+				21A1E50D1C12C8210048BBE4 /* MusicRule.h */,
 				21A1E50E1C12C8210048BBE4 /* MusicRule.m */,
 				21A1E5101C12C9800048BBE4 /* MusicNote.h */,
-				21A1E50D1C12C8210048BBE4 /* MusicRule.h */,
 				21A1E5111C12C9800048BBE4 /* MusicNote.m */,
 				21A1E5131C12EB830048BBE4 /* MusicPlayViewController.h */,
 				21A1E5141C12EB830048BBE4 /* MusicPlayViewController.m */,
@@ -354,10 +360,13 @@
 		21A1E4591C12BF110048BBE4 /* ComposeNotation */ = {
 			isa = PBXGroup;
 			children = (
-				21A1E45A1C12BF110048BBE4 /* chuanyueshikongdesinian.txt */,
-				21A1E45B1C12BF110048BBE4 /* liangzhu.txt */,
-				21A1E45C1C12BF110048BBE4 /* molihua.txt */,
-				21A1E45D1C12BF110048BBE4 /* ruyiyuerqu.txt */,
+				21A1E45A1C12BF110048BBE4 /* 穿越时空的思念.txt */,
+				21A1E45B1C12BF110048BBE4 /* 梁祝.txt */,
+				21A1E45C1C12BF110048BBE4 /* 茉莉花.txt */,
+				21A1E45D1C12BF110048BBE4 /* 如意玉儿曲.txt */,
+				AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */,
+				AD77CDE11D0FF57E00F914D8 /* 送别.txt */,
+				AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */,
 			);
 			name = ComposeNotation;
 			path = ../Resource/ComposeNotation;
@@ -522,7 +531,7 @@
 				TargetAttributes = {
 					21A1E41E1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 4JVDCH8EHZ;
+						DevelopmentTeam = D3C83SFDM7;
 					};
 					21A1E43A1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -564,11 +573,12 @@
 				21A1E4FC1C12BF110048BBE4 /* 092_G#5KM56_M.wav in Resources */,
 				21A1E4F11C12BF110048BBE4 /* 081_A4KM56_M.wav in Resources */,
 				21A1E4C11C12BF110048BBE4 /* 033_A0KM56_M.wav in Resources */,
-				21A1E4B71C12BF110048BBE4 /* ruyiyuerqu.txt in Resources */,
-				21A1E4B61C12BF110048BBE4 /* molihua.txt in Resources */,
+				21A1E4B71C12BF110048BBE4 /* 如意玉儿曲.txt in Resources */,
+				21A1E4B61C12BF110048BBE4 /* 茉莉花.txt in Resources */,
 				21A1E4D31C12BF110048BBE4 /* 051_D#2KM56_M.wav in Resources */,
 				21A1E4F41C12BF110048BBE4 /* 084_C5KM56_M.wav in Resources */,
 				21A1E4351C12BEE40048BBE4 /* LaunchScreen.storyboard in Resources */,
+				AD77CDE21D0FF57E00F914D8 /* 送别.txt in Resources */,
 				21A1E4BB1C12BF110048BBE4 /* 027_D#0KM56_M.wav in Resources */,
 				21A1E4B81C12BF110048BBE4 /* 024_C0KM56_M.wav in Resources */,
 				21A1E4C91C12BF110048BBE4 /* 041_F1KM56_M.wav in Resources */,
@@ -593,10 +603,11 @@
 				21A1E4DD1C12BF110048BBE4 /* 061_C#3KM56_M.wav in Resources */,
 				21A1E4B91C12BF110048BBE4 /* 025_C#0KM56_M.wav in Resources */,
 				21A1E4E81C12BF110048BBE4 /* 072_C4KM56_M.wav in Resources */,
+				AD77CDE01D0FEFB700F914D8 /* 菊花台.txt in Resources */,
 				21A1E4D01C12BF110048BBE4 /* 048_C2KM56_M.wav in Resources */,
 				21A1E4BF1C12BF110048BBE4 /* 031_G0KM56_M.wav in Resources */,
 				21A1E4D11C12BF110048BBE4 /* 049_C#2KM56_M.wav in Resources */,
-				21A1E4B41C12BF110048BBE4 /* chuanyueshikongdesinian.txt in Resources */,
+				21A1E4B41C12BF110048BBE4 /* 穿越时空的思念.txt in Resources */,
 				21A1E50C1C12BF110048BBE4 /* 108_C7KM56_M.wav in Resources */,
 				21A1E4C31C12BF110048BBE4 /* 035_B0KM56_M.wav in Resources */,
 				21A1E4DA1C12BF110048BBE4 /* 058_A#2KM56_M.wav in Resources */,
@@ -641,7 +652,7 @@
 				21A1E4C71C12BF110048BBE4 /* 039_D#1KM56_M.wav in Resources */,
 				21A1E4C81C12BF110048BBE4 /* 040_E1KM56_M.wav in Resources */,
 				21A1E4BC1C12BF110048BBE4 /* 028_E0KM56_M.wav in Resources */,
-				21A1E4B51C12BF110048BBE4 /* liangzhu.txt in Resources */,
+				21A1E4B51C12BF110048BBE4 /* 梁祝.txt in Resources */,
 				21A1E4FA1C12BF110048BBE4 /* 090_F#5KM56_M.wav in Resources */,
 				21A1E4E11C12BF110048BBE4 /* 065_F3KM56_M.wav in Resources */,
 				21A1E4D71C12BF110048BBE4 /* 055_G2KM56_M.wav in Resources */,
@@ -651,6 +662,7 @@
 				21A1E4FB1C12BF110048BBE4 /* 091_G5KM56_M.wav in Resources */,
 				21A1E42D1C12BEE40048BBE4 /* Main.storyboard in Resources */,
 				21A1E4CA1C12BF110048BBE4 /* 042_F#1KM56_M.wav in Resources */,
+				AD77CDE41D0FFC1B00F914D8 /* 花儿为什么这样红.txt in Resources */,
 				21A1E5021C12BF110048BBE4 /* 098_D6KM56_M.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,25 +837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 志方 翁 (55YKDC482F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 志方 翁 (55YKDC482F)";
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = iPlayer/PrefixHeader.pch;
-				INFOPLIST_FILE = iPlayer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonglibao.iPlayer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbc9baa6-f2ae-46a0-8acf-53ef1857480a";
-			};
-			name = Debug;
-		};
-		21A1E4511C12BEE40048BBE4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 志方 翁 (55YKDC482F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -851,9 +845,27 @@
 				INFOPLIST_FILE = iPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonglibao.iPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.renwohua.iPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbc9baa6-f2ae-46a0-8acf-53ef1857480a";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		21A1E4511C12BEE40048BBE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iPlayer/PrefixHeader.pch;
+				INFOPLIST_FILE = iPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.renwohua.iPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

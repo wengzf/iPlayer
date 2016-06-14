@@ -23,8 +23,6 @@
     
     AVAudioPlayer *pitchPlayer;
     
-    
-    NSArray *musicFileNames;
     NSArray *musicNames;
 }
 @end
@@ -36,8 +34,29 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     // 音乐文件名初始化
-    musicFileNames = @[@"ruyiyuerqu", @"chuanyueshikongdesinian", @"liangzhu", @"molihua" ];
-    musicNames = @[@"如意玉儿曲", @"穿越时空的思念",@"梁祝",@"茉莉花" ];
+    musicNames = @[@"如意玉儿曲",
+                   @"穿越时空的思念",
+                   @"梁祝",
+                   @"茉莉花",
+                   @"菊花台",
+                   
+                   @"送别",
+                   @"花儿为什么这样红",
+                   @"天空之城",
+                   @"雨的印记",
+                   @"斯卡保罗集市",
+                   
+                   @"少女的祈祷",
+                   @"土耳其进行曲",
+                   @"秋日私语",
+                   @"克罗地亚狂想曲",
+                   @"爱的罗曼斯",
+                   
+                   @"樱花",
+                   @"赛马",
+                   @"草原英雄小姐妹",
+                   @"莫斯科郊外的晚上",
+                   @"这里的黎明静悄悄"];
     
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -215,7 +234,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return musicFileNames.count;
+    return musicNames.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -232,7 +251,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *str = musicFileNames[indexPath.row];
+    NSString *str = musicNames[indexPath.row];
     
     NSArray *numArr = [self numbersFromFileName:str];
     

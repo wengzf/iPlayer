@@ -107,8 +107,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [playerTimer invalidate];
-    playerTimer = nil;
+    if (playerTimer){
+        [playerTimer invalidate];
+        playerTimer = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,6 +155,7 @@
             [btn removeFromSuperview];
             [curRunningArr removeObjectAtIndex:0];
             
+            [btn btnClked];
         }
     }
     
