@@ -109,11 +109,12 @@
 		21A1E5121C12C9800048BBE4 /* MusicNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E5111C12C9800048BBE4 /* MusicNote.m */; };
 		21A1E5161C12EB830048BBE4 /* MusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E5141C12EB830048BBE4 /* MusicPlayViewController.m */; };
 		21A1E5171C12EB830048BBE4 /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E5151C12EB830048BBE4 /* MusicPlayViewController.xib */; };
+		AD39A4E61D11269B004E83D6 /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD39A4E51D11269B004E83D6 /* bg2.jpg */; };
+		AD39A4E81D113E10004E83D6 /* error stick.png in Resources */ = {isa = PBXBuildFile; fileRef = AD39A4E71D113E10004E83D6 /* error stick.png */; };
+		AD39A4EA1D114606004E83D6 /* right stick.png in Resources */ = {isa = PBXBuildFile; fileRef = AD39A4E91D114606004E83D6 /* right stick.png */; };
 		AD77CDE01D0FEFB700F914D8 /* 菊花台.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */; };
 		AD77CDE21D0FF57E00F914D8 /* 送别.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE11D0FF57E00F914D8 /* 送别.txt */; };
 		AD77CDE41D0FFC1B00F914D8 /* 花儿为什么这样红.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */; };
-		AD77CDE71D1016B400F914D8 /* bg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE51D1016B400F914D8 /* bg1.jpg */; };
-		AD77CDE81D1016B400F914D8 /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE61D1016B400F914D8 /* bg2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,11 +249,12 @@
 		21A1E5141C12EB830048BBE4 /* MusicPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayViewController.m; sourceTree = "<group>"; };
 		21A1E5151C12EB830048BBE4 /* MusicPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicPlayViewController.xib; sourceTree = "<group>"; };
 		21A1E5181C12EDC70048BBE4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AD39A4E51D11269B004E83D6 /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
+		AD39A4E71D113E10004E83D6 /* error stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error stick.png"; sourceTree = "<group>"; };
+		AD39A4E91D114606004E83D6 /* right stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right stick.png"; sourceTree = "<group>"; };
 		AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "菊花台.txt"; sourceTree = "<group>"; };
 		AD77CDE11D0FF57E00F914D8 /* 送别.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "送别.txt"; sourceTree = "<group>"; };
 		AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "花儿为什么这样红.txt"; sourceTree = "<group>"; };
-		AD77CDE51D1016B400F914D8 /* bg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg1.jpg; sourceTree = "<group>"; };
-		AD77CDE61D1016B400F914D8 /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,8 +305,9 @@
 		21A1E4211C12BEE40048BBE4 /* iPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				AD77CDE51D1016B400F914D8 /* bg1.jpg */,
-				AD77CDE61D1016B400F914D8 /* bg2.jpg */,
+				AD39A4E91D114606004E83D6 /* right stick.png */,
+				AD39A4E71D113E10004E83D6 /* error stick.png */,
+				AD39A4E51D11269B004E83D6 /* bg2.jpg */,
 				21A1E4251C12BEE40048BBE4 /* AppDelegate.h */,
 				21A1E4261C12BEE40048BBE4 /* AppDelegate.m */,
 				21A1E4281C12BEE40048BBE4 /* ViewController.h */,
@@ -640,6 +643,7 @@
 				21A1E4E71C12BF110048BBE4 /* 071_B3KM56_M.wav in Resources */,
 				21A1E4DF1C12BF110048BBE4 /* 063_D#3KM56_M.wav in Resources */,
 				21A1E4DE1C12BF110048BBE4 /* 062_D3KM56_M.wav in Resources */,
+				AD39A4EA1D114606004E83D6 /* right stick.png in Resources */,
 				21A1E4D41C12BF110048BBE4 /* 052_E2KM56_M.wav in Resources */,
 				21A1E4D81C12BF110048BBE4 /* 056_G#2KM56_M.wav in Resources */,
 				21A1E4EC1C12BF110048BBE4 /* 076_E4KM56_M.wav in Resources */,
@@ -652,12 +656,12 @@
 				21A1E4F31C12BF110048BBE4 /* 083_B4KM56_M.wav in Resources */,
 				21A1E4DC1C12BF110048BBE4 /* 060_C3KM56_M.wav in Resources */,
 				21A1E4E21C12BF110048BBE4 /* 066_F#3KM56_M.wav in Resources */,
-				AD77CDE71D1016B400F914D8 /* bg1.jpg in Resources */,
 				21A1E4EB1C12BF110048BBE4 /* 075_D#4KM56_M.wav in Resources */,
 				21A1E4BD1C12BF110048BBE4 /* 029_F0KM56_M.wav in Resources */,
 				21A1E50A1C12BF110048BBE4 /* 106_A#6KM56_M.wav in Resources */,
 				21A1E4C51C12BF110048BBE4 /* 037_C#1KM56_M.wav in Resources */,
 				21A1E4CB1C12BF110048BBE4 /* 043_G1KM56_M.wav in Resources */,
+				AD39A4E81D113E10004E83D6 /* error stick.png in Resources */,
 				21A1E5071C12BF110048BBE4 /* 103_G6KM56_M.wav in Resources */,
 				21A1E4DB1C12BF110048BBE4 /* 059_B2KM56_M.wav in Resources */,
 				21A1E5011C12BF110048BBE4 /* 097_C#6KM56_M.wav in Resources */,
@@ -666,7 +670,7 @@
 				21A1E4BC1C12BF110048BBE4 /* 028_E0KM56_M.wav in Resources */,
 				21A1E4B51C12BF110048BBE4 /* 梁祝.txt in Resources */,
 				21A1E4FA1C12BF110048BBE4 /* 090_F#5KM56_M.wav in Resources */,
-				AD77CDE81D1016B400F914D8 /* bg2.jpg in Resources */,
+				AD39A4E61D11269B004E83D6 /* bg2.jpg in Resources */,
 				21A1E4E11C12BF110048BBE4 /* 065_F3KM56_M.wav in Resources */,
 				21A1E4D71C12BF110048BBE4 /* 055_G2KM56_M.wav in Resources */,
 				21A1E4D21C12BF110048BBE4 /* 050_D2KM56_M.wav in Resources */,

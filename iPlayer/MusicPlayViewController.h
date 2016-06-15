@@ -24,6 +24,9 @@
 
 - (void)btnClked;
 
+@property (strong, nonatomic) void(^updateLightStick)(NSInteger pos, CGFloat top);
+
+
 @end
 
 

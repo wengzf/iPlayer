@@ -44,6 +44,10 @@
     pitchPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&err];
     [pitchPlayer prepareToPlay];
     [pitchPlayer play];
+    
+    // 刷新对应页面
+    self.updateLightStick(self.pos, self.frame.origin.y);
+    
 }
 - (NSString *) parsePitch:(MusicNote *) note
 {
@@ -63,14 +67,11 @@
     
     //  1. 根据调性确定 dou的基本号数位置
     //  2. 计算音符相对 dou的基本偏移     可以在初始化的时候就计算出来
-    
     NSString *pitchFileName = self.pitchFileNameArr[pitchOffset];
-    
     return pitchFileName;
 }
 
 @end
-
 
 
 @interface MusicPlayViewController ()
@@ -87,6 +88,8 @@
   
     NSMutableArray *reuseButtonArr;         // MusicNoteButton
     NSMutableArray *curRunningArr;          // MusicNoteButton
+    
+    NSMutableArray *lightImageArr;
 }
 
 @end
@@ -112,9 +115,22 @@
     }
 
     // 添加横线
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 320, 320, 220)];
-//    label.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.3];
-//    [self.view addSubview:label];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, ScreenHeight-btnHeight, ScreenWidth, 3)];
+    label.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    [self.view addSubview:label];
+    
+    // 添加4条点击后的发光柱
+    lightImageArr = [NSMutableArray array];
+    
+    CGFloat x = 0;
+    for (int i=0; i<4; ++i) {
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(x, 0, ScreenWidth/4.0, ScreenHeight-btnHeight)];
+        [lightImageArr addObject:imgView];
+        imgView.alpha = 0;
+        imgView.image = [UIImage imageNamed:@"error stick"];
+        [self.view addSubview:imgView];
+        x+=ScreenWidth/4;
+    }
     
 }
 
@@ -142,6 +158,25 @@
         resButton.pitchFileNameArr = self.pitchFileNameArr;
         resButton.basePitchOffset = self.basePitchOffset;
         resButton.backgroundColor = [UIColor whiteColor];
+        
+        resButton.updateLightStick = ^(NSInteger pos, CGFloat top){
+            // 显示光柱
+            UIImageView *imgview = lightImageArr[pos];
+            if ((top>ScreenHeight-btnHeight-btnHeight-10) && (top<ScreenHeight-btnHeight/2) ){
+                imgview.image = [UIImage imageNamed:@"right stick"];
+            }else{
+                imgview.image = [UIImage imageNamed:@"error stick"];
+            }
+            imgview.alpha = 0.7;
+            [UIView animateWithDuration:2 animations:^{
+                imgview.alpha = 0;
+            }];
+            
+            // button从正在运行数组中删除
+            [reuseButtonArr addObject:resButton];
+            [resButton removeFromSuperview];
+            [curRunningArr removeObjectAtIndex:0];
+        };
     }
     resButton.alpha = 1.0;
     [self.view addSubview:resButton];
@@ -163,11 +198,9 @@
         if (btn.frame.origin.y > ScreenHeight-btnHeight) {
             
 //            [btn btnClked];
-            
             [reuseButtonArr addObject:btn];
             [btn removeFromSuperview];
             [curRunningArr removeObjectAtIndex:0];
-            
         }
     }
     
@@ -191,6 +224,10 @@
     // 检查结束
     if (self.musicNoteArr.count == 0 && curRunningArr.count==0) {
         [playerTimer invalidate];
+        playerTimer = nil;
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
         return ;
     }
     

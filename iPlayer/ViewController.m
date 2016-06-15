@@ -218,7 +218,6 @@
     
     // 延迟时值后递归调用
     // 播放时值解析
-    
     double popTime = dispatch_time(DISPATCH_TIME_NOW, note.realDuration * NSEC_PER_SEC );
     
     printf("%lf\n",popTime);
@@ -242,7 +241,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     cell.textLabel.text = musicNames[indexPath.row];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
