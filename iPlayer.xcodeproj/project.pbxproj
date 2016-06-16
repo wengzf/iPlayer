@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2148FC551D12A33A00CD862A /* ALARM1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 2148FC541D12A33A00CD862A /* ALARM1.WAV */; };
+		2148FC591D12BB7500CD862A /* KeyChainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148FC581D12BB7500CD862A /* KeyChainUtil.m */; };
 		21A1E4241C12BEE40048BBE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4231C12BEE40048BBE4 /* main.m */; };
 		21A1E4271C12BEE40048BBE4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4261C12BEE40048BBE4 /* AppDelegate.m */; };
 		21A1E42A1C12BEE40048BBE4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4291C12BEE40048BBE4 /* ViewController.m */; };
@@ -135,6 +137,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2148FC541D12A33A00CD862A /* ALARM1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ALARM1.WAV; sourceTree = "<group>"; };
+		2148FC571D12BB7500CD862A /* KeyChainUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainUtil.h; sourceTree = "<group>"; };
+		2148FC581D12BB7500CD862A /* KeyChainUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainUtil.m; sourceTree = "<group>"; };
 		21A1E41F1C12BEE40048BBE4 /* iPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A1E4231C12BEE40048BBE4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		21A1E4251C12BEE40048BBE4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -282,6 +287,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2148FC561D12BB7500CD862A /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				2148FC571D12BB7500CD862A /* KeyChainUtil.h */,
+				2148FC581D12BB7500CD862A /* KeyChainUtil.m */,
+			);
+			path = KeyChain;
+			sourceTree = "<group>";
+		};
 		21A1E4161C12BEE40048BBE4 = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +319,7 @@
 		21A1E4211C12BEE40048BBE4 /* iPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				2148FC541D12A33A00CD862A /* ALARM1.WAV */,
 				AD39A4E91D114606004E83D6 /* right stick.png */,
 				AD39A4E71D113E10004E83D6 /* error stick.png */,
 				AD39A4E51D11269B004E83D6 /* bg2.jpg */,
@@ -325,6 +340,7 @@
 				21A1E4361C12BEE40048BBE4 /* Info.plist */,
 				21A1E42E1C12BEE40048BBE4 /* iPlayer.xcdatamodeld */,
 				21A1E5181C12EDC70048BBE4 /* PrefixHeader.pch */,
+				2148FC561D12BB7500CD862A /* KeyChain */,
 				21A1E4581C12BF110048BBE4 /* Resource */,
 				21A1E4221C12BEE40048BBE4 /* Supporting Files */,
 			);
@@ -539,7 +555,7 @@
 				TargetAttributes = {
 					21A1E41E1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = D3C83SFDM7;
+						DevelopmentTeam = 298VK6UU46;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -645,6 +661,7 @@
 				ADE176CC1D1247200044A0AA /* 060_C3KM56_M.mp3 in Resources */,
 				ADE176A91D1247200044A0AA /* 025_C#0KM56_M.mp3 in Resources */,
 				21A1E4B51C12BF110048BBE4 /* 梁祝.txt in Resources */,
+				2148FC551D12A33A00CD862A /* ALARM1.WAV in Resources */,
 				ADE176F71D1247200044A0AA /* 103_G6KM56_M.mp3 in Resources */,
 				ADE176B01D1247200044A0AA /* 032_G#0KM56_M.mp3 in Resources */,
 				ADE176CB1D1247200044A0AA /* 059_B2KM56_M.mp3 in Resources */,
@@ -707,6 +724,7 @@
 				21A1E42A1C12BEE40048BBE4 /* ViewController.m in Sources */,
 				21A1E50F1C12C8210048BBE4 /* MusicRule.m in Sources */,
 				21A1E4271C12BEE40048BBE4 /* AppDelegate.m in Sources */,
+				2148FC591D12BB7500CD862A /* KeyChainUtil.m in Sources */,
 				21A1E4301C12BEE40048BBE4 /* iPlayer.xcdatamodeld in Sources */,
 				21A1E5161C12EB830048BBE4 /* MusicPlayViewController.m in Sources */,
 				21A1E4241C12BEE40048BBE4 /* main.m in Sources */,
@@ -853,8 +871,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haoyuan Li (ERQ65L68QM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haoyuan Li (ERQ65L68QM)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPlayer/PrefixHeader.pch;
@@ -863,7 +881,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.renwohua.iPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "51d2077f-e6b2-467f-aef3-f7a6ac581376";
 			};
 			name = Debug;
 		};
@@ -871,8 +889,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haoyuan Li (ERQ65L68QM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haoyuan Li (ERQ65L68QM)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iPlayer/PrefixHeader.pch;
@@ -881,7 +899,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.renwohua.iPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "51d2077f-e6b2-467f-aef3-f7a6ac581376";
 			};
 			name = Release;
 		};

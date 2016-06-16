@@ -7,9 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "KeyChainUtil.h"
+#import <AdSupport/AdSupport.h>
 
 @interface AppDelegate ()
-
+{
+    AVAudioPlayer *player;
+    NSTimer *timer;
+    
+    NSURL *appScheme;
+}
 @end
 
 @implementation AppDelegate
@@ -17,6 +24,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // 从keychain中获取 IDFA
+    NSString *idfa = [KeyChainUtil readKeyChain:@"idfa"];
+    if (idfa == nil || [idfa isEqual:[NSNull null]]) {
+        NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+
+        [KeyChainUtil saveKeyChain:idfa forKey:@"idfa"];
+    }
+    
+    NSString *tmp = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = idfa;
+    
+    
+    // 播放音频，开启永久后台模式
+    [self playAudio];
+    
+    appScheme = [NSURL URLWithString:@"QQ41D943E8://"];
+    
+    //  判断app是否在前台
+    // 每隔 5 秒钟打开
+    timer  = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkURL) userInfo:nil repeats:YES];
+    [timer fire];
+
     return YES;
 }
 
@@ -43,6 +76,74 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+
+- (void)checkURL
+{
+    NSInteger time = [[NSUserDefaults standardUserDefaults] integerForKey:@"openTime"];
+    if ([[UIApplication sharedApplication] canOpenURL:appScheme]) {
+        
+        printf("\n++++++++\n");
+        
+//        [[UIApplication sharedApplication] openURL:appScheme];
+    }else{
+        time += 1;
+        [[NSUserDefaults standardUserDefaults] setInteger:time forKey:@"openTime"];
+        
+        
+        printf("\n---------\n");
+    }
+}
+// 永久后台模式
+- (void) playAudio
+{
+    //初始化并开启音频播放
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    NSError *categoryError = nil;
+    NSError *activeError = nil;
+    [audioSession setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&categoryError];
+    if (!categoryError) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleInterruptionAudio:) name:AVAudioSessionInterruptionNotification object:audioSession];
+        [audioSession setActive:YES error:&activeError];
+        if (!activeError) {
+            NSError *dataError = nil;
+            NSData *audioData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"ALARM1" withExtension:@".WAV"]];
+            player = [[AVAudioPlayer alloc] initWithData:audioData error:&dataError];
+            if (!dataError) {
+                [player setVolume:0];
+                player.numberOfLoops = -1;
+                [player prepareToPlay];
+                [player play];
+            }
+        }
+    }
+}
+//处理音频播放的各种中断时间，比如电话，其它音频app等导致的音频播放中断问题
+- (void)handleInterruptionAudio:(NSNotification *)notification {
+    NSLog(@"interrupt%@",notification.description);
+    NSDictionary *userDic = notification.userInfo;
+    if ([userDic[AVAudioSessionInterruptionTypeKey] intValue] == 0) {
+        //end
+        if ([userDic[AVAudioSessionInterruptionOptionKey] intValue] == AVAudioSessionInterruptionOptionShouldResume) {
+            [player prepareToPlay];
+            [player play];
+        }
+    }
+    if ([userDic[AVAudioSessionInterruptionTypeKey] intValue] == 1) {
+        //begin
+        [player pause];
+    }
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if (!url) {
+        return NO;
+    }
+    NSString *urlString = [url absoluteString];
+    return YES;
+}
+
 
 #pragma mark - Core Data stack
 
