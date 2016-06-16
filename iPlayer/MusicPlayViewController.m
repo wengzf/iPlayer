@@ -37,7 +37,7 @@
     // 播放音高文件名解析
     NSString *pitchFileName = [self parsePitch:self.note];
     
-    NSString * filePath = [[NSBundle mainBundle] pathForResource:pitchFileName ofType:@"wav"];
+    NSString * filePath = [[NSBundle mainBundle] pathForResource:pitchFileName ofType:@"mp3"];
     NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     
     NSError *err;
