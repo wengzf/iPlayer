@@ -197,10 +197,7 @@
         MusicNoteButton *btn = [curRunningArr firstObject];
         if (btn.frame.origin.y > ScreenHeight-btnHeight) {
             
-//            [btn btnClked];
-            [reuseButtonArr addObject:btn];
-            [btn removeFromSuperview];
-            [curRunningArr removeObjectAtIndex:0];
+            [btn btnClked];
         }
     }
     

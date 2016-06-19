@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		213CB9E91D16394100DFA820 /* 花儿为什么这样红.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9E81D16394100DFA820 /* 花儿为什么这样红.txt */; };
+		213CB9EB1D16458500DFA820 /* 雨的印记.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9EA1D16458500DFA820 /* 雨的印记.txt */; };
+		213CB9EE1D16493800DFA820 /* 樱花.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9ED1D16493800DFA820 /* 樱花.txt */; };
+		213CB9F01D1653EB00DFA820 /* 莫斯科郊外的晚上.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9EF1D1653EB00DFA820 /* 莫斯科郊外的晚上.txt */; };
 		2148FC551D12A33A00CD862A /* ALARM1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 2148FC541D12A33A00CD862A /* ALARM1.WAV */; };
 		2148FC591D12BB7500CD862A /* KeyChainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148FC581D12BB7500CD862A /* KeyChainUtil.m */; };
+		214FC2311D16315500A08ABA /* 天空之城.txt in Resources */ = {isa = PBXBuildFile; fileRef = 214FC2301D16315500A08ABA /* 天空之城.txt */; };
 		21A1E4241C12BEE40048BBE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4231C12BEE40048BBE4 /* main.m */; };
 		21A1E4271C12BEE40048BBE4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4261C12BEE40048BBE4 /* AppDelegate.m */; };
 		21A1E42A1C12BEE40048BBE4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4291C12BEE40048BBE4 /* ViewController.m */; };
@@ -31,7 +36,6 @@
 		AD39A4EA1D114606004E83D6 /* right stick.png in Resources */ = {isa = PBXBuildFile; fileRef = AD39A4E91D114606004E83D6 /* right stick.png */; };
 		AD77CDE01D0FEFB700F914D8 /* 菊花台.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */; };
 		AD77CDE21D0FF57E00F914D8 /* 送别.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE11D0FF57E00F914D8 /* 送别.txt */; };
-		AD77CDE41D0FFC1B00F914D8 /* 花儿为什么这样红.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */; };
 		ADE176A81D1247200044A0AA /* 024_C0KM56_M.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADE176531D1247200044A0AA /* 024_C0KM56_M.mp3 */; };
 		ADE176A91D1247200044A0AA /* 025_C#0KM56_M.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADE176541D1247200044A0AA /* 025_C#0KM56_M.mp3 */; };
 		ADE176AA1D1247200044A0AA /* 026_D0KM56_M.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADE176551D1247200044A0AA /* 026_D0KM56_M.mp3 */; };
@@ -137,9 +141,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		213CB9E81D16394100DFA820 /* 花儿为什么这样红.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "花儿为什么这样红.txt"; sourceTree = "<group>"; };
+		213CB9EA1D16458500DFA820 /* 雨的印记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "雨的印记.txt"; sourceTree = "<group>"; };
+		213CB9EC1D16463B00DFA820 /* 任务.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "任务.h"; path = "iPlayer/任务.h"; sourceTree = "<group>"; };
+		213CB9ED1D16493800DFA820 /* 樱花.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "樱花.txt"; sourceTree = "<group>"; };
+		213CB9EF1D1653EB00DFA820 /* 莫斯科郊外的晚上.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "莫斯科郊外的晚上.txt"; sourceTree = "<group>"; };
 		2148FC541D12A33A00CD862A /* ALARM1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ALARM1.WAV; sourceTree = "<group>"; };
 		2148FC571D12BB7500CD862A /* KeyChainUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainUtil.h; sourceTree = "<group>"; };
 		2148FC581D12BB7500CD862A /* KeyChainUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainUtil.m; sourceTree = "<group>"; };
+		214FC2301D16315500A08ABA /* 天空之城.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "天空之城.txt"; sourceTree = "<group>"; };
 		21A1E41F1C12BEE40048BBE4 /* iPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A1E4231C12BEE40048BBE4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		21A1E4251C12BEE40048BBE4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -174,7 +184,6 @@
 		AD39A4E91D114606004E83D6 /* right stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right stick.png"; sourceTree = "<group>"; };
 		AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "菊花台.txt"; sourceTree = "<group>"; };
 		AD77CDE11D0FF57E00F914D8 /* 送别.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "送别.txt"; sourceTree = "<group>"; };
-		AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "花儿为什么这样红.txt"; sourceTree = "<group>"; };
 		ADE176531D1247200044A0AA /* 024_C0KM56_M.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 024_C0KM56_M.mp3; sourceTree = "<group>"; };
 		ADE176541D1247200044A0AA /* 025_C#0KM56_M.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "025_C#0KM56_M.mp3"; sourceTree = "<group>"; };
 		ADE176551D1247200044A0AA /* 026_D0KM56_M.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 026_D0KM56_M.mp3; sourceTree = "<group>"; };
@@ -299,6 +308,7 @@
 		21A1E4161C12BEE40048BBE4 = {
 			isa = PBXGroup;
 			children = (
+				213CB9EC1D16463B00DFA820 /* 任务.h */,
 				21A1E4211C12BEE40048BBE4 /* iPlayer */,
 				21A1E43E1C12BEE40048BBE4 /* iPlayerTests */,
 				21A1E4491C12BEE40048BBE4 /* iPlayerUITests */,
@@ -385,13 +395,17 @@
 		21A1E4591C12BF110048BBE4 /* ComposeNotation */ = {
 			isa = PBXGroup;
 			children = (
+				21A1E45D1C12BF110048BBE4 /* 如意玉儿曲.txt */,
 				21A1E45A1C12BF110048BBE4 /* 穿越时空的思念.txt */,
 				21A1E45B1C12BF110048BBE4 /* 梁祝.txt */,
 				21A1E45C1C12BF110048BBE4 /* 茉莉花.txt */,
-				21A1E45D1C12BF110048BBE4 /* 如意玉儿曲.txt */,
 				AD77CDDF1D0FEFB700F914D8 /* 菊花台.txt */,
 				AD77CDE11D0FF57E00F914D8 /* 送别.txt */,
-				AD77CDE31D0FFC1B00F914D8 /* 花儿为什么这样红.txt */,
+				213CB9E81D16394100DFA820 /* 花儿为什么这样红.txt */,
+				214FC2301D16315500A08ABA /* 天空之城.txt */,
+				213CB9EA1D16458500DFA820 /* 雨的印记.txt */,
+				213CB9ED1D16493800DFA820 /* 樱花.txt */,
+				213CB9EF1D1653EB00DFA820 /* 莫斯科郊外的晚上.txt */,
 			);
 			path = ComposeNotation;
 			sourceTree = "<group>";
@@ -603,6 +617,7 @@
 				ADE176C11D1247200044A0AA /* 049_C#2KM56_M.mp3 in Resources */,
 				21A1E4B61C12BF110048BBE4 /* 茉莉花.txt in Resources */,
 				ADE176C31D1247200044A0AA /* 051_D#2KM56_M.mp3 in Resources */,
+				214FC2311D16315500A08ABA /* 天空之城.txt in Resources */,
 				ADE176D21D1247200044A0AA /* 066_F#3KM56_M.mp3 in Resources */,
 				21A1E4351C12BEE40048BBE4 /* LaunchScreen.storyboard in Resources */,
 				ADE176CF1D1247200044A0AA /* 063_D#3KM56_M.mp3 in Resources */,
@@ -631,7 +646,9 @@
 				21A1E4321C12BEE40048BBE4 /* Assets.xcassets in Resources */,
 				ADE176DE1D1247200044A0AA /* 078_F#4KM56_M.mp3 in Resources */,
 				ADE176E01D1247200044A0AA /* 080_G#4KM56_M.mp3 in Resources */,
+				213CB9E91D16394100DFA820 /* 花儿为什么这样红.txt in Resources */,
 				AD39A4EA1D114606004E83D6 /* right stick.png in Resources */,
+				213CB9F01D1653EB00DFA820 /* 莫斯科郊外的晚上.txt in Resources */,
 				ADE176DA1D1247200044A0AA /* 074_D4KM56_M.mp3 in Resources */,
 				ADE176B11D1247200044A0AA /* 033_A0KM56_M.mp3 in Resources */,
 				ADE176BF1D1247200044A0AA /* 047_B1KM56_M.mp3 in Resources */,
@@ -651,6 +668,7 @@
 				ADE176C51D1247200044A0AA /* 053_F2KM56_M.mp3 in Resources */,
 				ADE176AB1D1247200044A0AA /* 027_D#0KM56_M.mp3 in Resources */,
 				ADE176F51D1247200044A0AA /* 101_F6KM56_M.mp3 in Resources */,
+				213CB9EE1D16493800DFA820 /* 樱花.txt in Resources */,
 				ADE176D01D1247200044A0AA /* 064_E3KM56_M.mp3 in Resources */,
 				ADE176AC1D1247200044A0AA /* 028_E0KM56_M.mp3 in Resources */,
 				ADE176F31D1247200044A0AA /* 099_D#6KM56_M.mp3 in Resources */,
@@ -659,6 +677,7 @@
 				ADE176B51D1247200044A0AA /* 037_C#1KM56_M.mp3 in Resources */,
 				AD39A4E81D113E10004E83D6 /* error stick.png in Resources */,
 				ADE176CC1D1247200044A0AA /* 060_C3KM56_M.mp3 in Resources */,
+				213CB9EB1D16458500DFA820 /* 雨的印记.txt in Resources */,
 				ADE176A91D1247200044A0AA /* 025_C#0KM56_M.mp3 in Resources */,
 				21A1E4B51C12BF110048BBE4 /* 梁祝.txt in Resources */,
 				2148FC551D12A33A00CD862A /* ALARM1.WAV in Resources */,
@@ -682,7 +701,6 @@
 				21A1E42D1C12BEE40048BBE4 /* Main.storyboard in Resources */,
 				ADE176BE1D1247200044A0AA /* 046_A#1KM56_M.mp3 in Resources */,
 				ADE176E81D1247200044A0AA /* 088_E5KM56_M.mp3 in Resources */,
-				AD77CDE41D0FFC1B00F914D8 /* 花儿为什么这样红.txt in Resources */,
 				ADE176D61D1247200044A0AA /* 070_A#3KM56_M.mp3 in Resources */,
 				ADE176C91D1247200044A0AA /* 057_A2KM56_M.mp3 in Resources */,
 				ADE176BA1D1247200044A0AA /* 042_F#1KM56_M.mp3 in Resources */,
