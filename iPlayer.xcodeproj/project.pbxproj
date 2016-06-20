@@ -11,6 +11,8 @@
 		213CB9EB1D16458500DFA820 /* 雨的印记.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9EA1D16458500DFA820 /* 雨的印记.txt */; };
 		213CB9EE1D16493800DFA820 /* 樱花.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9ED1D16493800DFA820 /* 樱花.txt */; };
 		213CB9F01D1653EB00DFA820 /* 莫斯科郊外的晚上.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9EF1D1653EB00DFA820 /* 莫斯科郊外的晚上.txt */; };
+		213CB9F21D176DCA00DFA820 /* 飘落.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9F11D176DCA00DFA820 /* 飘落.txt */; };
+		213CB9F41D17737700DFA820 /* 草原英雄小姐妹.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9F31D17737700DFA820 /* 草原英雄小姐妹.txt */; };
 		2148FC551D12A33A00CD862A /* ALARM1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 2148FC541D12A33A00CD862A /* ALARM1.WAV */; };
 		2148FC591D12BB7500CD862A /* KeyChainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148FC581D12BB7500CD862A /* KeyChainUtil.m */; };
 		214FC2311D16315500A08ABA /* 天空之城.txt in Resources */ = {isa = PBXBuildFile; fileRef = 214FC2301D16315500A08ABA /* 天空之城.txt */; };
@@ -146,6 +148,8 @@
 		213CB9EC1D16463B00DFA820 /* 任务.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "任务.h"; path = "iPlayer/任务.h"; sourceTree = "<group>"; };
 		213CB9ED1D16493800DFA820 /* 樱花.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "樱花.txt"; sourceTree = "<group>"; };
 		213CB9EF1D1653EB00DFA820 /* 莫斯科郊外的晚上.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "莫斯科郊外的晚上.txt"; sourceTree = "<group>"; };
+		213CB9F11D176DCA00DFA820 /* 飘落.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "飘落.txt"; sourceTree = "<group>"; };
+		213CB9F31D17737700DFA820 /* 草原英雄小姐妹.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "草原英雄小姐妹.txt"; sourceTree = "<group>"; };
 		2148FC541D12A33A00CD862A /* ALARM1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ALARM1.WAV; sourceTree = "<group>"; };
 		2148FC571D12BB7500CD862A /* KeyChainUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainUtil.h; sourceTree = "<group>"; };
 		2148FC581D12BB7500CD862A /* KeyChainUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainUtil.m; sourceTree = "<group>"; };
@@ -405,7 +409,9 @@
 				214FC2301D16315500A08ABA /* 天空之城.txt */,
 				213CB9EA1D16458500DFA820 /* 雨的印记.txt */,
 				213CB9ED1D16493800DFA820 /* 樱花.txt */,
+				213CB9F31D17737700DFA820 /* 草原英雄小姐妹.txt */,
 				213CB9EF1D1653EB00DFA820 /* 莫斯科郊外的晚上.txt */,
+				213CB9F11D176DCA00DFA820 /* 飘落.txt */,
 			);
 			path = ComposeNotation;
 			sourceTree = "<group>";
@@ -653,6 +659,7 @@
 				ADE176B11D1247200044A0AA /* 033_A0KM56_M.mp3 in Resources */,
 				ADE176BF1D1247200044A0AA /* 047_B1KM56_M.mp3 in Resources */,
 				ADE176DD1D1247200044A0AA /* 077_F4KM56_M.mp3 in Resources */,
+				213CB9F41D17737700DFA820 /* 草原英雄小姐妹.txt in Resources */,
 				ADE176D11D1247200044A0AA /* 065_F3KM56_M.mp3 in Resources */,
 				ADE176C41D1247200044A0AA /* 052_E2KM56_M.mp3 in Resources */,
 				ADE176B41D1247200044A0AA /* 036_C1KM56_M.mp3 in Resources */,
@@ -661,6 +668,7 @@
 				ADE176DC1D1247200044A0AA /* 076_E4KM56_M.mp3 in Resources */,
 				ADE176CD1D1247200044A0AA /* 061_C#3KM56_M.mp3 in Resources */,
 				ADE176C71D1247200044A0AA /* 055_G2KM56_M.mp3 in Resources */,
+				213CB9F21D176DCA00DFA820 /* 飘落.txt in Resources */,
 				ADE176E91D1247200044A0AA /* 089_F5KM56_M.mp3 in Resources */,
 				ADE176FA1D1247200044A0AA /* 106_A#6KM56_M.mp3 in Resources */,
 				ADE176AE1D1247200044A0AA /* 030_F#0KM56_M.mp3 in Resources */,
