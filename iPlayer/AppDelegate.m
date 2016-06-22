@@ -10,6 +10,37 @@
 #import "KeyChainUtil.h"
 #import <AdSupport/AdSupport.h>
 
+
+//＝＝＝＝＝＝＝＝＝＝ShareSDK头文件＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//以下是ShareSDK必须添加的依赖库：
+//1、libicucore.dylib
+//2、libz.dylib
+//3、libstdc++.dylib
+//4、JavaScriptCore.framework
+
+//＝＝＝＝＝＝＝＝＝＝以下是各个平台SDK的头文件，根据需要继承的平台添加＝＝＝
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+//以下是腾讯SDK的依赖库：
+//libsqlite3.dylib
+
+//微信SDK头文件
+#import "WXApi.h"
+//以下是微信SDK的依赖库：
+//libsqlite3.dylib
+
+//新浪微博SDK头文件
+#import "WeiboSDK.h"
+//新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
+//以下是新浪微博SDK的依赖库：
+//ImageIO.framework
+//libsqlite3.dylib
+//AdSupport.framework
+
+
 @interface AppDelegate ()
 {
     AVAudioPlayer *player;
@@ -43,13 +74,79 @@
     // 播放音频，开启永久后台模式
     [self playAudio];
     
-    appScheme = [NSURL URLWithString:@"QQ41D943E8://"];
+//    appScheme = [NSURL URLWithString:@"http://"];
+//    [[UIApplication sharedApplication] openURL:appScheme];
     
+//    appScheme = [NSURL URLWithString:@"QQ41D943E8://"];
+//    [[UIApplication sharedApplication] openURL:appScheme];
+
     //  判断app是否在前台
     // 每隔 5 秒钟打开
-    timer  = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkURL) userInfo:nil repeats:YES];
-    [timer fire];
+//    timer  = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkURL) userInfo:nil repeats:YES];
+//    [timer fire];
 
+    // 分享初始化
+    {
+        /**
+         *  设置ShareSDK的appKey，如果尚未在ShareSDK官网注册过App，请移步到http://mob.com/login 登录后台进行应用注册，
+         *  在将生成的AppKey传入到此方法中。我们Demo提供的appKey为内部测试使用，可能会修改配置信息，请不要使用。
+         *  方法中的第二个参数用于指定要使用哪些社交平台，以数组形式传入。第三个参数为需要连接社交平台SDK时触发，
+         *  在此事件中写入连接代码。第四个参数则为配置本地社交平台时触发，根据返回的平台类型来配置平台信息。
+         *  如果您使用的时服务端托管平台信息时，第二、四项参数可以传入nil，第三项参数则根据服务端托管平台来决定要连接的社交SDK。
+         */
+        [ShareSDK registerApp:@"88ff9736d7c0"
+              activePlatforms:@[
+                                @(SSDKPlatformTypeSinaWeibo),
+                                @(SSDKPlatformTypeWechat),
+                                @(SSDKPlatformTypeQQ)
+                                ]
+                     onImport:^(SSDKPlatformType platformType) {
+                         
+                         switch (platformType)
+                         {
+                             case SSDKPlatformTypeWechat:
+                                 //                             [ShareSDKConnector connectWeChat:[WXApi class]];
+                                 [ShareSDKConnector connectWeChat:[WXApi class] delegate:self];
+                                 break;
+                             case SSDKPlatformTypeQQ:
+                                 [ShareSDKConnector connectQQ:[QQApiInterface class]
+                                            tencentOAuthClass:[TencentOAuth class]];
+                                 break;
+                             case SSDKPlatformTypeSinaWeibo:
+                                 [ShareSDKConnector connectWeibo:[WeiboSDK class]];
+                                 break;
+                                 
+                             default:
+                                 break;
+                         }
+                     }
+              onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+                  
+                  switch (platformType)
+                  {
+                      case SSDKPlatformTypeSinaWeibo:
+                          //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                          [appInfo SSDKSetupSinaWeiboByAppKey:@"568898243"
+                                                    appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                                                  redirectUri:@"http://www.sharesdk.cn"
+                                                     authType:SSDKAuthTypeBoth];
+                          break;
+                          
+                      case SSDKPlatformTypeWechat:
+                          [appInfo SSDKSetupWeChatByAppId:@"wx4868b35061f87885"
+                                                appSecret:@"64020361b8ec4c99936c0e3999a9f249"];
+                          break;
+                      case SSDKPlatformTypeQQ:
+                          [appInfo SSDKSetupQQByAppId:@"100371282"
+                                               appKey:@"aed9b0303e3ed1e27bae87c33761161d"
+                                             authType:SSDKAuthTypeBoth];
+                          break;
+                      default:
+                          break;
+                  }
+              }];
+    }
+    
     return YES;
 }
 
@@ -85,7 +182,7 @@
         
         printf("\n++++++++\n");
         
-//        [[UIApplication sharedApplication] openURL:appScheme];
+        [[UIApplication sharedApplication] openURL:appScheme];
     }else{
         time += 1;
         [[NSUserDefaults standardUserDefaults] setInteger:time forKey:@"openTime"];
@@ -137,12 +234,38 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    NSString *urlStr = [url absoluteString];
+    urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    // shoujizhuan://shoujizhuan?openapp=‘weixin’
     if (!url) {
         return NO;
     }
+    
     NSString *urlString = [url absoluteString];
     return YES;
 }
+
+//1. 通过app登录
+//shoujizhuan://native/login
+//
+//2. 通过app获取任务列表
+//shoujizhuan://native/getTaskList
+//
+//3. 通过app接任务
+//shoujizhuan://native/acceptTask?taskid=''
+//
+//4. 通过app打开任务App
+//shoujizhuan://native/openTask?taskid=''
+//
+//5. 通过app提交任务
+//shoujizhuan://native/uploadTask?taskid=''
+//
+//6. 通过app分享
+//shoujizhuan://native/share
+
+
+
 
 
 #pragma mark - Core Data stack

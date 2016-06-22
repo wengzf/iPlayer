@@ -102,6 +102,7 @@
     btnHeight = 120;
     speed = (btnHeight+10) / self.musicRule.baseUnitTime;
     
+    // 我扣得搞一两个小时
     // 重用机制数组
     {
         reuseButtonArr = [NSMutableArray array];
