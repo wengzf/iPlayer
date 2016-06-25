@@ -40,6 +40,8 @@
 //libsqlite3.dylib
 //AdSupport.framework
 
+#import "KeyViewController.h"
+
 
 @interface AppDelegate ()
 {
@@ -85,6 +87,7 @@
 //    timer  = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkURL) userInfo:nil repeats:YES];
 //    [timer fire];
 
+    
     // 分享初始化
     {
         /**
@@ -94,6 +97,7 @@
          *  在此事件中写入连接代码。第四个参数则为配置本地社交平台时触发，根据返回的平台类型来配置平台信息。
          *  如果您使用的时服务端托管平台信息时，第二、四项参数可以传入nil，第三项参数则根据服务端托管平台来决定要连接的社交SDK。
          */
+        
         [ShareSDK registerApp:@"88ff9736d7c0"
               activePlatforms:@[
                                 @(SSDKPlatformTypeSinaWeibo),
@@ -145,6 +149,7 @@
                           break;
                   }
               }];
+         
     }
     
     return YES;
@@ -237,12 +242,45 @@
     NSString *urlStr = [url absoluteString];
     urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    // shoujizhuan://shoujizhuan?openapp=‘weixin’
-    if (!url) {
-        return NO;
+    
+    NSRange range = [urlStr rangeOfString:@"?"];
+    
+    NSString *propertys = [urlStr substringFromIndex:(int)(range.location+1)];
+    
+    NSArray *subArray = [propertys componentsSeparatedByString:@"&"];
+    
+    NSMutableDictionary *paraDic = [NSMutableDictionary dictionaryWithCapacity:4];
+    
+    for (int j = 0 ; j < subArray.count; j++)
+    {
+        NSArray *dicArray = [subArray[j] componentsSeparatedByString:@"="];
+        
+        [paraDic setObject:dicArray[1] forKey:dicArray[0]];
     }
     
-    NSString *urlString = [url absoluteString];
+    
+    if ([url.host isEqualToString:@"native"]) {
+        
+        NSString *pathStr = url.path;
+        
+        if ([pathStr isEqualToString:@"login"]) {
+        
+            [ShareKeyViewController loginWithID:paraDic[@"id"]];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"KeyViewController"];
+            
+        }else if ([pathStr isEqualToString:@"getTaskList"]) {
+            
+        }else if ([pathStr isEqualToString:@"acceptTask"]) {
+            
+        }else if ([pathStr isEqualToString:@"openTask"]) {
+            
+        }else if ([pathStr isEqualToString:@"uploadTask"]) {
+            
+        }else if ([pathStr isEqualToString:@"share"]) {
+            
+        }
+    }
     return YES;
 }
 

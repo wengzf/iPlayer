@@ -18,12 +18,14 @@
 #import <ShareSDK/ShareSDK+Base.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 
+#import "KeyViewController.h"
+
+
 
 @interface ViewController ()
 {
     MusicRule *musicRule;
     NSMutableArray *musicNoteArr;
-    
     
     // 所有音的文件名
     NSMutableArray *pitchFileNameArr;
@@ -34,6 +36,9 @@
     AVAudioPlayer *pitchPlayer;
     
     NSArray *musicNames;
+    
+    // 助手页面
+    KeyViewController *keyVC;
 }
 @end
 
@@ -69,12 +74,13 @@
                    @"飘落"];
     
     
-    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
-    view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:view];
+    // 判断是否打开助手
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
+        keyVC = [KeyViewController shareInstance];
+        keyVC.view.frame = [UIScreen mainScreen].bounds;
+        [self.view addSubview:keyVC.view];
+    }
     
-    
-    [self showShareActionSheet:view];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -85,6 +91,8 @@
 {
 //    NSIndexPath *inxPath = [NSIndexPath indexPathForRow:0 inSection:0];
 //    [self tableView:[UITableView new] didSelectRowAtIndexPath:inxPath];
+    
+//    [self showShareActionSheet:self.view];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -300,7 +308,7 @@
     //1、创建分享参数（必要）
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     
-    NSArray* imageArray = @[[UIImage imageNamed:@"icon_app"]];
+    NSArray* imageArray = @[[UIImage imageNamed:@"right stick"]];
     [shareParams SSDKSetupShareParamsByText:@"天天赚钱"
                                      images:imageArray
                                         url:[NSURL URLWithString:@"http://www.shoujizhuan.com.cn"]

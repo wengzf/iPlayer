@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyViewController">
+            <connections>
+                <outlet property="backBtn" destination="SHx-Zb-L4c" id="oNP-ul-OKF"/>
+                <outlet property="view" destination="iN0-l3-epB" id="btb-OQ-OHL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_60" translatesAutoresizingMaskIntoConstraints="NO" id="BPq-jm-tc8">
+                    <rect key="frame" x="115" y="45" width="90" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="PZQ-yW-Rry"/>
+                        <constraint firstAttribute="height" constant="90" id="cTq-y1-EBL"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赚么助手已开启" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUh-Mk-phu">
+                    <rect key="frame" x="100" y="183" width="119" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.078431372550000003" green="0.58431372550000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwe-3E-xrE">
+                    <rect key="frame" x="32" y="325" width="51" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. 在Safari中打开shoujizhuan.me即可开始任务" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZn-L2-YOr">
+                    <rect key="frame" x="48" y="354" width="229.5" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. 做任务时，请勿退出“赚么“助手，以免无法获得奖励" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTm-yz-8AD">
+                    <rect key="frame" x="48" y="391" width="230" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHx-Zb-L4c">
+                    <rect key="frame" x="66.5" y="219" width="186.5" height="46"/>
+                    <color key="backgroundColor" red="0.078431372550000003" green="0.58431372550000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="186.5" id="Qm3-ct-uR1"/>
+                        <constraint firstAttribute="height" constant="46" id="Xtx-ki-gAe"/>
+                    </constraints>
+                    <state key="normal" title="返回 shoujizhuan.me">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="backBtnClked:" destination="-1" eventType="touchUpInside" id="D97-Ui-nfH"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="SHx-Zb-L4c" firstAttribute="top" secondItem="EUh-Mk-phu" secondAttribute="bottom" constant="14.5" id="11f-PP-2JC"/>
+                <constraint firstItem="CZn-L2-YOr" firstAttribute="leading" secondItem="Vwe-3E-xrE" secondAttribute="leading" constant="16" id="1zv-kh-aRW"/>
+                <constraint firstItem="BPq-jm-tc8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5nN-nr-NMa"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CZn-L2-YOr" secondAttribute="trailing" constant="32" id="68S-wf-a6p"/>
+                <constraint firstAttribute="bottom" secondItem="Vwe-3E-xrE" secondAttribute="bottom" priority="750" constant="214" id="Exh-xN-uh6"/>
+                <constraint firstItem="RTm-yz-8AD" firstAttribute="leading" secondItem="CZn-L2-YOr" secondAttribute="leading" id="FHk-PZ-3nX"/>
+                <constraint firstItem="RTm-yz-8AD" firstAttribute="top" secondItem="CZn-L2-YOr" secondAttribute="bottom" constant="8" id="HFD-6d-12D"/>
+                <constraint firstItem="CZn-L2-YOr" firstAttribute="top" secondItem="Vwe-3E-xrE" secondAttribute="bottom" constant="8" id="MKd-1d-4Oc"/>
+                <constraint firstItem="EUh-Mk-phu" firstAttribute="top" secondItem="BPq-jm-tc8" secondAttribute="bottom" constant="48" id="Mj9-SX-1Zx"/>
+                <constraint firstItem="SHx-Zb-L4c" firstAttribute="centerX" secondItem="EUh-Mk-phu" secondAttribute="centerX" id="NRo-o7-qUX"/>
+                <constraint firstItem="EUh-Mk-phu" firstAttribute="centerX" secondItem="BPq-jm-tc8" secondAttribute="centerX" id="f6Y-PY-Prs"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RTm-yz-8AD" secondAttribute="trailing" constant="32" id="ntr-WY-rrR"/>
+                <constraint firstItem="Vwe-3E-xrE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SHx-Zb-L4c" secondAttribute="bottom" constant="60" id="tko-ik-1ne"/>
+                <constraint firstItem="CZn-L2-YOr" firstAttribute="leading" secondItem="Vwe-3E-xrE" secondAttribute="trailing" id="ur3-II-pkP"/>
+                <constraint firstItem="Vwe-3E-xrE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="xe2-NK-kbS"/>
+                <constraint firstItem="BPq-jm-tc8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-150" id="y4s-Lk-3sc"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ur3-II-pkP"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="373" y="388"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_60" width="60" height="60"/>
+    </resources>
+</document>
