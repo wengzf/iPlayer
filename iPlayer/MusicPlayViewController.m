@@ -46,8 +46,7 @@
     [pitchPlayer play];
     
     // 刷新对应页面
-    self.updateLightStick(self.pos, self.frame.origin.y);
-    
+    [self.delegate musicNoteButtonClked:self];
 }
 - (NSString *) parsePitch:(MusicNote *) note
 {
@@ -90,6 +89,9 @@
     NSMutableArray *curRunningArr;          // MusicNoteButton
     
     NSMutableArray *lightImageArr;
+    
+    
+    BOOL isStart;
 }
 
 @end
@@ -112,7 +114,11 @@
     // 定时器
     {
         timerDuration = 1/60.0;
-        playerTimer = [NSTimer scheduledTimerWithTimeInterval:timerDuration target:self selector:@selector(playerTimerAction) userInfo:nil repeats:YES];
+        
+        while (!isStart) {
+            [self playerTimerAction];
+        }
+        
     }
 
     // 添加横线
@@ -152,36 +158,57 @@
 {
     MusicNoteButton *resButton;
     if ([reuseButtonArr count]) {
+        
         resButton = [reuseButtonArr lastObject];
         [reuseButtonArr removeLastObject];
+        
+        if (resButton.isFirst) {
+            resButton = [[MusicNoteButton alloc] initWithFrame:CGRectMake(0, 0, 80, btnHeight)];
+            resButton.delegate = self;
+            resButton.pitchFileNameArr = self.pitchFileNameArr;
+            resButton.basePitchOffset = self.basePitchOffset;
+            resButton.backgroundColor = [UIColor whiteColor];
+        }
     }else{
         resButton = [[MusicNoteButton alloc] initWithFrame:CGRectMake(0, 0, 80, btnHeight)];
+        resButton.delegate = self;
         resButton.pitchFileNameArr = self.pitchFileNameArr;
         resButton.basePitchOffset = self.basePitchOffset;
         resButton.backgroundColor = [UIColor whiteColor];
         
-        resButton.updateLightStick = ^(NSInteger pos, CGFloat top){
-            // 显示光柱
-            UIImageView *imgview = lightImageArr[pos];
-            if ((top>ScreenHeight-btnHeight-btnHeight-10) && (top<ScreenHeight-btnHeight/2) ){
-                imgview.image = [UIImage imageNamed:@"right stick"];
-            }else{
-                imgview.image = [UIImage imageNamed:@"error stick"];
-            }
-            imgview.alpha = 0.7;
-            [UIView animateWithDuration:2 animations:^{
-                imgview.alpha = 0;
-            }];
-            
-            // button从正在运行数组中删除
-            [reuseButtonArr addObject:resButton];
-            [resButton removeFromSuperview];
-            [curRunningArr removeObjectAtIndex:0];
-        };
     }
     resButton.alpha = 1.0;
     [self.view addSubview:resButton];
     return resButton;
+}
+
+- (void)musicNoteButtonClked:(MusicNoteButton *)btn
+{
+    if (playerTimer == nil) {
+        if (btn.isFirst) {
+            playerTimer = [NSTimer scheduledTimerWithTimeInterval:timerDuration target:self selector:@selector(playerTimerAction) userInfo:nil repeats:YES];
+        }
+    }else{
+        
+        int pos = btn.pos;
+        CGFloat top = btn.frame.origin.y;
+        // 显示光柱
+        UIImageView *imgview = lightImageArr[pos];
+        if ((top>ScreenHeight-btnHeight-btnHeight-10) && (top<ScreenHeight-btnHeight/2) ){
+            imgview.image = [UIImage imageNamed:@"right stick"];
+        }else{
+            imgview.image = [UIImage imageNamed:@"error stick"];
+        }
+        imgview.alpha = 0.7;
+        [UIView animateWithDuration:2 animations:^{
+            imgview.alpha = 0;
+        }];
+        
+        // button从正在运行数组中删除
+        [reuseButtonArr addObject:btn];
+        [btn removeFromSuperview];
+        [curRunningArr removeObjectAtIndex:0];
+    }
 }
 
 #pragma mark - 定时器
@@ -196,10 +223,42 @@
     // 退出
     {
         MusicNoteButton *btn = [curRunningArr firstObject];
-        if (btn.frame.origin.y > ScreenHeight-btnHeight) {
+        if (!isStart) {
             
-            [btn btnClked];
+            if (btn.frame.origin.y > ScreenHeight-btnHeight-btnHeight-6) {
+                isStart = YES;
+            
+                btn.isFirst = YES;
+                // 添加开始三角形
+                CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+                CGFloat wid = btn.frame.size.width / 2;
+                CGFloat height = btn.frame.size.height / 2;
+                CGMutablePathRef path = CGPathCreateMutable();
+                CGPathMoveToPoint(path, nil, wid - 15, height - 23);
+                CGPathAddLineToPoint(path, nil, wid+18, height);
+                CGPathAddLineToPoint(path, nil, wid-15, height+23);
+                CGPathAddLineToPoint(path, nil, wid-15, height - 23);
+                shapeLayer.fillColor = [UIColor blackColor].CGColor;
+                shapeLayer.path = path;
+                [btn.layer addSublayer:shapeLayer];
+                
+                
+                return;
+            }
+        }else{
+            
+//            if (btn.frame.origin.y > ScreenHeight-btnHeight) {
+//                [btn btnClked];
+//            }
+            if (btn.frame.origin.y > ScreenHeight) {
+                
+                // button从正在运行数组中删除
+                [reuseButtonArr addObject:btn];
+                [btn removeFromSuperview];
+                [curRunningArr removeObjectAtIndex:0];
+            }
         }
+        
     }
     
     // 新进入

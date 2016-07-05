@@ -54,9 +54,51 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    if (launchOptions ) {
+        
+        
+        NSString *str = launchOptions.description;
+        
+        
+        //        return NO;
+        if (str) {
+            
+            [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"launch"];
+        }
+    }
+    
+    return NO;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+
+    NSDictionary *ggStr=[[NSUserDefaults standardUserDefaults] objectForKey:@"launch"];
+    if (ggStr) {
+        
+        NSLog(@"%@",ggStr);
+        
+//        {
+//            UIApplicationLaunchOptionsSourceApplicationKey = "com.apple.mobilesafari";
+//            UIApplicationLaunchOptionsURLKey = "shoujizhuan://native/login?id=1";
+//        }
+    }
+    if (launchOptions ) {
+        
+
+        NSString *str = launchOptions.description;
+        
+        
+//        return NO;
+        if (str) {
+            
+            [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"launch"];
+        }
+    }
+    
     
     // 从keychain中获取 IDFA
     NSString *idfa = [KeyChainUtil readKeyChain:@"idfa"];
@@ -68,9 +110,9 @@
     
     NSString *tmp = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 
-    
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = idfa;
+//    
+//    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+//    pasteboard.string = idfa;
     
     
     // 播放音频，开启永久后台模式
@@ -236,11 +278,23 @@
         [player pause];
     }
 }
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
+{
+    
+    NSString *urlStr = [url absoluteString];
+    urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"%@",urlStr);
+    return NO;
+    
+}
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    
     NSString *urlStr = [url absoluteString];
     urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"%@",urlStr);
+    return NO;
     
     
     NSRange range = [urlStr rangeOfString:@"?"];

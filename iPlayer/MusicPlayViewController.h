@@ -8,30 +8,43 @@
 
 #import <UIKit/UIKit.h>
 
+@class MusicNoteButton;
+@protocol MusicNoteButtonDelegate <NSObject>
+
+- (void)musicNoteButtonClked:(MusicNoteButton *)btn;
+
+@end
+
 
 @interface MusicNoteButton : UIButton
 {
     AVAudioPlayer *pitchPlayer;
 }
 
+@property (nonatomic, strong) id<MusicNoteButtonDelegate> delegate;
+
+@property (nonatomic, assign) BOOL isFirst;
+
 @property (nonatomic, assign) int pos;          // 所在的轨道，随机分配
 
-@property (nonatomic, strong) MusicNote *note;  //
+@property (nonatomic, strong) MusicNote *note;  // 音符
 
 @property (nonatomic, strong) NSMutableArray *pitchFileNameArr;
 
 @property (nonatomic, assign) int basePitchOffset;
 
+
+
 - (void)btnClked;
 
-@property (strong, nonatomic) void(^updateLightStick)(NSInteger pos, CGFloat top);
+//@property (strong, nonatomic) void(^updateLightStick)(NSInteger pos, CGFloat top);
 
 
 @end
 
 
 
-@interface MusicPlayViewController : UIViewController
+@interface MusicPlayViewController : UIViewController<MusicNoteButtonDelegate>
 
 @property (nonatomic, strong) MusicRule *musicRule;
 @property (nonatomic, strong) NSMutableArray *musicNoteArr;
