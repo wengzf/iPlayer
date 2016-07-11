@@ -72,6 +72,8 @@ static GlobalVar *obj;
 
 - (void)refreshUserInfo
 {
+    self.idfa = [[NSUserDefaults standardUserDefaults] objectForKey:kGlobalIDFA];
+    
     self.token = [[NSUserDefaults standardUserDefaults] objectForKey:kGlobalToken];
     self.isLogin = [[[NSUserDefaults standardUserDefaults] valueForKey:kGlobalIsLogin] boolValue];
     self.deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kGlobalDeviceToken];
@@ -95,6 +97,8 @@ static GlobalVar *obj;
 }
 - (void)saveUserInfo
 {
+    [[NSUserDefaults standardUserDefaults] setObject:self.idfa forKey:kGlobalIDFA];
+    
     [[NSUserDefaults standardUserDefaults] setObject:self.token forKey:kGlobalToken];
     [[NSUserDefaults standardUserDefaults] setBool:self.isLogin forKey:kGlobalIsLogin];
     [[NSUserDefaults standardUserDefaults] setObject:self.deviceToken forKey:kGlobalDeviceToken];
@@ -122,6 +126,8 @@ static GlobalVar *obj;
 }
 - (void)clearUserInfo
 {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kGlobalIDFA];
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kGlobalToken];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kGlobalIsLogin];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kGlobalDeviceToken];

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+#define kGlobalIDFA          @"kGlobalIDFA"
 #define kGlobalToken          @"kGlobalToken"
 #define kGlobalIsLogin        @"kGlobalIsLogin"
 #define kGlobalDeviceToken    @"kGlobalDeviceToken"
@@ -46,6 +48,9 @@
 + (GlobalVar *)shareInstance;
 
 @property (assign, nonatomic) BOOL isLogin;//等于@"1"表示处于登录状态
+
+
+@property (nonatomic, strong) NSString *idfa; // IDFA
 
 @property (nonatomic, strong) NSString *token; // 用于网络校验
 @property (nonatomic, strong) NSString *deviceToken; // 用于推送和设备识别

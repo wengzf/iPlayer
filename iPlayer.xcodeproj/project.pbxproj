@@ -78,6 +78,17 @@
 		21A1E5121C12C9800048BBE4 /* MusicNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E5111C12C9800048BBE4 /* MusicNote.m */; };
 		21A1E5161C12EB830048BBE4 /* MusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E5141C12EB830048BBE4 /* MusicPlayViewController.m */; };
 		21A1E5171C12EB830048BBE4 /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E5151C12EB830048BBE4 /* MusicPlayViewController.xib */; };
+		21F1804E1D321C3B002729EF /* LMApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F180471D321C3B002729EF /* LMApp.m */; };
+		21F1804F1D321C3B002729EF /* LMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F180491D321C3B002729EF /* LMAppController.m */; };
+		21F180501D321C3B002729EF /* YingYongYuanetapplicationDSID.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1804B1D321C3B002729EF /* YingYongYuanetapplicationDSID.m */; };
+		21F180511D321C3B002729EF /* YingYongYuanjAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1804D1D321C3B002729EF /* YingYongYuanjAppInfo.m */; };
+		21F180621D3233E5002729EF /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 21F180551D3233E5002729EF /* Documentation.html */; };
+		21F180631D3233E5002729EF /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F180571D3233E5002729EF /* GCDAsyncSocket.m */; };
+		21F180641D3233E5002729EF /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F180591D3233E5002729EF /* GCDAsyncUdpSocket.m */; };
+		21F180651D3233E5002729EF /* GNASocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1805B1D3233E5002729EF /* GNASocket.m */; };
+		21F180661D3233E5002729EF /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1805E1D3233E5002729EF /* AsyncSocket.m */; };
+		21F180671D3233E5002729EF /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F180601D3233E5002729EF /* AsyncUdpSocket.m */; };
+		21F180681D3233E5002729EF /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 21F180611D3233E5002729EF /* Documentation.html */; };
 		AD3848131D1A446B00510DC5 /* bg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD3848121D1A446B00510DC5 /* bg2.jpg */; };
 		AD38484C1D1A792200510DC5 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3848161D1A792200510DC5 /* ShareSDK.framework */; };
 		AD38484D1D1A792200510DC5 /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3848191D1A792200510DC5 /* ShareSDKExtension.framework */; };
@@ -352,6 +363,27 @@
 		21A1E5141C12EB830048BBE4 /* MusicPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayViewController.m; sourceTree = "<group>"; };
 		21A1E5151C12EB830048BBE4 /* MusicPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicPlayViewController.xib; sourceTree = "<group>"; };
 		21A1E5181C12EDC70048BBE4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		21F180461D321C3B002729EF /* LMApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMApp.h; sourceTree = "<group>"; };
+		21F180471D321C3B002729EF /* LMApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMApp.m; sourceTree = "<group>"; };
+		21F180481D321C3B002729EF /* LMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppController.h; sourceTree = "<group>"; };
+		21F180491D321C3B002729EF /* LMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAppController.m; sourceTree = "<group>"; };
+		21F1804A1D321C3B002729EF /* YingYongYuanetapplicationDSID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YingYongYuanetapplicationDSID.h; sourceTree = "<group>"; };
+		21F1804B1D321C3B002729EF /* YingYongYuanetapplicationDSID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YingYongYuanetapplicationDSID.m; sourceTree = "<group>"; };
+		21F1804C1D321C3B002729EF /* YingYongYuanjAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YingYongYuanjAppInfo.h; sourceTree = "<group>"; };
+		21F1804D1D321C3B002729EF /* YingYongYuanjAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YingYongYuanjAppInfo.m; sourceTree = "<group>"; };
+		21F180531D3233E5002729EF /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
+		21F180551D3233E5002729EF /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
+		21F180561D3233E5002729EF /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		21F180571D3233E5002729EF /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		21F180581D3233E5002729EF /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		21F180591D3233E5002729EF /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		21F1805A1D3233E5002729EF /* GNASocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNASocket.h; sourceTree = "<group>"; };
+		21F1805B1D3233E5002729EF /* GNASocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNASocket.m; sourceTree = "<group>"; };
+		21F1805D1D3233E5002729EF /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		21F1805E1D3233E5002729EF /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		21F1805F1D3233E5002729EF /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		21F180601D3233E5002729EF /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		21F180611D3233E5002729EF /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
 		AD3848121D1A446B00510DC5 /* bg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg2.jpg; sourceTree = "<group>"; };
 		AD3848161D1A792200510DC5 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		AD3848191D1A792200510DC5 /* ShareSDKExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKExtension.framework; sourceTree = "<group>"; };
@@ -772,6 +804,8 @@
 		21A1E4211C12BEE40048BBE4 /* iPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				21F180521D3233E5002729EF /* socket */,
+				21F180451D321C3B002729EF /* AppInstallCheck */,
 				210C38151D1E5C82005971FF /* FSFoundation */,
 				210C380C1D1E1D01005971FF /* lib */,
 				210C37EF1D1E1CF5005971FF /* CocoaSecurity */,
@@ -872,6 +906,57 @@
 				213CB9F11D176DCA00DFA820 /* 飘落.txt */,
 			);
 			path = ComposeNotation;
+			sourceTree = "<group>";
+		};
+		21F180451D321C3B002729EF /* AppInstallCheck */ = {
+			isa = PBXGroup;
+			children = (
+				21F180461D321C3B002729EF /* LMApp.h */,
+				21F180471D321C3B002729EF /* LMApp.m */,
+				21F180481D321C3B002729EF /* LMAppController.h */,
+				21F180491D321C3B002729EF /* LMAppController.m */,
+				21F1804C1D321C3B002729EF /* YingYongYuanjAppInfo.h */,
+				21F1804D1D321C3B002729EF /* YingYongYuanjAppInfo.m */,
+				21F1804A1D321C3B002729EF /* YingYongYuanetapplicationDSID.h */,
+				21F1804B1D321C3B002729EF /* YingYongYuanetapplicationDSID.m */,
+			);
+			path = AppInstallCheck;
+			sourceTree = "<group>";
+		};
+		21F180521D3233E5002729EF /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				21F180531D3233E5002729EF /* CocoaAsyncSocket.h */,
+				21F180541D3233E5002729EF /* GCD */,
+				21F1805A1D3233E5002729EF /* GNASocket.h */,
+				21F1805B1D3233E5002729EF /* GNASocket.m */,
+				21F1805C1D3233E5002729EF /* RunLoop */,
+			);
+			path = socket;
+			sourceTree = "<group>";
+		};
+		21F180541D3233E5002729EF /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				21F180551D3233E5002729EF /* Documentation.html */,
+				21F180561D3233E5002729EF /* GCDAsyncSocket.h */,
+				21F180571D3233E5002729EF /* GCDAsyncSocket.m */,
+				21F180581D3233E5002729EF /* GCDAsyncUdpSocket.h */,
+				21F180591D3233E5002729EF /* GCDAsyncUdpSocket.m */,
+			);
+			path = GCD;
+			sourceTree = "<group>";
+		};
+		21F1805C1D3233E5002729EF /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				21F1805D1D3233E5002729EF /* AsyncSocket.h */,
+				21F1805E1D3233E5002729EF /* AsyncSocket.m */,
+				21F1805F1D3233E5002729EF /* AsyncUdpSocket.h */,
+				21F180601D3233E5002729EF /* AsyncUdpSocket.m */,
+				21F180611D3233E5002729EF /* Documentation.html */,
+			);
+			path = RunLoop;
 			sourceTree = "<group>";
 		};
 		AD3848141D1A792200510DC5 /* ThirdParty */ = {
@@ -1183,7 +1268,7 @@
 				TargetAttributes = {
 					21A1E41E1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 3HUUWY9C4G;
+						DevelopmentTeam = 6T6K856R56;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1274,6 +1359,7 @@
 				213CB9F41D17737700DFA820 /* 草原英雄小姐妹.txt in Resources */,
 				ADE176D11D1247200044A0AA /* 065_F3KM56_M.mp3 in Resources */,
 				ADE176C41D1247200044A0AA /* 052_E2KM56_M.mp3 in Resources */,
+				21F180681D3233E5002729EF /* Documentation.html in Resources */,
 				ADE176B41D1247200044A0AA /* 036_C1KM56_M.mp3 in Resources */,
 				ADE176E41D1247200044A0AA /* 084_C5KM56_M.mp3 in Resources */,
 				ADE176E11D1247200044A0AA /* 081_A4KM56_M.mp3 in Resources */,
@@ -1328,6 +1414,7 @@
 				ADE176C91D1247200044A0AA /* 057_A2KM56_M.mp3 in Resources */,
 				ADE176BA1D1247200044A0AA /* 042_F#1KM56_M.mp3 in Resources */,
 				ADE176A81D1247200044A0AA /* 024_C0KM56_M.mp3 in Resources */,
+				21F180621D3233E5002729EF /* Documentation.html in Resources */,
 				ADE176E61D1247200044A0AA /* 086_D5KM56_M.mp3 in Resources */,
 				ADE176D51D1247200044A0AA /* 069_A3KM56_M.mp3 in Resources */,
 				ADE176AA1D1247200044A0AA /* 026_D0KM56_M.mp3 in Resources */,
@@ -1366,6 +1453,7 @@
 			files = (
 				210C37EA1D1E1C5E005971FF /* AFURLConnectionOperation.m in Sources */,
 				210C38621D1E5C82005971FF /* UIView+Category.m in Sources */,
+				21F180511D321C3B002729EF /* YingYongYuanjAppInfo.m in Sources */,
 				21A1E42A1C12BEE40048BBE4 /* ViewController.m in Sources */,
 				210C38561D1E5C82005971FF /* UIBaseTableViewCell.m in Sources */,
 				210C37E91D1E1C5E005971FF /* AFSecurityPolicy.m in Sources */,
@@ -1384,7 +1472,9 @@
 				210C385C1D1E5C82005971FF /* UIImage+ImageEffects.m in Sources */,
 				21A1E4301C12BEE40048BBE4 /* iPlayer.xcdatamodeld in Sources */,
 				21A1E5161C12EB830048BBE4 /* MusicPlayViewController.m in Sources */,
+				21F1804E1D321C3B002729EF /* LMApp.m in Sources */,
 				ADC9A52B1D1A90B80052D3BC /* KeyAndShareViewController.m in Sources */,
+				21F180501D321C3B002729EF /* YingYongYuanetapplicationDSID.m in Sources */,
 				210C38631D1E5C82005971FF /* UIView+Extension.m in Sources */,
 				210C38551D1E5C82005971FF /* STScratchView.m in Sources */,
 				210C38091D1E1CF5005971FF /* ER3DESEncrypt.m in Sources */,
@@ -1401,13 +1491,18 @@
 				210C38601D1E5C82005971FF /* UINavigationBar+Extension.m in Sources */,
 				210C385D1D1E5C82005971FF /* UIImage+ResizeAndColor.m in Sources */,
 				210C38611D1E5C82005971FF /* UIView+Animation.m in Sources */,
+				21F180631D3233E5002729EF /* GCDAsyncSocket.m in Sources */,
 				210C37E81D1E1C5E005971FF /* AFNetworkReachabilityManager.m in Sources */,
 				210C385B1D1E5C82005971FF /* UIColor+Extension.m in Sources */,
+				21F1804F1D321C3B002729EF /* LMAppController.m in Sources */,
 				210C385E1D1E5C82005971FF /* UIImageView+Extension.m in Sources */,
 				210C38591D1E5C82005971FF /* CALayer+Extension.m in Sources */,
 				210C384F1D1E5C82005971FF /* NSDate+ToString.m in Sources */,
 				210C385A1D1E5C82005971FF /* UIButton+Extension.m in Sources */,
 				210C38501D1E5C82005971FF /* NSObject+NSJSONSerialization.m in Sources */,
+				21F180661D3233E5002729EF /* AsyncSocket.m in Sources */,
+				21F180641D3233E5002729EF /* GCDAsyncUdpSocket.m in Sources */,
+				21F180671D3233E5002729EF /* AsyncUdpSocket.m in Sources */,
 				21A1E5121C12C9800048BBE4 /* MusicNote.m in Sources */,
 				210C37E51D1E1C5E005971FF /* AFHTTPRequestOperation.m in Sources */,
 				210C380A1D1E1CF5005971FF /* GTMBase64.m in Sources */,
@@ -1415,6 +1510,7 @@
 				210C38061D1E1CF5005971FF /* README.md in Sources */,
 				210C385F1D1E5C82005971FF /* UILabel+Extension.m in Sources */,
 				210C37E71D1E1C5E005971FF /* AFHTTPSessionManager.m in Sources */,
+				21F180651D3233E5002729EF /* GNASocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1557,8 +1653,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yonglibao Financial Information Service Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Yonglibao Financial Information Service Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1586,9 +1682,9 @@
 					"$(PROJECT_DIR)/iPlayer/lib",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonglibao.FireShadowTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wzf.FireShadowTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7fc2b5a1-d270-45ad-8b7d-a22c92fc4f9c";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1596,8 +1692,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yonglibao Financial Information Service Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Yonglibao Financial Information Service Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1625,9 +1721,9 @@
 					"$(PROJECT_DIR)/iPlayer/lib",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonglibao.FireShadowTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wzf.FireShadowTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7fc2b5a1-d270-45ad-8b7d-a22c92fc4f9c";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

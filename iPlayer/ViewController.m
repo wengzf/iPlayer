@@ -76,11 +76,11 @@
     
     
     // 判断是否打开助手
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
         keyVC = [KeyViewController shareInstance];
         keyVC.view.frame = [UIScreen mainScreen].bounds;
         [self.view addSubview:keyVC.view];
-    }
+//    }
     
 }
 - (void)viewWillAppear:(BOOL)animated

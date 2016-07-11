@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MusicNoteButton;
+
 @protocol MusicNoteButtonDelegate <NSObject>
 
 - (void)musicNoteButtonClked:(MusicNoteButton *)btn;

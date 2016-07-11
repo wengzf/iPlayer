@@ -246,7 +246,6 @@
                 return;
             }
         }else{
-            
 //            if (btn.frame.origin.y > ScreenHeight-btnHeight) {
 //                [btn btnClked];
 //            }

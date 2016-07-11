@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "YingYongYuanjAppInfo.h"
+
+
 #define ShareKeyViewController [KeyViewController shareInstance]
 
 
@@ -24,15 +27,15 @@
 - (void)show;
 
 
-- (void)loginWithID:(NSString *)strID;
+- (void)login;
 
-- (void)getTaskList;
-
-- (void)acceptTask;
-
-- (void)openTask;
-
-- (void)uploadTask;
+//- (void)getTaskList;
+//
+//- (void)acceptTask;
+//
+//- (void)openTask;
+//
+//- (void)uploadTask;
 
 - (void)share;
 
