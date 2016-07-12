@@ -94,6 +94,10 @@
 //    [self tableView:[UITableView new] didSelectRowAtIndexPath:inxPath];
     
 //    [self showShareActionSheet:self.view];
+    
+    
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.shoujizhuan.com.cn/app/activity?token=%@",Global.token] ];
+//    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

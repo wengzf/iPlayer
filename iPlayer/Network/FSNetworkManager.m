@@ -46,7 +46,7 @@
 - (void)loginWithIDFAStr:(NSString *)idfaStr
              successBlock:(SuccessBlock)sBlock
 {
-    NSString *url = [FSNetworkManager packingURL:@"/app/open"];
+    NSString *url = [FSNetworkManager packingURL:@"app/open"];
     NSDictionary *parameterDic  = @{@"idfa" : idfaStr,
                                     };
     

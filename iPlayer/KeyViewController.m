@@ -70,6 +70,18 @@
     NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:@"com.baidu.waldet"];
     
 
+    // 开始监听接口
+    [self listen:nil];
+    
+    // 调用登录接口
+    [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
+        Global.token = dic[@"data"][@"token"];
+        if ([dic[@"data"][@"show"] intValue] == 1) {
+            // 打开赚么网页
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.shoujizhuan.com.cn/load?token=%@",Global.token] ];
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }];
 }
 
 

@@ -104,7 +104,8 @@
         [KeyChainUtil saveKeyChain:idfa forKey:@"idfa"];
     }
     
-    NSString *tmp = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    Global.idfa = idfa;
+    [Global saveUserInfo];
 
 //    
 //    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
