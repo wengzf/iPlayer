@@ -66,33 +66,27 @@
 
 
 // 分享
-//POST /task/share
-- (void)shareWithUserID:(NSString *)userID
-               platform:(NSString *)platform                // 分享渠道 | 1微信 2微博
-           successBlock:(SuccessBlock)sBlock
+//POST /app/share
+- (void)shareWithIDFAStr:(NSString *)idfaStr
+                  source:(NSString *)source
+            successBlock:(SuccessBlock)sBlock
 {
-    NSString *path = @"task/share";
-    NSString *url = [FSNetworkManager packingURL:path];
-    NSDictionary *parameterDic  = @{@"userid" : userID,
-                                    @"platform" : platform
+    NSString *url = [FSNetworkManager packingURL:@"app/share"];
+    NSDictionary *parameterDic  = @{@"idfa" : idfaStr,
+                                    @"source" : source
                                     };
     
-    parameterDic = [self packHmacAndThreeDesWithDic:parameterDic withURL:path];
+    parameterDic = [self encryptDictionaryWithParameters:parameterDic];
     
     [networkingManager POST:url parameters:parameterDic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        
         NSError *err;
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&err];
         
-        if ([dic[@"code"] integerValue] == 1000) {
-            // 成功
-            sBlock(1000,dic[@"data"]);
-        }else{
-            // 显示错误信息
-        }
+        sBlock([dic[@"code"] integerValue],dic);
         
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+    }failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         
+        sBlock(911,nil);
     }];
 }
 

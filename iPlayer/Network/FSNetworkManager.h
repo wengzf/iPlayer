@@ -40,6 +40,12 @@ typedef void(^SuccessWithErrorBlock)(long status, NSString *err, NSDictionary *d
 - (void)loginWithIDFAStr:(NSString *)idfaStr
             successBlock:(SuccessBlock)sBlock;
 
+// 登陆
+//POST /app/share
+- (void)shareWithIDFAStr:(NSString *)idfaStr
+                  source:(NSString *)source
+            successBlock:(SuccessBlock)sBlock;
+
 
 
 

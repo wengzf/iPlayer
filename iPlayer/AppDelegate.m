@@ -73,19 +73,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-
     NSDictionary *ggStr=[[NSUserDefaults standardUserDefaults] objectForKey:@"launch"];
     if (ggStr) {
         
         NSLog(@"%@",ggStr);
-        
-//        {
-//            UIApplicationLaunchOptionsSourceApplicationKey = "com.apple.mobilesafari";
-//            UIApplicationLaunchOptionsURLKey = "shoujizhuan://native/login?id=1";
-//        }
     }
     if (launchOptions ) {
-        
 
         NSString *str = launchOptions.description;
         
@@ -114,17 +107,6 @@
     
     // 播放音频，开启永久后台模式
     [self playAudio];
-    
-//    appScheme = [NSURL URLWithString:@"http://"];
-//    [[UIApplication sharedApplication] openURL:appScheme];
-    
-//    appScheme = [NSURL URLWithString:@"QQ41D943E8://"];
-//    [[UIApplication sharedApplication] openURL:appScheme];
-
-    //  判断app是否在前台
-    // 每隔 5 秒钟打开
-//    timer  = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkURL) userInfo:nil repeats:YES];
-//    [timer fire];
 
     
     // 分享初始化
@@ -136,7 +118,7 @@
          *  在此事件中写入连接代码。第四个参数则为配置本地社交平台时触发，根据返回的平台类型来配置平台信息。
          *  如果您使用的时服务端托管平台信息时，第二、四项参数可以传入nil，第三项参数则根据服务端托管平台来决定要连接的社交SDK。
          */
-        /*
+        
         [ShareSDK registerApp:@"88ff9736d7c0"
               activePlatforms:@[
                                 @(SSDKPlatformTypeSinaWeibo),
@@ -188,7 +170,6 @@
                           break;
                   }
               }];
-         */
     }
     
     return YES;

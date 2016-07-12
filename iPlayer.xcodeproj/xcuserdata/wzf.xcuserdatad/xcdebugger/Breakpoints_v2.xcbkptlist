@@ -140,22 +140,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/AppDelegate.m"
-            timestampString = "488540146.356053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -272,12 +256,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "489844692.308615"
+            timestampString = "489999403.125243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "-socket:didReadData:withTag:"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-socket:didAcceptNewSocket:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -288,12 +272,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "489844692.308615"
+            timestampString = "489999403.125243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-receiveMassage:"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "-login"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,29 +287,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841353.610329"
+            filePath = "iPlayer/KeyViewController.m"
+            timestampString = "489999416.672453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5878"
-            endingLineNumber = "5878"
-            landmarkName = "-maybeDequeueWrite"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841354.736485"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5884"
-            endingLineNumber = "5884"
-            landmarkName = "-maybeDequeueWrite"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "-answerRequestWithContent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -335,174 +303,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841533.810926"
+            filePath = "iPlayer/KeyViewController.m"
+            timestampString = "489999425.294516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5992"
-            endingLineNumber = "5992"
-            landmarkName = "-doWriteData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841664.694439"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5769"
-            endingLineNumber = "5769"
-            landmarkName = "-writeData:withTimeout:tag:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841686.32589"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5842"
-            endingLineNumber = "5842"
-            landmarkName = "-maybeDequeueWrite"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841705.536253"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6308"
-            endingLineNumber = "6308"
-            landmarkName = "-setupWriteTimerWithTimeout:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841714.524588"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5895"
-            endingLineNumber = "5895"
-            landmarkName = "-doWriteData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841874.527858"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6282"
-            endingLineNumber = "6282"
-            landmarkName = "-completeCurrentWrite"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841891.175559"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6288"
-            endingLineNumber = "6288"
-            landmarkName = "-completeCurrentWrite"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841921.455379"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6222"
-            endingLineNumber = "6222"
-            landmarkName = "-doWriteData"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "-login"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[GCDAsyncSocket doWriteData]"
+                  symbolName = "-[KeyViewController login]"
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/socket/GCD/GCDAsyncSocket.m"
-                  timestampString = "489844144.361297"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "489999425.301207"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "6222"
-                  endingLineNumber = "6222"
-                  offsetFromSymbolStart = "2888">
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__29-[GCDAsyncSocket doWriteData]_block_invoke"
+                  symbolName = "__26-[KeyViewController login]_block_invoke"
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/socket/GCD/GCDAsyncSocket.m"
-                  timestampString = "489844144.36141"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "489999425.301335"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "6222"
-                  endingLineNumber = "6222"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "211"
+                  endingLineNumber = "211"
+                  offsetFromSymbolStart = "72">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/socket/GCD/GCDAsyncSocket.m"
-            timestampString = "489841921.934733"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6224"
-            endingLineNumber = "6224"
-            landmarkName = "-doWriteData"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
