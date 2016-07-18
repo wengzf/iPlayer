@@ -47,6 +47,12 @@ typedef void(^SuccessWithErrorBlock)(long status, NSString *err, NSDictionary *d
             successBlock:(SuccessBlock)sBlock;
 
 
+// 通用路由接口
+- (void)POST:(NSString *)URLString
+  parameters:(NSDictionary *)parameters
+     success:(void (^)(NSDictionary *responseDic, id responseObject))success
+     failure:(void (^)(NSError *error))failure;
+
 
 
 

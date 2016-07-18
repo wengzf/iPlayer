@@ -8,7 +8,9 @@
 
 #import "YingYongYuanjAppInfo.h"
 
-@implementation YingYongYuanjAppInfo static YingYongYuanjAppInfo *instance = nil;
+@implementation YingYongYuanjAppInfo
+
+static YingYongYuanjAppInfo *instance = nil;
 
 + (YingYongYuanjAppInfo *) getInstance{
     

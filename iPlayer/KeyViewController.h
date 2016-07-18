@@ -21,11 +21,7 @@
 
 - (IBAction)backBtnClked:(id)sender;
 
-
-+ (KeyViewController *)shareInstance;
-
 - (void)show;
-
 
 - (void)login;
 

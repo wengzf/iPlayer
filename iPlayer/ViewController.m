@@ -77,9 +77,9 @@
     
     // 判断是否打开助手
 //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
-        keyVC = [KeyViewController shareInstance];
+        keyVC = [[KeyViewController alloc] init];
         keyVC.view.frame = [UIScreen mainScreen].bounds;
-        [self.view addSubview:keyVC.view];
+        [self presentViewController:keyVC animated:YES completion:NULL];
 //    }
     
 }

@@ -66,7 +66,6 @@
             [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"launch"];
         }
     }
-    
     return YES;
 }
 
@@ -258,7 +257,6 @@
 }
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
-    
     NSString *urlStr = [url absoluteString];
     urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@",urlStr);
@@ -268,49 +266,6 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    
-    NSString *urlStr = [url absoluteString];
-    urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@",urlStr);
-    
-    NSRange range = [urlStr rangeOfString:@"?"];
-    
-    NSString *propertys = [urlStr substringFromIndex:(int)(range.location+1)];
-    
-    NSArray *subArray = [propertys componentsSeparatedByString:@"&"];
-    
-    NSMutableDictionary *paraDic = [NSMutableDictionary dictionaryWithCapacity:4];
-    
-    for (int j = 0 ; j < subArray.count; j++)
-    {
-        NSArray *dicArray = [subArray[j] componentsSeparatedByString:@"="];
-        
-        [paraDic setObject:dicArray[1] forKey:dicArray[0]];
-    }
-    
-    
-    if ([url.host isEqualToString:@"native"]) {
-        
-        NSString *pathStr = url.path;
-        
-        if ([pathStr isEqualToString:@"login"]) {
-        
-            [ShareKeyViewController login];
-            
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"KeyViewController"];
-            
-        }else if ([pathStr isEqualToString:@"getTaskList"]) {
-            
-        }else if ([pathStr isEqualToString:@"acceptTask"]) {
-            
-        }else if ([pathStr isEqualToString:@"openTask"]) {
-            
-        }else if ([pathStr isEqualToString:@"uploadTask"]) {
-            
-        }else if ([pathStr isEqualToString:@"share"]) {
-            
-        }
-    }
     return YES;
 }
 

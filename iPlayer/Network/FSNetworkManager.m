@@ -78,6 +78,7 @@
     
     parameterDic = [self encryptDictionaryWithParameters:parameterDic];
     
+    
     [networkingManager POST:url parameters:parameterDic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSError *err;
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&err];
@@ -87,6 +88,27 @@
     }failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         
         sBlock(911,nil);
+    }];
+}
+
+// 通用路由接口
+- (void)POST:(NSString *)URLString
+  parameters:(NSDictionary *)parameters
+     success:(void (^)(NSDictionary *responseDic, id responseObject))success
+     failure:(void (^)(NSError *error))failure
+{
+    NSString *url = [FSNetworkManager packingURL:URLString];
+    NSDictionary *parameterDic = [self encryptDictionaryWithParameters:parameters];
+    [networkingManager POST:url parameters:parameterDic success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    
+        NSError *err;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&err];
+        
+        success(dic, responseObject);
+        
+    }failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        
+        failure(error);
     }];
 }
 

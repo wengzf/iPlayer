@@ -23,11 +23,8 @@
 #import "LMAppController.h"
 #import "YingYongYuanetapplicationDSID.h"
 
-
 #import "CocoaAsyncSocket.h"
 #import "GNASocket.h"
-
-
 
 
 @interface KeyViewController ()<GCDAsyncSocketDelegate>
@@ -55,18 +52,6 @@
 @implementation KeyViewController
 
 
-+ (KeyViewController *)shareInstance
-{
-    static KeyViewController *obj;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        obj = [[KeyViewController alloc] init];
-    });
-    
-    return obj;
-}
-
-
 - (void)show
 {
     self.view.frame = [UIScreen mainScreen].bounds;
@@ -80,8 +65,13 @@
 
     // 开始监听接口
     [self listen:nil];
+    
+    // 本地通知
+//    UILocalNotification
+    
 }
 
+// 跳到网页端登录
 - (IBAction)backBtnClked:(id)sender {
     // 调用登录接口
     [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
@@ -95,7 +85,7 @@
 }
 
 // 服务端监听某个端口
-- (IBAction)listen:(UIButton *)sender
+- (IBAction)listen:(UIButton *)sender 
 {
     // 1. 创建服务器socket
     self.serverSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
@@ -164,8 +154,7 @@
     [self addText:message];
     
     // 收到http请求协议报文
-
-    NSRange rangeSt = [message rangeOfString:@"GET /?"];
+    NSRange rangeSt = [message rangeOfString:@"GET /"];
     NSRange rangeEd = [message rangeOfString:@"HTTP/1.1"];
     
     NSRange range;
@@ -174,13 +163,19 @@
     NSString *queryStr = [message substringWithRange:range];
     
     queryStr = [queryStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    // 请求路径
+    range = [queryStr rangeOfString:@"?"];
+    NSString *path = [queryStr substringToIndex:range.location];
+    
     // 开始解析参数
     NSDictionary *dic = [self parseUrlParams:queryStr];
     
-    if ([dic[@"m"] isEqualToString:@"login"]){
+    if ([path isEqualToString:@"login"]){
+        // 登录
         [self login];
-    }else if ([dic[@"m"] isEqualToString:@"share"]){
-        
+    }else if ([path isEqualToString:@"share"]){
+        // 分享
         id obj = dic[@"source"];
         NSString *source;
         if ([obj isKindOfClass:[NSNumber class]]) {
@@ -190,8 +185,20 @@
         }
         
         [self shareWithSource:source];
-    }else if ([dic[@"m"] isEqualToString:@"checkInstall"]){
+    }else if ([path isEqualToString:@"checkInstall"]){
+        // 是否已经安装app
         [self checkInstallAppWithBundleID:dic[@"bundleID"]];
+        
+    }else{
+//        实现前端socket请求 http://127.0xx/c/task/receive 自动路由到客户端请求后端/c/task/receive 输入参数和输出结果都原样返回
+        
+        NSDictionary *parameterDic = dic;
+        [FSNetworkManagerDefaultInstance POST:path parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
+            
+            [self answerRequestWithData:responseObject];
+            
+        } failure:^(NSError *error) {
+        }];
     }
 }
 
@@ -241,11 +248,15 @@
     NSString *content = [NSString stringWithFormat:@"{\"flagInstall\":%ld}",(long)state];
     [self answerRequestWithContent:content];
 }
-
-
-- (void)answerRequestWithContent:(NSString *)content
+- (void)routerDispath
 {
-    NSData *fileData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    
+}
+
+
+- (void)answerRequestWithData:(NSData *)contentData
+{
+    NSData *fileData = contentData;
     
     CFHTTPMessageRef response;
     
@@ -254,9 +265,6 @@
                                            NULL,
                                            kCFHTTPVersion1_1);
     
-    //    CFHTTPMessageSetHeaderFieldValue(response,
-    //                                     (CFStringRef)@"Content-Type",
-    //                                     (CFStringRef)@"text/plain");
     CFHTTPMessageSetHeaderFieldValue(response,
                                      (CFStringRef)@"Content-Type",
                                      (CFStringRef)@"application/json");
@@ -280,6 +288,12 @@
     
     [self.clientSocket writeData:data withTimeout:-1 tag:0];
 }
+- (void)answerRequestWithContent:(NSString *)content
+{
+    NSData *fileData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [self answerRequestWithData:fileData];
+}
 
 #pragma mark 显示分享菜单
 
@@ -299,7 +313,7 @@
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     
     NSString *content = @"试玩最新应用，日入几十，月入上千，让轻松赚钱变成习惯。";
-    NSArray* imageArray = @[[UIImage imageNamed:@"icon_40"]];
+    NSArray* imageArray = @[[UIImage imageNamed:@"icon_60"]];
     [shareParams SSDKSetupShareParamsByText:content
                                      images:imageArray
                                         url:[NSURL URLWithString:@"http://shoujizhuan.me/"]
@@ -369,6 +383,7 @@
                            }
                            
                            [FSNetworkManagerDefaultInstance shareWithIDFAStr:Global.idfa source:source successBlock:^(long status, NSDictionary *dic) {
+                               
                            }];
                            break;
                        }

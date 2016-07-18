@@ -10,6 +10,8 @@
  
 #import "YingYongYuanjAppInfo.h"
 
-@interface YingYongYuanetapplicationDSID : YingYongYuanjAppInfo +(YingYongYuanetapplicationDSID *)sharedInstance;
+@interface YingYongYuanetapplicationDSID : YingYongYuanjAppInfo
+
++ (YingYongYuanetapplicationDSID *)sharedInstance;
 
 @end
