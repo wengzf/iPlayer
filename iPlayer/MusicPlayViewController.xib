@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicPlayViewController">
             <connections>
                 <outlet property="backBtn" destination="EUZ-IX-ans" id="CgT-9F-gCs"/>
+                <outlet property="plsyModeBtn" destination="47P-1j-Slh" id="mTr-g3-GfG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,6 +27,15 @@
                     </state>
                     <connections>
                         <action selector="backBtnClked:" destination="-1" eventType="touchUpInside" id="op1-p9-sX0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47P-1j-Slh">
+                    <rect key="frame" x="243" y="13" width="60" height="38"/>
+                    <state key="normal" title="播放模式">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="plsyModeBtnClked:" destination="-1" eventType="touchUpInside" id="Y1w-lY-GdQ"/>
                     </connections>
                 </button>
             </subviews>

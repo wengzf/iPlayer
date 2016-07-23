@@ -20,6 +20,7 @@
 @interface MusicNoteButton : UIButton
 {
     AVAudioPlayer *pitchPlayer;
+
 }
 
 @property (nonatomic, strong) id<MusicNoteButtonDelegate> delegate;
@@ -37,6 +38,7 @@
 
 
 - (void)btnClked;
+- (void)play;
 
 //@property (strong, nonatomic) void(^updateLightStick)(NSInteger pos, CGFloat top);
 
@@ -55,6 +57,11 @@
 @property (nonatomic, assign) int basePitchOffset;
 
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *plsyModeBtn;
+
+- (IBAction)plsyModeBtnClked:(id)sender;
 
 - (IBAction)backBtnClked:(id)sender;
 

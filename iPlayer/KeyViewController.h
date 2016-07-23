@@ -21,8 +21,6 @@
 
 - (IBAction)backBtnClked:(id)sender;
 
-- (void)show;
-
 - (void)login;
 
 //- (void)getTaskList;

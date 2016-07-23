@@ -17,191 +17,250 @@
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 
 
+#import "PSWebSocketServer.h"
+
 #import "FSNetworkManager.h"
 #import <objc/runtime.h>
 
 #import "LMAppController.h"
 #import "YingYongYuanetapplicationDSID.h"
 
-#import "CocoaAsyncSocket.h"
-#import "GNASocket.h"
 
-
-@interface KeyViewController ()<GCDAsyncSocketDelegate>
+@interface KeyViewController ()<PSWebSocketServerDelegate>
 {
-    
+    // 检查app安装
+    NSTimer *instalCheckTimer;
+    NSString *curAppBundleid;        // 需要检查的bundleid列表
+    NSString *curTaskid;
+    NSString *curAppName;
+    NSMutableDictionary *dicInstall;    // 完成时间
+    NSMutableDictionary *dicFinish;     // 完成标记
 }
-@property (weak, nonatomic) IBOutlet UITextField *portTF;
-@property (weak, nonatomic) IBOutlet UITextView *message; // 多行文本输入框
-@property (weak, nonatomic) IBOutlet UITextField *content;
 
-
-@property (weak, nonatomic) IBOutlet UIButton *listenBtn;
-@property (weak, nonatomic) IBOutlet UIButton *sendBtn;
-@property (weak, nonatomic) IBOutlet UIButton *readBtn;
-
-
-@property (nonatomic, strong) GCDAsyncSocket *clientSocket; // 为客户端生成的socket
-
-@property (nonatomic, strong) GCDAsyncSocket *serverSocket; // 服务器socket
-
+@property (nonatomic, strong) PSWebSocketServer *server;
 
 @end
 
 
 @implementation KeyViewController
 
-
-- (void)show
-{
-    self.view.frame = [UIScreen mainScreen].bounds;
-    [[UIApplication sharedApplication].keyWindow addSubview:self.view];
-}
-
 - (void)viewDidLoad
 {
-    self.backBtn.layer.cornerRadius = 4;
+    [self.backBtn setRoundCornerWithColor:[UIColor whiteColor] radius:6 width:1];
     self.backBtn.layer.masksToBounds = YES;
 
-    // 开始监听接口
-    [self listen:nil];
-    
     // 本地通知
-//    UILocalNotification
+    [self initServer:555];
+    
+    // 检查app
+    curAppBundleid = @"";
+    curTaskid = @"";
+    instalCheckTimer = [NSTimer scheduledTimerWithTimeInterval:7 target:self selector:@selector(instalCheckTimerAction) userInfo:nil repeats:YES];
+    dicInstall = [NSMutableDictionary dictionary];
+    dicFinish = [NSMutableDictionary dictionary];
+}
+-(void)initServer:(int) port{
+    
+    self.server = [PSWebSocketServer serverWithHost:@"127.0.0.1" port:port];
+    self.server.delegate = self;
+    [self.server start];
+}
+
+#pragma mark - PSWebSocketServerDelegate
+- (void)serverDidStart:(PSWebSocketServer *)server {
+    NSLog(@"serverDidStart");
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //干点啥 通知 启动了
+        //        [[NSNotificationCenter defaultCenter]postNotificationName:@"changeLabel" object:nil];
+    });
+}
+- (void)serverDidStop:(PSWebSocketServer *)server {
+    NSLog(@"serverDidStop");
+    
+//    errorCount++;
+//    if(errorCount > 3){
+//        //连接失败
+//        UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"服务器连接超时，请重新打开" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//        [alertView show];
+//        return ;
+//    }
+    
+    [self initServer:555];
     
 }
 
+- (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
+}
+#pragma 接收到指令 要干啥
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didReceiveMessage:(id)message {
+    @try
+    {
+        //
+        NSData * requestData = nil;
+        NSString * requestStr = nil ;
+        
+        if([message isKindOfClass: [ NSData class ]]){
+            //
+            requestData = message;
+            requestStr  =[[ NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
+            
+        }else{
+            requestStr = message;
+            
+            requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding] ;
+        }
+        
+        NSError *resErr = nil;
+        
+        NSDictionary * dict=[NSJSONSerialization JSONObjectWithData: requestData options:0 error:&resErr];
+        NSString * status=[dict objectForKey:@"status"];
+        NSString * path=[dict objectForKey:@"path"];
+        NSDictionary *params=[dict objectForKey:@"params"];
+        
+        
+        if ([status isEqualToString:@"0"]) {
+            [self.view showLoadingWithMessage:@"哎呀，服务器开小差了!" hideAfter:2];
+        }else {
+        
+            if ([path isEqualToString:@"c/task/copyKeywords"]) {
+                // 复制关键字
+                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                pasteboard.string = params[@"keywords"];
+                
+            }else{
+                // 路由接口，请求后端数据并返回
+                NSMutableDictionary *parameterDic = [NSMutableDictionary dictionaryWithDictionary:params];
+                [parameterDic setObject:Global.userID forKey:@"userid"];
+                
+                [FSNetworkManagerDefaultInstance POST:path parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
+                    
+                    NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                    NSLog(@"%@  message:%@",str,responseDic[@"message"]);
+                    if ([path isEqualToString:@"c/task/receive"]) {
+                        curAppBundleid = responseDic[@"data"][@"bundle_id"];
+                        curAppName = responseDic[@"data"][@"app_name"];
+                        curTaskid = parameterDic[@"taskid"];
+                    }else if ([path isEqualToString:@"c/task/drop"]) {
+                        
+                        if (curAppBundleid) {
+                            [dicInstall removeObjectForKey:curAppBundleid];
+                            [dicFinish removeObjectForKey:curTaskid];
+                        }
+                        
+                        curAppBundleid = @"";
+                        curTaskid = @"";
+                    }
+                    
+                    [self writeWebMsg:webSocket msg:str];
+                    
+                } failure:^(NSError *error) {
+                }];
+            }
+            
+        }
+    } @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+        
+    }
+}
+-(void) writeWebMsg:(PSWebSocket *) client msg:(NSString *)msg{
+    if(msg == nil || client == nil){
+        return;
+    }
+    [client send:msg];
+}
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didFailWithError:(NSError *)error {
+}
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
+}
+
+#pragma mark - 事件
 // 跳到网页端登录
 - (IBAction)backBtnClked:(id)sender {
     // 调用登录接口
     [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
         Global.token = dic[@"data"][@"token"];
-        if ([dic[@"data"][@"show"] intValue] == 1) {
-            // 打开赚么网页
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.shoujizhuan.com.cn/load?token=%@",Global.token] ];
-            [[UIApplication sharedApplication] openURL:url];
-        }
+        Global.userID = dic[@"data"][@"userid"];
+        [Global saveUserInfo];
+        
+        // 打开赚么网页
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.shoujizhuan.com.cn/load?token=%@",Global.token] ];
+        [[UIApplication sharedApplication] openURL:url];
+        
     }];
 }
 
-// 服务端监听某个端口
-- (IBAction)listen:(UIButton *)sender 
+#pragma mark - socket 通信
+- (void)login
 {
-    // 1. 创建服务器socket
-    self.serverSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-    
-    // 2. 开放哪些端口
-    NSError *error = nil;
-    BOOL result = [self.serverSocket acceptOnPort:self.portTF.text.integerValue error:&error];
-    
-    // 3. 判断端口号是否开放成功
-    if (result) {
-        [self addText:@"端口开放成功"];
-    } else {
-        [self addText:@"端口开放失败"];
-    }
-}
-
-// 发送
-- (IBAction)sendMessage:(UIButton *)sender
-{
-//    状态行：包含了HTTP协议版本、状态码、状态英文名称
-//    
-//    HTTP/1.1 200 OK
-//    
-//    响应头：包含了对服务器的描述、对返回数据的描述
-//    
-//Server: Apache-Coyote/1.1 // 服务器的类型
-//    
-//    Content-Type: image/jpeg // 返回数据的类型
-//    
-//    Content-Length: 56811 // 返回数据的长度
-//    
-//Date: Mon, 23 Jun 2014 12:54:52 GMT // 响应的时间
-//    
-//    实体内容：服务器返回给客户端的具体数据，比如文件数据
-}
-
-// 接收消息
-- (IBAction)receiveMassage:(UIButton *)sender
-{
-    [self.clientSocket readDataWithTimeout:-1 tag:0];
-}
-
-// textView填写内容
-- (void)addText:(NSString *)text
-{
-    self.message.text = [self.message.text stringByAppendingFormat:@"%@\n", text];
-}
-
-#pragma mark - GCDAsyncSocketDelegate
-// 当客户端链接服务器端的socket, 为客户端单生成一个socket
-- (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
-{
-    [self addText:@"链接成功"];
-    [self addText:[NSString stringWithFormat:@"链接地址:%@", newSocket.connectedHost]];
-    [self addText:[NSString stringWithFormat:@"端口号:%hu", newSocket.connectedPort]];
-    
-    // 存储新的端口号
-    self.clientSocket = newSocket;
-    
-    [self.clientSocket readDataWithTimeout:-1 tag:0];
-}
-
-- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
-{
-    NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    [self addText:message];
-    
-    // 收到http请求协议报文
-    NSRange rangeSt = [message rangeOfString:@"GET /"];
-    NSRange rangeEd = [message rangeOfString:@"HTTP/1.1"];
-    
-    NSRange range;
-    range.location = rangeSt.location+rangeSt.length;
-    range.length = rangeEd.location - range.location;
-    NSString *queryStr = [message substringWithRange:range];
-    
-    queryStr = [queryStr stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    // 请求路径
-    range = [queryStr rangeOfString:@"?"];
-    NSString *path = [queryStr substringToIndex:range.location];
-    
-    // 开始解析参数
-    NSDictionary *dic = [self parseUrlParams:queryStr];
-    
-    if ([path isEqualToString:@"login"]){
-        // 登录
-        [self login];
-    }else if ([path isEqualToString:@"share"]){
-        // 分享
-        id obj = dic[@"source"];
-        NSString *source;
-        if ([obj isKindOfClass:[NSNumber class]]) {
-            source = [obj stringValue];
-        }else{
-            source = obj;
+    // 调用登录接口
+    [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
+        Global.token = dic[@"data"][@"token"];
+        if ([dic[@"data"][@"show"] intValue] == 1) {
+            // 回复socket登录
+            NSString *content = [NSString stringWithFormat:@"{token:\"%@\"}",Global.token];
+        
         }
-        
-        [self shareWithSource:source];
-    }else if ([path isEqualToString:@"checkInstall"]){
-        // 是否已经安装app
-        [self checkInstallAppWithBundleID:dic[@"bundleID"]];
-        
-    }else{
-//        实现前端socket请求 http://127.0xx/c/task/receive 自动路由到客户端请求后端/c/task/receive 输入参数和输出结果都原样返回
-        
-        NSDictionary *parameterDic = dic;
-        [FSNetworkManagerDefaultInstance POST:path parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
+    }];
+}
+- (void)shareWithSource:(NSString *)source
+{
+    // 告诉Web端已经开始分享
+    [self showShareActionSheet:self.view source:source];
+}
+#pragma mark - 检查app是否安装
+ - (void)instalCheckTimerAction
+{
+    // 每次检查到安装
+    // 0 未安装  1安装 2运行  ios9以上不能获取运行
+    if (curAppBundleid ==nil || [curAppBundleid isEqualToString:@""]) {
+        return;
+    }
+    
+    if ([dicFinish[curAppBundleid] boolValue]) {
+        return;
+    }
+    
+    NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:curAppBundleid];
+    
+    NSNumber *accTime = [dicInstall objectForKey:curAppBundleid];
+    
+    if (state) {
+
+        if (accTime == nil) {
+            [self registerLocalNotification:1 content:@"开始计时"];
+            accTime = @7;
+            [dicInstall setObject:accTime forKey:curAppBundleid];
             
-            [self answerRequestWithData:responseObject];
-            
-        } failure:^(NSError *error) {
-        }];
+        }else{
+            NSInteger acct = [accTime intValue];
+            acct += 7;
+            if (acct>180) {
+                // 调用完成任务接口
+                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
+                
+                [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
+                    
+//                    NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                    
+                    // 设置对应任务key 已经完成
+                    [dicFinish setObject:@1 forKey:curAppBundleid];
+                    
+                    [self registerLocalNotification:1 content:@"当前任务已完成"];
+//                    [self writeWebMsg:@"" msg:str];
+                    
+                } failure:^(NSError *error) {
+                }];
+                
+            }
+            [dicInstall setObject: [NSNumber numberWithInteger:acct]
+                           forKey:curAppBundleid];
+        }
     }
 }
 
+#pragma mark - 工具方法
 - (NSDictionary *)parseUrlParams:(NSString *)query
 {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
@@ -222,82 +281,35 @@
     
 }
 
-#pragma mark - socket 通信
-- (void)login
-{
-    // 调用登录接口
-    [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
-        Global.token = dic[@"data"][@"token"];
-        if ([dic[@"data"][@"show"] intValue] == 1) {
-            // 回复socket登录
-            NSString *content = [NSString stringWithFormat:@"{token:\"%@\"}",Global.token];
-            [self answerRequestWithContent:content];
-        }
-    }];
-}
-- (void)shareWithSource:(NSString *)source
-{
-    // 告诉Web端已经开始分享
-    [self showShareActionSheet:self.view source:source];
-}
-- (void)checkInstallAppWithBundleID:(NSString *)bundleID
-{
-    //0 未安装  1安装 2运行  ios9以上不能获取运行
-    NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:bundleID];
+#pragma mark - 本地通知
+// 设置本地通知
+- (void)registerLocalNotification:(NSInteger)alertTime content:(NSString*)content{
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    // 设置触发通知的时间
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:alertTime];
+    notification.fireDate = fireDate;
+    // 时区
+    notification.timeZone = [NSTimeZone defaultTimeZone];
     
-    NSString *content = [NSString stringWithFormat:@"{\"flagInstall\":%ld}",(long)state];
-    [self answerRequestWithContent:content];
-}
-- (void)routerDispath
-{
+    // 通知内容
+    notification.alertBody = content;
     
-}
+    // 通知被触发时播放的声音
+    notification.soundName = UILocalNotificationDefaultSoundName;
 
-
-- (void)answerRequestWithData:(NSData *)contentData
-{
-    NSData *fileData = contentData;
+    // ios8后，需要添加这个注册，才能得到授权
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type
+                                                                                 categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
     
-    CFHTTPMessageRef response;
-    
-    response = CFHTTPMessageCreateResponse(kCFAllocatorDefault,
-                                           200,
-                                           NULL,
-                                           kCFHTTPVersion1_1);
-    
-    CFHTTPMessageSetHeaderFieldValue(response,
-                                     (CFStringRef)@"Content-Type",
-                                     (CFStringRef)@"application/json");
-    
-    CFHTTPMessageSetHeaderFieldValue(response,
-                                     (CFStringRef)@"Connection",
-                                     (CFStringRef)@"close");
-    
-    CFHTTPMessageSetHeaderFieldValue(response,
-                                     (CFStringRef)@"Content-Length",
-                                     (__bridge CFStringRef)[NSString stringWithFormat:@"%ld", [fileData length]]);
-    
-    CFDataRef headerData = CFHTTPMessageCopySerializedMessage(response);
-    
-    
-    
-    
-    NSMutableData *data = [NSMutableData dataWithData:(__bridge NSData*)headerData];
-    
-    [data appendData:fileData];
-    
-    [self.clientSocket writeData:data withTimeout:-1 tag:0];
-}
-- (void)answerRequestWithContent:(NSString *)content
-{
-    NSData *fileData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    
-    [self answerRequestWithData:fileData];
+    // 执行通知注册
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 #pragma mark 显示分享菜单
-
-
 /**
  *  显示分享菜单
  *

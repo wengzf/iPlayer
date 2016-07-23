@@ -22,6 +22,10 @@
 
 
 
+
+static BOOL flagPlayMode = NO;
+
+
 @implementation MusicNoteButton
 
 - (id)initWithFrame:(CGRect)frame
@@ -35,6 +39,23 @@
 - (void)btnClked
 {
     // 播放音高文件名解析
+    if (flagPlayMode) {
+        NSString *pitchFileName = [self parsePitch:self.note];
+        
+        NSString * filePath = [[NSBundle mainBundle] pathForResource:pitchFileName ofType:@"mp3"];
+        NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+        
+        NSError *err;
+        pitchPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&err];
+        [pitchPlayer prepareToPlay];
+        [pitchPlayer play];
+    }
+    // 刷新对应页面
+    [self.delegate musicNoteButtonClked:self];
+}
+- (void)play
+{
+    // 播放音高文件名解析
     NSString *pitchFileName = [self parsePitch:self.note];
     
     NSString * filePath = [[NSBundle mainBundle] pathForResource:pitchFileName ofType:@"mp3"];
@@ -44,9 +65,6 @@
     pitchPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&err];
     [pitchPlayer prepareToPlay];
     [pitchPlayer play];
-    
-    // 刷新对应页面
-    [self.delegate musicNoteButtonClked:self];
 }
 - (NSString *) parsePitch:(MusicNote *) note
 {
@@ -98,9 +116,10 @@
 
 @implementation MusicPlayViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     btnHeight = 120;
     speed = (btnHeight+10) / self.musicRule.baseUnitTime;
     
@@ -140,6 +159,14 @@
     }
     
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (flagPlayMode) {
+        [self.plsyModeBtn setTitle:@"游戏模式"];
+    }else{
+        [self.plsyModeBtn setTitle:@"播放模式"];
+    }
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -160,8 +187,9 @@
     if ([reuseButtonArr count]) {
         
         resButton = [reuseButtonArr lastObject];
-        [reuseButtonArr removeLastObject];
-        
+        @synchronized (self) {
+            [reuseButtonArr removeLastObject];
+        }
         if (resButton.isFirst) {
             resButton = [[MusicNoteButton alloc] initWithFrame:CGRectMake(0, 0, 80, btnHeight)];
             resButton.delegate = self;
@@ -203,11 +231,6 @@
         [UIView animateWithDuration:2 animations:^{
             imgview.alpha = 0;
         }];
-        
-        // button从正在运行数组中删除
-        [reuseButtonArr addObject:btn];
-        [btn removeFromSuperview];
-        [curRunningArr removeObjectAtIndex:0];
     }
 }
 
@@ -221,43 +244,42 @@
 - (void)playerTimerAction
 {
     // 退出
-    {
-        MusicNoteButton *btn = [curRunningArr firstObject];
-        if (!isStart) {
-            
-            if (btn.frame.origin.y > ScreenHeight-btnHeight-btnHeight-6) {
-                isStart = YES;
-            
-                btn.isFirst = YES;
-                // 添加开始三角形
-                CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-                CGFloat wid = btn.frame.size.width / 2;
-                CGFloat height = btn.frame.size.height / 2;
-                CGMutablePathRef path = CGPathCreateMutable();
-                CGPathMoveToPoint(path, nil, wid - 15, height - 23);
-                CGPathAddLineToPoint(path, nil, wid+18, height);
-                CGPathAddLineToPoint(path, nil, wid-15, height+23);
-                CGPathAddLineToPoint(path, nil, wid-15, height - 23);
-                shapeLayer.fillColor = [UIColor blackColor].CGColor;
-                shapeLayer.path = path;
-                [btn.layer addSublayer:shapeLayer];
-                
-                
-                return;
-            }
-        }else{
-//            if (btn.frame.origin.y > ScreenHeight-btnHeight) {
-//                [btn btnClked];
-//            }
-            if (btn.frame.origin.y > ScreenHeight) {
-                
-                // button从正在运行数组中删除
-                [reuseButtonArr addObject:btn];
-                [btn removeFromSuperview];
-                [curRunningArr removeObjectAtIndex:0];
-            }
-        }
+    
+    MusicNoteButton *btn = [curRunningArr firstObject];
+    if (!isStart) {
         
+        if (btn.frame.origin.y > ScreenHeight-btnHeight-btnHeight-6) {
+            isStart = YES;
+            
+            btn.isFirst = YES;
+            // 添加开始三角形
+            CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+            CGFloat wid = btn.frame.size.width / 2;
+            CGFloat height = btn.frame.size.height / 2;
+            CGMutablePathRef path = CGPathCreateMutable();
+            CGPathMoveToPoint(path, nil, wid - 15, height - 23);
+            CGPathAddLineToPoint(path, nil, wid+18, height);
+            CGPathAddLineToPoint(path, nil, wid-15, height+23);
+            CGPathAddLineToPoint(path, nil, wid-15, height - 23);
+            shapeLayer.fillColor = [UIColor blackColor].CGColor;
+            shapeLayer.path = path;
+            [btn.layer addSublayer:shapeLayer];
+            
+            return;
+        }
+    }
+    
+    if (btn.frame.origin.y > ScreenHeight-btnHeight/2.0) {
+        
+        if (!flagPlayMode){
+            [btn play];
+        }
+        // button从正在运行数组中删除
+        @synchronized (self) {
+            [reuseButtonArr addObject:btn];
+            [btn removeFromSuperview];
+            [curRunningArr removeObjectAtIndex:0];
+        }
     }
     
     // 新进入
@@ -311,6 +333,16 @@
     curTime += timerDuration;
 }
 
+
+- (IBAction)plsyModeBtnClked:(id)sender {
+    
+    flagPlayMode = !flagPlayMode;
+    if (flagPlayMode) {
+        [self.plsyModeBtn setTitle:@"游戏模式"];
+    }else{
+        [self.plsyModeBtn setTitle:@"播放模式"];
+    }
+}
 
 - (IBAction)backBtnClked:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

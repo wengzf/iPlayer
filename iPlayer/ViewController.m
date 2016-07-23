@@ -63,25 +63,28 @@
                    @"樱花",
                    @"草原英雄小姐妹",
                    @"莫斯科郊外的晚上",
-                   @"飘落",
-                   
-                   @"斯卡保罗集市",
-                   @"少女的祈祷",
-                   @"土耳其进行曲",
-                   @"秋日私语",
-                   @"克罗地亚狂想曲",
-                   @"爱的罗曼斯",
-                   
-                   @"赛马"];
+                   @"飘落"
+//                   ,
+//                   
+//                   @"斯卡保罗集市",
+//                   @"少女的祈祷",
+//                   @"土耳其进行曲",
+//                   @"秋日私语",
+//                   @"克罗地亚狂想曲",
+//                   @"爱的罗曼斯",
+//                   @"赛马"
+                   ];
     
     
     // 判断是否打开助手
 //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
+    
         keyVC = [[KeyViewController alloc] init];
         keyVC.view.frame = [UIScreen mainScreen].bounds;
-        [self presentViewController:keyVC animated:YES completion:NULL];
+//        keyVC.view.hidden = YES;
+        [self.view addSubview:keyVC.view];
 //    }
-    
+
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -90,14 +93,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    NSIndexPath *inxPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    [self tableView:[UITableView new] didSelectRowAtIndexPath:inxPath];
-    
-//    [self showShareActionSheet:self.view];
-    
-    
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.shoujizhuan.com.cn/app/activity?token=%@",Global.token] ];
-//    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
