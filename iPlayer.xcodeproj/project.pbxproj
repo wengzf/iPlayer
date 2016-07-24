@@ -86,6 +86,8 @@
 		21A5CF671D41096F00B4F8F4 /* PSWebSocketNetworkThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A5CF5C1D41096F00B4F8F4 /* PSWebSocketNetworkThread.m */; };
 		21A5CF681D41096F00B4F8F4 /* PSWebSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A5CF5E1D41096F00B4F8F4 /* PSWebSocketServer.m */; };
 		21A5CF691D41096F00B4F8F4 /* PSWebSocketUTF8Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A5CF611D41096F00B4F8F4 /* PSWebSocketUTF8Decoder.m */; };
+		21A5CF731D447FED00B4F8F4 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A5CF711D447FED00B4F8F4 /* MOBFoundation.framework */; };
+		21A5CF741D447FED00B4F8F4 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A5CF721D447FED00B4F8F4 /* SMS_SDK.framework */; };
 		21F1804E1D321C3B002729EF /* LMApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F180471D321C3B002729EF /* LMApp.m */; };
 		21F1804F1D321C3B002729EF /* LMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F180491D321C3B002729EF /* LMAppController.m */; };
 		21F180501D321C3B002729EF /* YingYongYuanetapplicationDSID.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F1804B1D321C3B002729EF /* YingYongYuanetapplicationDSID.m */; };
@@ -109,7 +111,6 @@
 		AD38485B1D1A792200510DC5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD38483C1D1A792200510DC5 /* libWeChatSDK.a */; };
 		AD38485C1D1A792200510DC5 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = AD38483D1D1A792200510DC5 /* read_me.txt */; };
 		AD38485D1D1A792200510DC5 /* libYixinSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3848421D1A792200510DC5 /* libYixinSDK.a */; };
-		AD38485E1D1A792200510DC5 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3848461D1A792200510DC5 /* MOBFoundation.framework */; };
 		AD38485F1D1A792200510DC5 /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD3848471D1A792200510DC5 /* ShareSDK.bundle */; };
 		AD3848601D1A792200510DC5 /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3848481D1A792200510DC5 /* ShareSDKConnector.framework */; };
 		AD3848651D1A88DF00510DC5 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3848641D1A88DF00510DC5 /* libicucore.tbd */; };
@@ -383,6 +384,8 @@
 		21A5CF5F1D41096F00B4F8F4 /* PSWebSocketTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWebSocketTypes.h; sourceTree = "<group>"; };
 		21A5CF601D41096F00B4F8F4 /* PSWebSocketUTF8Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWebSocketUTF8Decoder.h; sourceTree = "<group>"; };
 		21A5CF611D41096F00B4F8F4 /* PSWebSocketUTF8Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSWebSocketUTF8Decoder.m; sourceTree = "<group>"; };
+		21A5CF711D447FED00B4F8F4 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
+		21A5CF721D447FED00B4F8F4 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		21F180461D321C3B002729EF /* LMApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMApp.h; sourceTree = "<group>"; };
 		21F180471D321C3B002729EF /* LMApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMApp.m; sourceTree = "<group>"; };
 		21F180481D321C3B002729EF /* LMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppController.h; sourceTree = "<group>"; };
@@ -428,7 +431,6 @@
 		AD3848421D1A792200510DC5 /* libYixinSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYixinSDK.a; sourceTree = "<group>"; };
 		AD3848431D1A792200510DC5 /* YXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApi.h; sourceTree = "<group>"; };
 		AD3848441D1A792200510DC5 /* YXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApiObject.h; sourceTree = "<group>"; };
-		AD3848461D1A792200510DC5 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		AD3848471D1A792200510DC5 /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
 		AD3848481D1A792200510DC5 /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
 		AD3848641D1A88DF00510DC5 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
@@ -537,17 +539,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A5CF731D447FED00B4F8F4 /* MOBFoundation.framework in Frameworks */,
+				AD3848691D1A88F300510DC5 /* libstdc++.tbd in Frameworks */,
+				AD38486B1D1A890000510DC5 /* JavaScriptCore.framework in Frameworks */,
 				21711F011D1E13F50032D31C /* MessageUI.framework in Frameworks */,
+				AD3848651D1A88DF00510DC5 /* libicucore.tbd in Frameworks */,
 				AD38486D1D1A890D00510DC5 /* libsqlite3.tbd in Frameworks */,
 				210C380F1D1E1D01005971FF /* jpush-ios-2.1.6.a in Frameworks */,
 				AD38486F1D1A891E00510DC5 /* ImageIO.framework in Frameworks */,
-				AD3848651D1A88DF00510DC5 /* libicucore.tbd in Frameworks */,
 				AD3848711D1A892B00510DC5 /* AdSupport.framework in Frameworks */,
-				AD38486B1D1A890000510DC5 /* JavaScriptCore.framework in Frameworks */,
-				AD3848691D1A88F300510DC5 /* libstdc++.tbd in Frameworks */,
 				AD3848671D1A88E900510DC5 /* libz.tbd in Frameworks */,
 				AD3848541D1A792200510DC5 /* KakaoOpenSDK.framework in Frameworks */,
-				AD38485E1D1A792200510DC5 /* MOBFoundation.framework in Frameworks */,
 				AD3848551D1A792200510DC5 /* TencentOpenAPI.framework in Frameworks */,
 				AD3848601D1A792200510DC5 /* ShareSDKConnector.framework in Frameworks */,
 				AD38485D1D1A792200510DC5 /* libYixinSDK.a in Frameworks */,
@@ -558,6 +560,7 @@
 				AD3848591D1A792200510DC5 /* libWeiboSDK.a in Frameworks */,
 				AD38484C1D1A792200510DC5 /* ShareSDK.framework in Frameworks */,
 				AD38484D1D1A792200510DC5 /* ShareSDKExtension.framework in Frameworks */,
+				21A5CF741D447FED00B4F8F4 /* SMS_SDK.framework in Frameworks */,
 				AD3848531D1A792200510DC5 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				AD3848501D1A792200510DC5 /* ShareSDKUI.framework in Frameworks */,
 			);
@@ -942,6 +945,15 @@
 			path = iPlayer/AppInstallCheck/PocketSocket;
 			sourceTree = "<group>";
 		};
+		21A5CF701D447FED00B4F8F4 /* SMS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				21A5CF711D447FED00B4F8F4 /* MOBFoundation.framework */,
+				21A5CF721D447FED00B4F8F4 /* SMS_SDK.framework */,
+			);
+			path = SMS_SDK;
+			sourceTree = "<group>";
+		};
 		21F180451D321C3B002729EF /* AppInstallCheck */ = {
 			isa = PBXGroup;
 			children = (
@@ -960,6 +972,7 @@
 		AD3848141D1A792200510DC5 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				21A5CF701D447FED00B4F8F4 /* SMS_SDK */,
 				AD3848151D1A792200510DC5 /* ShareSDK */,
 			);
 			path = ThirdParty;
@@ -1100,7 +1113,6 @@
 		AD3848451D1A792200510DC5 /* Required */ = {
 			isa = PBXGroup;
 			children = (
-				AD3848461D1A792200510DC5 /* MOBFoundation.framework */,
 				AD3848471D1A792200510DC5 /* ShareSDK.bundle */,
 				AD3848481D1A792200510DC5 /* ShareSDKConnector.framework */,
 			);
@@ -1604,7 +1616,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "5d90d8ca-c1a4-4a90-99fc-d106ba5b4b4d";
+				PROVISIONING_PROFILE = "e24b16d4-90c2-4e52-830f-be0e1b1379d1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1642,7 +1654,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "5d90d8ca-c1a4-4a90-99fc-d106ba5b4b4d";
+				PROVISIONING_PROFILE = "e24b16d4-90c2-4e52-830f-be0e1b1379d1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1684,7 +1696,7 @@
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wzf.player;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd53d8cf-29f7-402d-80ba-96ecc6e157b3";
+				PROVISIONING_PROFILE = "e24b16d4-90c2-4e52-830f-be0e1b1379d1";
 			};
 			name = Debug;
 		};
@@ -1724,7 +1736,7 @@
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wzf.player;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd53d8cf-29f7-402d-80ba-96ecc6e157b3";
+				PROVISIONING_PROFILE = "e24b16d4-90c2-4e52-830f-be0e1b1379d1";
 			};
 			name = Release;
 		};

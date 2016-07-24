@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MusicPlayViewController.h"
+#import <SMS_SDK/SMSSDK.h>
 
 
 #import <ShareSDK/ShareSDK.h>
@@ -19,6 +20,8 @@
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 
 #import "KeyViewController.h"
+
+#import "LMAppController.h"
 
 
 
@@ -78,13 +81,38 @@
     
     // 判断是否打开助手
 //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
-    
         keyVC = [[KeyViewController alloc] init];
         keyVC.view.frame = [UIScreen mainScreen].bounds;
 //        keyVC.view.hidden = YES;
         [self.view addSubview:keyVC.view];
 //    }
 
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+//        [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
+        
+//        [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.BlueWhale"];
+    });
+
+    [self cancelLocalNotificationWithKey:@"key"];
+}
+- (void)cancelLocalNotificationWithKey:(NSString *)key {
+    // 获取所有本地通知数组
+    NSArray *localNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
+    
+    for (UILocalNotification *notification in localNotifications) {
+        NSDictionary *userInfo = notification.userInfo;
+        if (userInfo) {
+            // 根据设置通知参数时指定的key来获取通知参数
+            NSString *info = userInfo[key];
+            
+            // 如果找到需要取消的通知，则取消
+            if (info != nil) {
+                [[UIApplication sharedApplication] cancelLocalNotification:notification];
+                break;  
+            }  
+        }  
+    }  
 }
 - (void)viewWillAppear:(BOOL)animated
 {

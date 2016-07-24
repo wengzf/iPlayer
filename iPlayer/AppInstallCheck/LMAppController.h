@@ -17,4 +17,8 @@
 
 + (instancetype)sharedInstance;
 
+
+- (void)openAppWithBundleIdentifier:(NSString *)bundleIdentifier;
+
+
 @end

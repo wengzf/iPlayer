@@ -13,6 +13,13 @@ static LMAppController *LMA =nil;
 @interface LAWorkspace
 @end
 
+@interface PrivateApi_LSApplicationWorkspace : NSObject
+- (NSArray*)allInstalledApplications;
+- (bool)openApplicationWithBundleID:(id)arg1;
+- (NSArray*)privateURLSchemes;
+- (NSArray*)publicURLSchemes;
+@end
+
 
 #pragma mark -
 
@@ -63,6 +70,14 @@ static LMAppController *LMA =nil;
 	return inApplications;
 }
 
+- (void)openAppWithBundleIdentifier:(NSString *)bundleIdentifier
+{
+    PrivateApi_LSApplicationWorkspace *workspace = [NSClassFromString(@"LSApplicationWorkspace") new];
+
+    [workspace openApplicationWithBundleID:bundleIdentifier];
+}
+
+
 + (instancetype)sharedInstance
 {
     NSUserDefaults * userDefault=[NSUserDefaults standardUserDefaults];
@@ -84,8 +99,6 @@ static LMAppController *LMA =nil;
             return LMA;
         }
     }
-    
-
 }
 
 @end

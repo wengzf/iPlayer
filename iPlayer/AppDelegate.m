@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "KeyChainUtil.h"
 #import <AdSupport/AdSupport.h>
-
+#import <SMS_SDK/SMSSDK.h>
 
 //＝＝＝＝＝＝＝＝＝＝ShareSDK头文件＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 #import <ShareSDK/ShareSDK.h>
@@ -99,11 +99,19 @@
     Global.idfa = idfa;
     [Global saveUserInfo];
 
-//    
-//    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-//    pasteboard.string = idfa;
+    // 短信初始化  iplayer
+//    {
+//        NSString *appKey = @"154dc5b58f49c";                        // CashMaker
+//        NSString *appSecret = @"383194863edddfb73d5d3dab27730c34";
+//        [SMSSDK registerApp:appKey withSecret:appSecret];
+//    }
     
-    
+    // 短信初始化
+    {
+        NSString *appKey = @"11251bfa2495c";                        // CashMaker
+        NSString *appSecret = @"2ec864e58957d6f61bcc705b80324168";
+        [SMSSDK registerApp:appKey withSecret:appSecret];
+    }
     // 播放音频，开启永久后台模式
     [self playAudio];
 
@@ -319,7 +327,6 @@
     }
     
     // Create the coordinator and store
-    
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"iPlayer.sqlite"];
     NSError *error = nil;

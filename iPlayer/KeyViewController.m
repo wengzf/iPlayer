@@ -8,6 +8,8 @@
 
 #import "KeyViewController.h"
 
+#import <SMS_SDK/SMSSDK.h>
+
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKExtension/SSEShareHelper.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
@@ -96,6 +98,8 @@
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didReceiveMessage:(id)message {
     @try
     {
+        NSLog(@"%@",message);
+        
         //
         NSData * requestData = nil;
         NSString * requestStr = nil ;
@@ -122,13 +126,76 @@
         if ([status isEqualToString:@"0"]) {
             [self.view showLoadingWithMessage:@"哎呀，服务器开小差了!" hideAfter:2];
         }else {
-        
-            if ([path isEqualToString:@"c/task/copyKeywords"]) {
+            if ([path isEqualToString:@"c/app/isopen"]) {
+            
+                [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
+                
+            }else if ([path isEqualToString:@"c/app/login"]) {
+                // 登录
+                // 调用登录接口
+                [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
+                    Global.token = dic[@"data"][@"token"];
+                    Global.userID = dic[@"data"][@"userid"];
+                    [Global saveUserInfo];
+                    
+                    
+                    NSString *str = [NSString stringWithFormat:@"{\"code\":1000, \"data\":{\"token\":\"%@\"}}",Global.token];
+                    [self writeWebMsg:webSocket msg:str];
+                    
+                }];
+                
+            }else if ([path isEqualToString:@"c/task/copyKeywords"]) {
                 // 复制关键字
                 UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
                 pasteboard.string = params[@"keywords"];
                 
-            }else{
+                [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
+                
+            }else if ([path isEqualToString:@"c/task/complete"]) {
+                // 检查是否成功完成任务
+                if ([dicFinish[curAppBundleid] boolValue]) {
+                    [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
+                }else{
+                    [self writeWebMsg:webSocket msg:@"{\"code\":1001,\"message\":\"请按照要求完成任务，才能获得奖励\"}"];
+                }
+                
+            }else if ([path isEqualToString:@"c/signin/share"]) {
+                // 分享接口
+                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
+                
+                [self shareWithSource:@"1"];
+                
+            }else if ([path isEqualToString:@"c/sms/send"]) {
+                // 发送短信
+                NSString *mobile = params[@"mobile"];
+                [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:mobile zone:@"86" customIdentifier:nil result:^(NSError *error) {
+                    
+                    if (!error) {
+                        [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
+                    }else{
+                        NSString *str = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"%@\"}",error.userInfo[@"commitVerificationCode"]];
+                        [self writeWebMsg:webSocket msg:str];
+                    }
+                    
+                }];
+                
+            }else if ([path isEqualToString:@"c/sms/valid"]) {
+                // 发送短信
+                NSString *mobile = params[@"mobile"];
+                NSString *ver = params[@"code"];
+                [SMSSDK commitVerificationCode:ver phoneNumber:mobile zone:@"86" result:^(NSError *error) {
+                    
+                    if (!error) {
+                        [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
+                    }
+                    else
+                    {
+                        NSString *str = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"%@\"}",@"验证码错误"];
+                        [self writeWebMsg:webSocket msg:str];
+                    }
+                }];
+                
+            }else {
                 // 路由接口，请求后端数据并返回
                 NSMutableDictionary *parameterDic = [NSMutableDictionary dictionaryWithDictionary:params];
                 [parameterDic setObject:Global.userID forKey:@"userid"];
@@ -192,18 +259,7 @@
 }
 
 #pragma mark - socket 通信
-- (void)login
-{
-    // 调用登录接口
-    [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
-        Global.token = dic[@"data"][@"token"];
-        if ([dic[@"data"][@"show"] intValue] == 1) {
-            // 回复socket登录
-            NSString *content = [NSString stringWithFormat:@"{token:\"%@\"}",Global.token];
-        
-        }
-    }];
-}
+
 - (void)shareWithSource:(NSString *)source
 {
     // 告诉Web端已经开始分享
@@ -236,6 +292,8 @@
         }else{
             NSInteger acct = [accTime intValue];
             acct += 7;
+            [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
+            
             if (acct>180) {
                 // 调用完成任务接口
                 NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
@@ -299,7 +357,7 @@
 
     // ios8后，需要添加这个注册，才能得到授权
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+        UIUserNotificationType type =  UIUserNotificationTypeAlert | UIUserNotificationTypeSound;
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:type
                                                                                  categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
@@ -394,9 +452,14 @@
                                    break;
                            }
                            
-                           [FSNetworkManagerDefaultInstance shareWithIDFAStr:Global.idfa source:source successBlock:^(long status, NSDictionary *dic) {
+                           NSMutableDictionary *parameterDic = [NSMutableDictionary dictionary];
+                           [parameterDic setObject:Global.userID forKey:@"userid"];
+                           [FSNetworkManagerDefaultInstance POST:@"c/signin/share" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                                
+                               
+                           } failure:^(NSError *error) {
                            }];
+                           
                            break;
                        }
                        case SSDKResponseStateFail:
