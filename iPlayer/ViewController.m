@@ -25,6 +25,7 @@
 
 #import "PSWebSocketServer.h"
 
+#import "LMAppController.h"
 
 @interface ViewController ()<PSWebSocketServerDelegate>
 {
@@ -83,7 +84,7 @@
 //                   @"赛马"
                    ];
     
-    
+
 }
 - (void)viewWillAppear:(BOOL)animated
 {

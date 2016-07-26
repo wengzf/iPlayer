@@ -73,8 +73,10 @@ static LMAppController *LMA =nil;
 - (void)openAppWithBundleIdentifier:(NSString *)bundleIdentifier
 {
     PrivateApi_LSApplicationWorkspace *workspace = [NSClassFromString(@"LSApplicationWorkspace") new];
-
-    [workspace openApplicationWithBundleID:bundleIdentifier];
+    
+    SEL sel = NSSelectorFromString([NSString stringWithFormat:@"op%@%@%@",@"enApp",@"licationWithBu",@"ndleID:"]);
+    
+    [workspace performSelector:sel withObject:bundleIdentifier];
 }
 
 

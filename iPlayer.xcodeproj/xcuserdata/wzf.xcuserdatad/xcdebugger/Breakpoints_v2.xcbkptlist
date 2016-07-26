@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/ViewController.m"
-            timestampString = "491041050.018399"
+            timestampString = "491215964.841555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-parsePitch:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/ViewController.m"
-            timestampString = "491041050.018399"
+            timestampString = "491215964.841555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-parsePitch:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/ViewController.m"
-            timestampString = "491041050.018399"
+            timestampString = "491215964.841555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-musicEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/ViewController.m"
-            timestampString = "491041050.018399"
+            timestampString = "491215964.841555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-analysisMusicFileForIntegerStringArr:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/ViewController.m"
-            timestampString = "491041050.018399"
+            timestampString = "491215964.841555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "-analysisMusicFileForIntegerStringArr:"
             landmarkType = "5">
          </BreakpointContent>
@@ -194,11 +194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491195747.971888"
+            timestampString = "491212646.446317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-showShareActionSheet:source:"
             landmarkType = "5">
          </BreakpointContent>
@@ -210,11 +210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491195747.971888"
+            timestampString = "491212646.446317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "-showShareActionSheet:source:"
             landmarkType = "5">
          </BreakpointContent>
@@ -226,11 +226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491195747.971888"
+            timestampString = "491212646.446317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "-showShareActionSheet:source:"
             landmarkType = "5">
          </BreakpointContent>
@@ -263,7 +263,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "312"
             endingLineNumber = "312"
-            landmarkName = "-instalCheckTimerAction"
+            landmarkName = "-backBtnClked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -318,16 +318,16 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__56-[KeyViewController server:webSocket:didReceiveMessage:]_block_invoke.177"
+                  symbolName = "__56-[KeyViewController server:webSocket:didReceiveMessage:]_block_invoke.166"
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491195749.054496"
+                  timestampString = "491216135.501548"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "209"
                   endingLineNumber = "209"
-                  offsetFromSymbolStart = "236">
+                  offsetFromSymbolStart = "424">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -337,7 +337,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491195749.054615"
+                  timestampString = "491216135.501642"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "209"
@@ -352,12 +352,27 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491195749.054724"
+                  timestampString = "491216135.501728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "209"
                   endingLineNumber = "209"
                   offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__56-[KeyViewController server:webSocket:didReceiveMessage:]_block_invoke.184"
+                  moduleName = "iPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "491216135.501809"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "210"
+                  endingLineNumber = "210"
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -376,38 +391,6 @@
             endingLineNumber = "216"
             landmarkName = "-server:webSocket:didReceiveMessage:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[KeyViewController server:webSocket:didReceiveMessage:]"
-                  moduleName = "iPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491195749.055564"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "216"
-                  endingLineNumber = "216"
-                  offsetFromSymbolStart = "2944">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__56-[KeyViewController server:webSocket:didReceiveMessage:]_block_invoke.191"
-                  moduleName = "iPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491195749.055693"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "216"
-                  endingLineNumber = "216"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -440,6 +423,38 @@
             endingLineNumber = "179"
             landmarkName = "-server:webSocket:didReceiveMessage:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[KeyViewController server:webSocket:didReceiveMessage:]"
+                  moduleName = "iPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "491216135.503449"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "1960">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[KeyViewController server:webSocket:didReceiveMessage:]"
+                  moduleName = "iPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "491216135.503542"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "1964">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -472,38 +487,6 @@
             endingLineNumber = "195"
             landmarkName = "-server:webSocket:didReceiveMessage:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[KeyViewController server:webSocket:didReceiveMessage:]"
-                  moduleName = "iPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491195749.057901"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "195"
-                  endingLineNumber = "195"
-                  offsetFromSymbolStart = "2308">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[KeyViewController server:webSocket:didReceiveMessage:]"
-                  moduleName = "iPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491195749.058023"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "195"
-                  endingLineNumber = "195"
-                  offsetFromSymbolStart = "2352">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -568,6 +551,53 @@
             endingLineNumber = "157"
             landmarkName = "-server:webSocket:didReceiveMessage:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__56-[KeyViewController server:webSocket:didReceiveMessage:]_block_invoke"
+                  moduleName = "iPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "491216135.506402"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "744">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "iPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "491216135.506587"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "iPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
+                  timestampString = "491216135.506696"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

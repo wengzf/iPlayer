@@ -818,8 +818,8 @@
 		21A1E4211C12BEE40048BBE4 /* iPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				219F11151D470ABC001507F9 /* JailBrokenClass.m */,
 				219F11161D470ABC001507F9 /* JailBrokenClass.h */,
+				219F11151D470ABC001507F9 /* JailBrokenClass.m */,
 				21F180451D321C3B002729EF /* AppInstallCheck */,
 				210C38151D1E5C82005971FF /* FSFoundation */,
 				210C380C1D1E1D01005971FF /* lib */,
@@ -1283,7 +1283,7 @@
 				TargetAttributes = {
 					21A1E41E1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 4JVDCH8EHZ;
+						DevelopmentTeam = 6T6K856R56;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1599,8 +1599,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhifang weng (RP7DY4RR4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhifang Weng (6T6K856R56)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhifang Weng (6T6K856R56)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1622,7 +1622,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "e24b16d4-90c2-4e52-830f-be0e1b1379d1";
+				PROVISIONING_PROFILE = "c0513dc5-10c4-4470-ae80-846ae785e9de";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1644,8 +1644,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhifang weng (RP7DY4RR4G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhifang Weng (6T6K856R56)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhifang Weng (6T6K856R56)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1660,7 +1660,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "e24b16d4-90c2-4e52-830f-be0e1b1379d1";
+				PROVISIONING_PROFILE = "c0513dc5-10c4-4470-ae80-846ae785e9de";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

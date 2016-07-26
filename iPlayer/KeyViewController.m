@@ -212,9 +212,9 @@
                 
             }else if ([path isEqualToString:@"c/signin/share"]) {
                 // 分享接口
-//                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.FireShadowTest"];
+                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.FireShadowTest"];
                 
-                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
+//                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
                 
                 
                 [self shareWithSource:@"1"];
@@ -321,44 +321,6 @@
 {
     // 告诉Web端已经开始分享
     [self showShareActionSheet:self.view source:source];
-}
-#pragma mark - 检查app是否安装
- - (void)instalCheckTimerAction
-{
-    // 每次检查到安装
-    // 0 未安装  1安装 2运行  ios9以上不能获取运行
-    if (curAppBundleid ==nil || [curAppBundleid isEqualToString:@""]) {
-        return;
-    }
-    
-    if ([dicFinish[curAppBundleid] boolValue]) {
-        return;
-    }
-    
-    NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:curAppBundleid];
-    
-    NSNumber *accTime = [dicInstall objectForKey:curAppBundleid];
-    
-    if (state) {
-
-        if (accTime == nil) {
-            [self registerLocalNotification:1 content:@"开始计时"];
-            accTime = @7;
-            [dicInstall setObject:accTime forKey:curAppBundleid];
-            
-            [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
-            
-        }else{
-            NSInteger acct = [accTime intValue];
-            acct += 7;
-            if (acct>30) {
- 
-                
-            }
-            [dicInstall setObject: [NSNumber numberWithInteger:acct]
-                           forKey:curAppBundleid];
-        }
-    }
 }
 
 #pragma mark - 工具方法
