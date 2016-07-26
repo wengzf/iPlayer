@@ -23,9 +23,10 @@
 
 #import "LMAppController.h"
 
+#import "PSWebSocketServer.h"
 
 
-@interface ViewController ()
+@interface ViewController ()<PSWebSocketServerDelegate>
 {
     MusicRule *musicRule;
     NSMutableArray *musicNoteArr;
@@ -43,6 +44,10 @@
     // 助手页面
     KeyViewController *keyVC;
 }
+
+
+@property (nonatomic, strong) PSWebSocketServer *server;
+
 @end
 
 @implementation ViewController
@@ -79,48 +84,28 @@
                    ];
     
     
-    // 判断是否打开助手
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
-        keyVC = [[KeyViewController alloc] init];
-        keyVC.view.frame = [UIScreen mainScreen].bounds;
-//        keyVC.view.hidden = YES;
-        [self.view addSubview:keyVC.view];
-//    }
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-//        [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
-        
-//        [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.BlueWhale"];
-    });
-
-    [self cancelLocalNotificationWithKey:@"key"];
-}
-- (void)cancelLocalNotificationWithKey:(NSString *)key {
-    // 获取所有本地通知数组
-    NSArray *localNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
-    
-    for (UILocalNotification *notification in localNotifications) {
-        NSDictionary *userInfo = notification.userInfo;
-        if (userInfo) {
-            // 根据设置通知参数时指定的key来获取通知参数
-            NSString *info = userInfo[key];
-            
-            // 如果找到需要取消的通知，则取消
-            if (info != nil) {
-                [[UIApplication sharedApplication] cancelLocalNotification:notification];
-                break;  
-            }  
-        }  
-    }  
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        // 判断是否打开助手
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
+            keyVC = [[KeyViewController alloc] init];
+            keyVC.view.frame = [UIScreen mainScreen].bounds;
+            [self.view addSubview:keyVC.view];
+        }else{
+        
+            [self initServer:555];
+        }
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -319,136 +304,43 @@
     
 }
 
+#pragma mark - PSWebSocketServerDelegate
+-(void)initServer:(int) port{
+    
+    self.server = [PSWebSocketServer serverWithHost:@"127.0.0.1" port:port];
+    self.server.delegate = self;
+    [self.server start];
+}
 
-#pragma mark 显示分享菜单
-
-/**
- *  显示分享菜单
- *
- *  @param view 容器视图
- */
-- (void)showShareActionSheet:(UIView *)view
+- (void)serverDidStart:(PSWebSocketServer *)server {
+    NSLog(@"serverDidStart");
+}
+- (void)server:(PSWebSocketServer *)server didFailWithError:(NSError *)error
 {
-    /**
-     * 在简单分享中，只要设置共有分享参数即可分享到任意的社交平台
-     **/
+    NSLog(@"%@",error);
+}
+- (void)serverDidStop:(PSWebSocketServer *)server {
+    NSLog(@"serverDidStop");
     
-    //1、创建分享参数（必要）
-    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+}
+
+- (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
+}
+
+#pragma 接收到指令 要干啥
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didReceiveMessage:(id)message {
+
+    [self.server stop];
     
-    NSArray* imageArray = @[[UIImage imageNamed:@"right stick"]];
-    [shareParams SSDKSetupShareParamsByText:@"天天赚钱"
-                                     images:imageArray
-                                        url:[NSURL URLWithString:@"http://www.shoujizhuan.com.cn"]
-                                      title:@"手机赚"
-                                       type:SSDKContentTypeAuto];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"KeyViewController"];
     
-    //1.2、自定义分享平台（非必要）
-    NSMutableArray *activePlatforms = [NSMutableArray arrayWithArray:[ShareSDK activePlatforms]];
-    //添加一个自定义的平台（非必要）
-    SSUIShareActionSheetCustomItem *item = [SSUIShareActionSheetCustomItem itemWithIcon:[UIImage imageNamed:@"Icon.png"]
-                                                                                  label:@"自定义"
-                                                                                onClick:^{
-                                                                                    
-                                                                                    //自定义item被点击的处理逻辑
-                                                                                    NSLog(@"=== 自定义item被点击 ===");
-                                                                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"自定义item被点击"
-                                                                                                                                        message:nil
-                                                                                                                                       delegate:nil
-                                                                                                                              cancelButtonTitle:@"确定"
-                                                                                                                              otherButtonTitles:nil];
-                                                                                    [alertView show];
-                                                                                }];
-    [activePlatforms addObject:item];
-    //2、分享
-    [ShareSDK showShareActionSheet:view
-                             items:nil
-                       shareParams:shareParams
-               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                   
-                   switch (state) {
-                           
-                       case SSDKResponseStateBegin:
-                       {
-                           //                           [theController showLoadingView:YES];
-                           break;
-                       }
-                       case SSDKResponseStateSuccess:
-                       {
-                           //Facebook Messenger、WhatsApp等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
-                           if (platformType == SSDKPlatformTypeFacebookMessenger)
-                           {
-                               break;
-                           }
-                           
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
-                           break;
-                       }
-                       case SSDKResponseStateFail:
-                       {
-                           if (platformType == SSDKPlatformTypeSMS && [error code] == 201)
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:@"失败原因可能是：1、短信应用没有设置帐号；2、设备不支持短信应用；3、短信应用在iOS 7以上才能发送带附件的短信。"
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               break;
-                           }
-                           else if(platformType == SSDKPlatformTypeMail && [error code] == 201)
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:@"失败原因可能是：1、邮件应用没有设置帐号；2、设备不支持邮件应用；"
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               break;
-                           }
-                           else
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:[NSString stringWithFormat:@"%@",error]
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               break;
-                           }
-                           break;
-                       }
-                       case SSDKResponseStateCancel:
-                       {
-                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                               message:nil
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"确定"
-                                                                     otherButtonTitles:nil];
-                           [alertView show];
-                           break;
-                       }
-                       default:
-                           break;
-                   }
-               }];
-    
-    //另附：设置跳过分享编辑页面，直接分享的平台。
-    //        SSUIShareActionSheetController *sheet = [ShareSDK showShareActionSheet:view
-    //                                                                         items:nil
-    //                                                                   shareParams:shareParams
-    //                                                           onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-    //                                                           }];
-    //
-    //        //删除和添加平台示例
-    //        [sheet.directSharePlatforms removeObject:@(SSDKPlatformTypeWechat)];
-    //        [sheet.directSharePlatforms addObject:@(SSDKPlatformTypeSinaWeibo)];
-    
+    keyVC = [[KeyViewController alloc] init];
+    keyVC.view.frame = [UIScreen mainScreen].bounds;
+    [self.view addSubview:keyVC.view];
+}
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didFailWithError:(NSError *)error {
+}
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
 }
 
 

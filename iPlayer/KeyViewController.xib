@@ -9,6 +9,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyViewController">
             <connections>
                 <outlet property="backBtn" destination="SHx-Zb-L4c" id="oNP-ul-OKF"/>
+                <outlet property="contentLabel" destination="73h-9i-pjd" id="bQq-id-4GG"/>
+                <outlet property="titleLabel" destination="EUh-Mk-phu" id="Pws-w8-JbJ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="btb-OQ-OHL"/>
             </connections>
         </placeholder>

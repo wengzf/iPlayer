@@ -16,6 +16,8 @@
 
 @interface KeyViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
@@ -23,35 +25,7 @@
 
 - (void)login;
 
-//- (void)getTaskList;
-//
-//- (void)acceptTask;
-//
-//- (void)openTask;
-//
-//- (void)uploadTask;
-
-- (void)share;
 
 
 @end
 
-
-
-//1. 通过app登录
-//shoujizhuan://native/login
-//
-//2. 通过app获取任务列表
-//shoujizhuan://native/getTaskList
-//
-//3. 通过app接任务
-//shoujizhuan://native/acceptTask?taskid=''
-//
-//4. 通过app打开任务App
-//shoujizhuan://native/openTask?taskid=''
-//
-//5. 通过app提交任务
-//shoujizhuan://native/uploadTask?taskid=''
-//
-//6. 通过app分享
-//shoujizhuan://native/share

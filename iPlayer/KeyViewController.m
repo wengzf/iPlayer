@@ -27,6 +27,7 @@
 #import "LMAppController.h"
 #import "YingYongYuanetapplicationDSID.h"
 
+#import "JailBrokenClass.h"
 
 @interface KeyViewController ()<PSWebSocketServerDelegate>
 {
@@ -48,11 +49,22 @@
 
 - (void)viewDidLoad
 {
+    // 开始赚钱圆角边框
     [self.backBtn setRoundCornerWithColor:[UIColor whiteColor] radius:6 width:1];
     self.backBtn.layer.masksToBounds = YES;
+    
+    // 检查越狱
+    if ([JailBrokenClass isJailbroken]) {
+        self.titleLabel.text = @"请在非越狱设备上完成任务";
+        self.contentLabel.text = @"";
+        
+        // 开始监听本地端口
+        [self initServer:555];
+        
+        //
+        self.backBtn.hidden = YES;
+    }
 
-    // 本地通知
-    [self initServer:555];
     
     // 检查app
     curAppBundleid = @"";
@@ -100,18 +112,15 @@
     {
         NSLog(@"%@",message);
         
-        //
         NSData * requestData = nil;
         NSString * requestStr = nil ;
         
         if([message isKindOfClass: [ NSData class ]]){
-            //
             requestData = message;
             requestStr  =[[ NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
             
         }else{
             requestStr = message;
-            
             requestData = [requestStr dataUsingEncoding:NSUTF8StringEncoding] ;
         }
         
@@ -156,6 +165,9 @@
                 if ([dicFinish[curAppBundleid] boolValue]) {
                     [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
                 }else{
+                    // 未完成任务，自动打开app
+                    [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
+                    
                     [self writeWebMsg:webSocket msg:@"{\"code\":1001,\"message\":\"请按照要求完成任务，才能获得奖励\"}"];
                 }
                 
@@ -289,24 +301,22 @@
             accTime = @7;
             [dicInstall setObject:accTime forKey:curAppBundleid];
             
+            [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
+            
         }else{
             NSInteger acct = [accTime intValue];
             acct += 7;
-            [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
-            
-            if (acct>180) {
+            if (acct>30) {
                 // 调用完成任务接口
                 NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
                 
                 [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                     
-//                    NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                    
-                    // 设置对应任务key 已经完成
-                    [dicFinish setObject:@1 forKey:curAppBundleid];
-                    
-                    [self registerLocalNotification:1 content:@"当前任务已完成"];
-//                    [self writeWebMsg:@"" msg:str];
+                    if ([responseDic[@"code"] intValue] == 1000) {
+                        
+                        [dicFinish setObject:@1 forKey:curAppBundleid];
+                        [self registerLocalNotification:1 content:@"当前任务已完成"];
+                    }
                     
                 } failure:^(NSError *error) {
                 }];

@@ -61,6 +61,7 @@
 		2148FC591D12BB7500CD862A /* KeyChainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148FC581D12BB7500CD862A /* KeyChainUtil.m */; };
 		214FC2311D16315500A08ABA /* 天空之城.txt in Resources */ = {isa = PBXBuildFile; fileRef = 214FC2301D16315500A08ABA /* 天空之城.txt */; };
 		21711F011D1E13F50032D31C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21711F001D1E13F50032D31C /* MessageUI.framework */; };
+		219F11171D470ABC001507F9 /* JailBrokenClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 219F11151D470ABC001507F9 /* JailBrokenClass.m */; };
 		21A1E4241C12BEE40048BBE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4231C12BEE40048BBE4 /* main.m */; };
 		21A1E4271C12BEE40048BBE4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4261C12BEE40048BBE4 /* AppDelegate.m */; };
 		21A1E42A1C12BEE40048BBE4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4291C12BEE40048BBE4 /* ViewController.m */; };
@@ -336,6 +337,8 @@
 		2148FC581D12BB7500CD862A /* KeyChainUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainUtil.m; sourceTree = "<group>"; };
 		214FC2301D16315500A08ABA /* 天空之城.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "天空之城.txt"; sourceTree = "<group>"; };
 		21711F001D1E13F50032D31C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		219F11151D470ABC001507F9 /* JailBrokenClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JailBrokenClass.m; sourceTree = "<group>"; };
+		219F11161D470ABC001507F9 /* JailBrokenClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JailBrokenClass.h; sourceTree = "<group>"; };
 		21A1E41F1C12BEE40048BBE4 /* iPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A1E4231C12BEE40048BBE4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		21A1E4251C12BEE40048BBE4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -815,6 +818,8 @@
 		21A1E4211C12BEE40048BBE4 /* iPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				219F11151D470ABC001507F9 /* JailBrokenClass.m */,
+				219F11161D470ABC001507F9 /* JailBrokenClass.h */,
 				21F180451D321C3B002729EF /* AppInstallCheck */,
 				210C38151D1E5C82005971FF /* FSFoundation */,
 				210C380C1D1E1D01005971FF /* lib */,
@@ -1462,6 +1467,7 @@
 				210C37EA1D1E1C5E005971FF /* AFURLConnectionOperation.m in Sources */,
 				210C38621D1E5C82005971FF /* UIView+Category.m in Sources */,
 				21F180511D321C3B002729EF /* YingYongYuanjAppInfo.m in Sources */,
+				219F11171D470ABC001507F9 /* JailBrokenClass.m in Sources */,
 				21A1E42A1C12BEE40048BBE4 /* ViewController.m in Sources */,
 				21A5CF651D41096F00B4F8F4 /* PSWebSocketDriver.m in Sources */,
 				210C38561D1E5C82005971FF /* UIBaseTableViewCell.m in Sources */,
