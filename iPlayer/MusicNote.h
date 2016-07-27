@@ -16,7 +16,7 @@
 // 调性
 @property (nonatomic, assign) int pitchSymbol;              // 0=正常  1=降调  2=升调
 
-@property (nonatomic, assign) int pitchLevel;                // 默认为中音5
+@property (nonatomic, assign) int pitchLevel;                // 默认为中音 5
 @property (nonatomic, assign) int pitchName;                 // 1=C  2=D ...
 
 
