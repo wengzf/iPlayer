@@ -31,14 +31,10 @@
 
 @interface KeyViewController ()<PSWebSocketServerDelegate>
 {
-    // 检查app安装
-    NSTimer *instalCheckTimer;
     NSString *curAppBundleid;        // 需要检查的bundleid列表
     NSString *curTaskid;
     NSString *curAppName;
     NSDate *curAppOpenTime;             // 任务打开时间
-    NSMutableDictionary *dicInstall;    // 完成时间
-    NSMutableDictionary *dicFinish;     // 完成标记
     
 }
 
@@ -69,9 +65,19 @@
         // 检查app
         curAppBundleid = @"";
         curTaskid = @"";
-        instalCheckTimer = [NSTimer scheduledTimerWithTimeInterval:7 target:self selector:@selector(instalCheckTimerAction) userInfo:nil repeats:YES];
-        dicInstall = [NSMutableDictionary dictionary];
-        dicFinish = [NSMutableDictionary dictionary];
+        
+    }
+    
+    
+    // 调用登录接口
+    
+    if (Global.userID == nil){
+        [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
+            
+            Global.token = dic[@"data"][@"token"];
+            Global.userID = dic[@"data"][@"userid"];
+            [Global saveUserInfo];
+        }];
     }
 
     
@@ -150,12 +156,20 @@
                     Global.userID = dic[@"data"][@"userid"];
                     [Global saveUserInfo];
                     
-                    
                     NSString *str = [NSString stringWithFormat:@"{\"code\":1000, \"data\":{\"token\":\"%@\"}}",Global.token];
                     [self writeWebMsg:webSocket msg:str];
-                    
                 }];
                 
+            }else if ([path isEqualToString:@"c/user/switchAccount"]) {
+                // 切换账号
+                Global.token = params[@"token"];
+                Global.userID = params[@"userid"];
+                [Global saveUserInfo];
+                
+                curAppBundleid = @"";
+                curTaskid = @"";
+                curAppOpenTime = nil;
+
             }else if ([path isEqualToString:@"c/task/copyKeywords"]) {
                 // 复制关键字
                 UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -166,6 +180,7 @@
             }else if ([path isEqualToString:@"c/task/openApp"]) {
                 // 检查是否安装app，并打开
                 
+                curAppBundleid = params[@"bundleid"];
                 NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:curAppBundleid];
                 if (state) {
                     curAppOpenTime = [NSDate date];
@@ -181,28 +196,27 @@
                 // 检查是否成功完成任务
                 int time = [[NSDate date] timeIntervalSinceDate:curAppOpenTime];
                 
-                if (time<180) {
+                if (time<60) {
+                    
+                    NSString *content = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"请按照要求再试玩%d秒\"}", 180-time];
+                    [self writeWebMsg:webSocket msg:content];
                     
                     // 未完成任务，自动打开app
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         
                         [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
-                        
-                        NSString *content = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"请按照要求再试玩%d秒\"}", 180-time];
-                        [self writeWebMsg:webSocket msg:content];
                         
                     });
                 }else{
                     // 调用完成任务接口
                     NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
-                    
+                    curTaskid = params[@"taskid"];
                     [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                         
                         if ([responseDic[@"code"] intValue] == 1000) {
                             
                             [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
                             
-                            [dicFinish setObject:@1 forKey:curAppBundleid];
                             [self registerLocalNotification:1 content:@"当前任务已完成"];
                         }
                         
@@ -263,11 +277,6 @@
                         curAppName = responseDic[@"data"][@"app_name"];
                         curTaskid = parameterDic[@"taskid"];
                     }else if ([path isEqualToString:@"c/task/drop"]) {
-                        
-                        if (curAppBundleid) {
-                            [dicInstall removeObjectForKey:curAppBundleid];
-                            [dicFinish removeObjectForKey:curTaskid];
-                        }
                         
                         curAppBundleid = @"";
                         curTaskid = @"";
