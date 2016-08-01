@@ -150,7 +150,6 @@
                 
             }else if ([path isEqualToString:@"c/app/login"]) {
                 // 登录
-                // 调用登录接口
                 [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
                     Global.token = dic[@"data"][@"token"];
                     Global.userID = dic[@"data"][@"userid"];
@@ -160,16 +159,6 @@
                     [self writeWebMsg:webSocket msg:str];
                 }];
                 
-            }else if ([path isEqualToString:@"c/user/switchAccount"]) {
-                // 切换账号
-                Global.token = params[@"token"];
-                Global.userID = params[@"userid"];
-                [Global saveUserInfo];
-                
-                curAppBundleid = @"";
-                curTaskid = @"";
-                curAppOpenTime = nil;
-
             }else if ([path isEqualToString:@"c/task/copyKeywords"]) {
                 // 复制关键字
                 UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -273,13 +262,26 @@
                     NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
                     NSLog(@"%@  message:%@",str,responseDic[@"message"]);
                     if ([path isEqualToString:@"c/task/receive"]) {
+                        // 做任务
                         curAppBundleid = responseDic[@"data"][@"bundle_id"];
                         curAppName = responseDic[@"data"][@"app_name"];
                         curTaskid = parameterDic[@"taskid"];
+                        
                     }else if ([path isEqualToString:@"c/task/drop"]) {
+                        // 放弃任务
+                        curAppBundleid = @"";
+                        curTaskid = @"";
+                        
+                    }else if ([path isEqualToString:@"c/user/switchAccount"]) {
+                        
+                        // 切换账号
+                        Global.token = params[@"token"];
+                        Global.userID = params[@"userid"];
+                        [Global saveUserInfo];
                         
                         curAppBundleid = @"";
                         curTaskid = @"";
+                        curAppOpenTime = nil;
                     }
                     
                     [self writeWebMsg:webSocket msg:str];
