@@ -43,6 +43,11 @@
 #import "KeyViewController.h"
 
 
+
+#import "JPUSHService.h"
+
+
+
 @interface AppDelegate ()
 {
     AVAudioPlayer *player;
@@ -53,21 +58,6 @@
 @end
 
 @implementation AppDelegate
-
-- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    if (launchOptions ) {
-        
-        
-        NSString *str = launchOptions.description;
-        
-        if (str) {
-            
-            [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"launch"];
-        }
-    }
-    return YES;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -112,6 +102,46 @@
         NSString *appSecret = @"2ec864e58957d6f61bcc705b80324168";
         [SMSSDK registerApp:appKey withSecret:appSecret];
     }
+    
+    
+    
+    // 极光推送初始化
+    {
+        //        dc0dddfc8beb393b21fa6cbe      AppKey
+        //        57a325412acebaee091c3eaf      MasterSecret
+        
+        NSString *advertisingId = nil;
+        
+        
+        static NSString *appKey = @"dc0dddfc8beb393b21fa6cbe";
+        static NSString *channel = @"Publish channel";
+        static BOOL isProduction = FALSE;
+        
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+            //可以添加自定义categories
+            [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                              UIUserNotificationTypeSound |
+                                                              UIUserNotificationTypeAlert)
+                                                  categories:nil];
+        } else {
+            //categories 必须为nil
+            [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                              UIRemoteNotificationTypeSound |
+                                                              UIRemoteNotificationTypeAlert)
+                                                  categories:nil];
+        }
+        
+        //如不需要使用IDFA，advertisingIdentifier 可为nil
+        [JPUSHService setupWithOption:launchOptions appKey:appKey
+                              channel:channel
+                     apsForProduction:isProduction
+                advertisingIdentifier:advertisingId];
+        
+        
+        
+    }
+    
+    
     // 播放音频，开启永久后台模式
     [self playAudio];
 
@@ -277,25 +307,39 @@
     return YES;
 }
 
-//1. 通过app登录
-//shoujizhuan://native/login
-//
-//2. 通过app获取任务列表
-//shoujizhuan://native/getTaskList
-//
-//3. 通过app接任务
-//shoujizhuan://native/acceptTask?taskid=''
-//
-//4. 通过app打开任务App
-//shoujizhuan://native/openTask?taskid=''
-//
-//5. 通过app提交任务
-//shoujizhuan://native/uploadTask?taskid=''
-//
-//6. 通过app分享
-//shoujizhuan://native/share
 
+#pragma mark - 极光推送
 
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"Device Token: %@", deviceToken]);
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"收到通知:%@", userInfo);
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:
+(void (^)(UIBackgroundFetchResult))completionHandler {
+    [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"收到通知:%@", userInfo);
+    
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification {
+    [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
+}
 
 
 

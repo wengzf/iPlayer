@@ -224,17 +224,29 @@
                 
             }else if ([path isEqualToString:@"c/sms/send"]) {
                 // 发送短信
-                NSString *mobile = params[@"mobile"];
-                [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:mobile zone:@"86" customIdentifier:nil result:^(NSError *error) {
+                
+                static NSDate *lastTime;
+                
+                if (lastTime && [[NSDate date] timeIntervalSinceDate:lastTime]<30) {
                     
-                    if (!error) {
-                        [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
-                    }else{
-                        NSString *str = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"%@\"}",error.userInfo[@"commitVerificationCode"]];
-                        [self writeWebMsg:webSocket msg:str];
-                    }
+                    NSString *str = @"{\"code\":1001,\"message\":\"请稍后再试\"}";
+                    [self writeWebMsg:webSocket msg:str];
                     
-                }];
+                }else{
+                    lastTime = [NSDate date];
+                    
+                    NSString *mobile = params[@"mobile"];
+                    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:mobile zone:@"86" customIdentifier:nil result:^(NSError *error) {
+                        
+                        if (!error) {
+                            [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
+                        }else{
+                            NSString *str = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"%@\"}",error.userInfo[@"commitVerificationCode"]];
+                            [self writeWebMsg:webSocket msg:str];
+                        }
+                        
+                    }];
+                }
                 
             }else if ([path isEqualToString:@"c/sms/valid"]) {
                 // 发送短信
@@ -407,25 +419,14 @@
                                        type:SSDKContentTypeAuto];
     
     //1.2、自定义分享平台（非必要）
-    NSMutableArray *activePlatforms = [NSMutableArray arrayWithArray:[ShareSDK activePlatforms]];
-    //添加一个自定义的平台（非必要）
-    SSUIShareActionSheetCustomItem *item = [SSUIShareActionSheetCustomItem itemWithIcon:[UIImage imageNamed:@"Icon.png"]
-                                                                                  label:@"自定义"
-                                                                                onClick:^{
-                                                                                    
-                                                                                    //自定义item被点击的处理逻辑
-                                                                                    NSLog(@"=== 自定义item被点击 ===");
-                                                                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"自定义item被点击"
-                                                                                                                                        message:nil
-                                                                                                                                       delegate:nil
-                                                                                                                              cancelButtonTitle:@"确定"
-                                                                                                                              otherButtonTitles:nil];
-                                                                                    [alertView show];
-                                                                                }];
-    [activePlatforms addObject:item];
+    NSArray *activePlatforms = @[@(SSDKPlatformSubTypeWechatTimeline),
+                                 @(SSDKPlatformSubTypeQZone),
+                                 @(SSDKPlatformTypeSinaWeibo)
+                                      ];
+    
     //2、分享
     [ShareSDK showShareActionSheet:view
-                             items:nil
+                             items:activePlatforms
                        shareParams:shareParams
                onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
                    

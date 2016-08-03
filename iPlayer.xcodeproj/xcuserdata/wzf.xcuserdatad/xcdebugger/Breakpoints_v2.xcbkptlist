@@ -130,11 +130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/AppDelegate.m"
-            timestampString = "491039871.055425"
+            timestampString = "491845494.26801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "-checkURL"
             landmarkType = "5">
          </BreakpointContent>
@@ -146,11 +146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/AppDelegate.m"
-            timestampString = "491039871.055425"
+            timestampString = "491845494.26801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-checkURL"
             landmarkType = "5">
          </BreakpointContent>
@@ -162,27 +162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/AppDelegate.m"
-            timestampString = "491039871.055425"
+            timestampString = "491845494.26801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
-            landmarkName = "@implementation AppDelegate"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/AppDelegate.m"
-            timestampString = "491039871.055425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "@implementation AppDelegate"
             landmarkType = "3">
          </BreakpointContent>
@@ -194,11 +178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491562881.407278"
+            timestampString = "491847072.947744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "-showShareActionSheet:source:"
             landmarkType = "5">
          </BreakpointContent>
@@ -210,27 +194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491562881.407278"
+            timestampString = "491847072.947744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
-            landmarkName = "-showShareActionSheet:source:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491562881.407278"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "-registerLocalNotification:content:"
             landmarkType = "5">
          </BreakpointContent>
@@ -258,11 +226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491562881.407278"
+            timestampString = "491847072.947744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-backBtnClked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -293,22 +261,6 @@
             timestampString = "491562881.407278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "-server:webSocket:didReceiveMessage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iPlayer/KeyViewController.m"
-            timestampString = "491562881.407278"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
             endingLineNumber = "198"
             landmarkName = "-server:webSocket:didReceiveMessage:"
@@ -322,7 +274,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491562882.483618"
+                  timestampString = "491845507.560167"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "198"
@@ -337,7 +289,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491562882.483753"
+                  timestampString = "491845507.560321"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "198"
@@ -352,7 +304,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491562882.483869"
+                  timestampString = "491845507.560459"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "198"
@@ -417,7 +369,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491562882.485786"
+                  timestampString = "491845507.562688"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "169"
@@ -432,7 +384,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491562882.485907"
+                  timestampString = "491845507.562828"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "169"
@@ -529,7 +481,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491562882.488748"
+                  timestampString = "491845507.565805"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "153"
@@ -544,7 +496,7 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/KeyViewController.m"
-                  timestampString = "491562882.488859"
+                  timestampString = "491845507.565922"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "153"
