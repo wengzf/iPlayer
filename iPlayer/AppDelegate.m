@@ -61,28 +61,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    NSDictionary *ggStr=[[NSUserDefaults standardUserDefaults] objectForKey:@"launch"];
-    if (ggStr) {
-        
-        NSLog(@"%@",ggStr);
-    }
-    if (launchOptions ) {
 
-        NSString *str = launchOptions.description;
-        
-        if (str) {
-            
-            [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"launch"];
-        }
-    }
-    
-    
     // 从keychain中获取 IDFA
     NSString *idfa = [KeyChainUtil readKeyChain:@"idfa"];
     if (idfa == nil || [idfa isEqual:[NSNull null]]) {
-        NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
+        idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+#else
+        CFUUIDRef deviceId = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef deviceIdStringRef = CFUUIDCreateString(NULL, deviceId);
+        idfa = (NSString *)CFBridgingRelease(CFStringCreateCopy(NULL, deviceIdStringRef));
+        CFRelease(deviceId);
+        CFRelease(deviceIdStringRef);
+#endif
         [KeyChainUtil saveKeyChain:idfa forKey:@"idfa"];
     }
     
