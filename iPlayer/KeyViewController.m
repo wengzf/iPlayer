@@ -36,6 +36,7 @@
     NSString *curAppName;
     NSDate *curAppOpenTime;             // 任务打开时间
     
+    NSMutableDictionary *appOpenTimeDic;  // 任务打开时间字典
 }
 
 @property (nonatomic, strong) PSWebSocketServer *server;
@@ -48,40 +49,47 @@
 - (void)viewDidLoad
 {
     // 开始赚钱圆角边框
-    [self.backBtn setRoundCornerWithColor:[UIColor whiteColor] radius:6 width:1];
-    self.backBtn.layer.masksToBounds = YES;
+    [self.startMakeMoneyBtn setRoundCornerWithColor:[UIColor whiteColor] radius:6 width:1];
+    self.startMakeMoneyBtn.layer.masksToBounds = YES;
     
-    // 检查越狱
-    if ([JailBrokenClass isJailbroken]) {
-        self.titleLabel.text = @"请在非越狱设备上完成任务";
-        self.contentLabel.text = @"";
-        
-        //
-        self.backBtn.hidden = YES;
-    }else{
-        // 开始监听本地端口
-        [self initServer:555];
-        
-        // 检查app
-        curAppBundleid = @"";
-        curTaskid = @"";
-        
-    }
-    
-    
-    // 调用登录接口
-    
-    if (Global.userID == nil){
-        [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
-            
-            Global.token = dic[@"data"][@"token"];
-            Global.userID = dic[@"data"][@"userid"];
-            [Global saveUserInfo];
-        }];
-    }
-
-    
+    [self startMonitor];
 }
+- (void)startMonitor
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        appOpenTimeDic = [NSMutableDictionary dictionary];
+        
+        // 检查越狱
+        if ([JailBrokenClass isJailbroken]) {
+            self.titleLabel.text = @"请在非越狱设备上完成任务";
+            self.contentLabel.text = @"";
+            
+            //
+            self.startMakeMoneyBtn.hidden = YES;
+        }else{
+            // 开始监听本地端口
+            [self initServer:555];
+            
+            // 检查app
+            curAppBundleid = @"";
+            curTaskid = @"";
+        }
+        
+        // 调用登录接口
+        if (Global.userID == nil){
+            [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
+                
+                Global.token = dic[@"data"][@"token"];
+                Global.userID = dic[@"data"][@"userid"];
+                [Global saveUserInfo];
+            }];
+        }
+    });
+}
+
+
 -(void)initServer:(int) port{
     
     self.server = [PSWebSocketServer serverWithHost:@"127.0.0.1" port:port];
@@ -98,23 +106,18 @@
         //        [[NSNotificationCenter defaultCenter]postNotificationName:@"changeLabel" object:nil];
     });
 }
+- (void)server:(PSWebSocketServer *)server didFailWithError:(NSError *)error
+{
+    
+}
 - (void)serverDidStop:(PSWebSocketServer *)server {
     NSLog(@"serverDidStop");
     
-//    errorCount++;
-//    if(errorCount > 3){
-//        //连接失败
-//        UIAlertView * alertView=[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"服务器连接超时，请重新打开" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-//        [alertView show];
-//        return ;
-//    }
-    
     [self initServer:555];
-    
 }
-
 - (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
 }
+
 #pragma 接收到指令 要干啥
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didReceiveMessage:(id)message {
     @try
@@ -168,11 +171,12 @@
                 
             }else if ([path isEqualToString:@"c/task/openApp"]) {
                 // 检查是否安装app，并打开
-                
                 curAppBundleid = params[@"bundleid"];
                 NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:curAppBundleid];
                 if (state) {
+                    
                     curAppOpenTime = [NSDate date];
+                    appOpenTimeDic[curAppBundleid] = curAppOpenTime;
                     
                     [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
                     
@@ -182,37 +186,7 @@
                 }
                 
             }else if ([path isEqualToString:@"c/task/complete"]) {
-                // 检查是否成功完成任务
-                int time = [[NSDate date] timeIntervalSinceDate:curAppOpenTime];
-                
-                if (time<60) {
-                    
-                    NSString *content = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"请按照要求再试玩%d秒\"}", 180-time];
-                    [self writeWebMsg:webSocket msg:content];
-                    
-                    // 未完成任务，自动打开app
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        
-                        [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
-                        
-                    });
-                }else{
-                    // 调用完成任务接口
-                    NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
-                    curTaskid = params[@"taskid"];
-                    [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
-                        
-                        if ([responseDic[@"code"] intValue] == 1000) {
-                            
-                            [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
-                            
-                            [self registerLocalNotification:1 content:@"当前任务已完成"];
-                        }
-                        
-                    } failure:^(NSError *error) {
-                    }];
-                }
-                
+                [self getRewardsWithWebSocket:webSocket params:params];
             }else if ([path isEqualToString:@"c/signin/share"]) {
                 // 分享接口
                 [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.FireShadowTest"];
@@ -224,7 +198,6 @@
                 
             }else if ([path isEqualToString:@"c/sms/send"]) {
                 // 发送短信
-                
                 static NSDate *lastTime;
                 
                 if (lastTime && [[NSDate date] timeIntervalSinceDate:lastTime]<30) {
@@ -236,7 +209,7 @@
                     lastTime = [NSDate date];
                     
                     NSString *mobile = params[@"mobile"];
-                    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS phoneNumber:mobile zone:@"86" customIdentifier:nil result:^(NSError *error) {
+                    [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodVoice phoneNumber:mobile zone:@"86" customIdentifier:nil result:^(NSError *error) {
                         
                         if (!error) {
                             [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
@@ -319,9 +292,66 @@
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
 }
 
+- (void)getRewardsWithWebSocket:(PSWebSocket *)webSocket params:(NSDictionary *)params
+{
+    // 检查app是否安装
+    curAppBundleid = params[@"bundleid"];
+    NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:curAppBundleid];
+    if (state) {
+        
+        curAppOpenTime = appOpenTimeDic[curAppBundleid];
+        if (curAppOpenTime == nil){
+            // 未打开过
+            appOpenTimeDic[curAppBundleid] = [NSDate date];
+            
+            [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
+            
+            NSString *content = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"请先按照要求试玩App\"}"];
+            [self writeWebMsg:webSocket msg:content];
+        }else{
+            
+            // 检查是否成功完成任务
+            int time = [[NSDate date] timeIntervalSinceDate:curAppOpenTime];
+            
+            if (time<60) {
+                
+                NSString *content = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"请按照要求再试玩%d秒\"}", 180-time];
+                [self writeWebMsg:webSocket msg:content];
+                
+                // 未完成任务，自动打开app
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
+                    
+                });
+            }else{
+                // 调用完成任务接口
+                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
+                curTaskid = params[@"taskid"];
+                [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
+                    
+                    if ([responseDic[@"code"] intValue] == 1000) {
+                        
+                        [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
+                        
+                        [self registerLocalNotification:1 content:@"当前任务已完成"];
+                    }
+                    
+                } failure:^(NSError *error) {
+                }];
+            }
+        }
+    }else{
+        [self writeWebMsg:webSocket msg:@"{\"code\":1001,\"message\":\"请下载任务APP\"}"];
+    }
+    
+
+
+}
+
 #pragma mark - 事件
 // 跳到网页端登录
-- (IBAction)backBtnClked:(id)sender {
+- (IBAction)startMakeMoneyBtnClked:(id)sender {
     // 调用登录接口
     [self.view showLoading];
     [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
@@ -515,12 +545,6 @@
                        }
                        case SSDKResponseStateCancel:
                        {
-                           //                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                           //                                                                               message:nil
-                           //                                                                              delegate:nil
-                           //                                                                     cancelButtonTitle:@"确定"
-                           //                                                                     otherButtonTitles:nil];
-                           //                           [alertView show];
                            break;
                        }
                        default:

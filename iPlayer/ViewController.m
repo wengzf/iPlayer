@@ -83,23 +83,30 @@
 //                   @"爱的罗曼斯",
 //                   @"赛马"
                    ];
-    
-
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
         // 判断是否打开助手
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyViewController"]) {
-            keyVC = [[KeyViewController alloc] init];
-            keyVC.view.frame = [UIScreen mainScreen].bounds;
-            [self.view addSubview:keyVC.view];
+            [self showKeyVC];
         }else{
         
-            [self initServer:555];
+            NSDictionary *parameterDic = @{@"idfa":Global.idfa};
+            [FSNetworkManagerDefaultInstance POST:@"c/app/open" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
+                
+                if ([responseDic[@"data"][@"show"] intValue] == 1)
+                {
+                    [self showKeyVC];
+                }else{
+                    
+                    [self initServer:555];
+                }
+                
+            } failure:^(NSError *error) {
+            }];
         }
     });
 }
@@ -116,6 +123,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showKeyVC
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+ 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"KeyViewController"];
+        
+        keyVC = [[KeyViewController alloc] init];
+        keyVC.view.frame = [UIScreen mainScreen].bounds;
+        [self.view addSubview:keyVC.view];
+    });
 }
 
 #pragma mark - 文件读取
@@ -322,7 +342,6 @@
 }
 - (void)serverDidStop:(PSWebSocketServer *)server {
     NSLog(@"serverDidStop");
-    
 }
 
 - (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
@@ -333,11 +352,9 @@
 
     [self.server stop];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"KeyViewController"];
-    
-    keyVC = [[KeyViewController alloc] init];
-    keyVC.view.frame = [UIScreen mainScreen].bounds;
-    [self.view addSubview:keyVC.view];
+    [self showKeyVC];
+
+    [keyVC startMonitor];
 }
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didFailWithError:(NSError *)error {
 }

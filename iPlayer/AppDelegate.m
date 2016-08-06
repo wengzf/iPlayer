@@ -65,7 +65,6 @@
     // 从keychain中获取 IDFA
     NSString *idfa = [KeyChainUtil readKeyChain:@"idfa"];
     if (idfa == nil || [idfa isEqual:[NSNull null]]) {
-
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
         idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 #else
@@ -77,13 +76,12 @@
 #endif
         [KeyChainUtil saveKeyChain:idfa forKey:@"idfa"];
     }
-    
     Global.idfa = idfa;
     [Global saveUserInfo];
 
     // 短信初始化  iplayer
 //    {
-//        NSString *appKey = @"154dc5b58f49c";                        // CashMaker
+//        NSString *appKey = @"154dc5b58f49c";
 //        NSString *appSecret = @"383194863edddfb73d5d3dab27730c34";
 //        [SMSSDK registerApp:appKey withSecret:appSecret];
 //    }
@@ -94,8 +92,6 @@
         NSString *appSecret = @"2ec864e58957d6f61bcc705b80324168";
         [SMSSDK registerApp:appKey withSecret:appSecret];
     }
-    
-    
     
     // 极光推送初始化
     {
@@ -128,16 +124,8 @@
                               channel:channel
                      apsForProduction:isProduction
                 advertisingIdentifier:advertisingId];
-        
-        
-        
     }
-    
-    
-    // 播放音频，开启永久后台模式
-    [self playAudio];
 
-    
     // 分享初始化
     {
         /**
@@ -201,6 +189,9 @@
               }];
     }
     
+    // 播放音频，开启永久后台模式
+    [self playAudio];
+    
     return YES;
 }
 
@@ -228,23 +219,6 @@
     [self saveContext];
 }
 
-
-- (void)checkURL
-{
-    NSInteger time = [[NSUserDefaults standardUserDefaults] integerForKey:@"openTime"];
-    if ([[UIApplication sharedApplication] canOpenURL:appScheme]) {
-        
-        printf("\n++++++++\n");
-        
-        [[UIApplication sharedApplication] openURL:appScheme];
-    }else{
-        time += 1;
-        [[NSUserDefaults standardUserDefaults] setInteger:time forKey:@"openTime"];
-        
-        
-        printf("\n---------\n");
-    }
-}
 // 永久后台模式
 - (void) playAudio
 {
@@ -289,16 +263,12 @@
 {
     NSString *urlStr = [url absoluteString];
     urlStr = [urlStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@",urlStr);
     return YES;
-    
 }
-
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     return YES;
 }
-
 
 #pragma mark - 极光推送
 

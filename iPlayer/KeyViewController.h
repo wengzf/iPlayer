@@ -10,7 +10,6 @@
 
 #import "YingYongYuanjAppInfo.h"
 
-
 #define ShareKeyViewController [KeyViewController shareInstance]
 
 
@@ -19,11 +18,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UIButton *startMakeMoneyBtn;
 
-- (IBAction)backBtnClked:(id)sender;
+- (IBAction)startMakeMoneyBtnClked:(id)sender;
+
 
 - (void)login;
+
+- (void)startMonitor;
+
+- (void)receiveMessage:(id)message;
 
 
 
