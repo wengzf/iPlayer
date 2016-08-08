@@ -36,7 +36,9 @@
 
 + (NSString *)packingURL:(NSString *) url
 {
-    NSString *baseURL = @"http://www.shoujizhuan.com.cn/";
+    NSString *baseURL = @"http://zhuanme.cc/";
+//    NSString *baseURL = @"http://www.shoujizhuan.com.cn/";    
+    
     return [baseURL stringByAppendingString:url];
 }
 

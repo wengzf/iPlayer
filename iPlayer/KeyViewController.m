@@ -313,7 +313,7 @@
             // 检查是否成功完成任务
             int time = [[NSDate date] timeIntervalSinceDate:curAppOpenTime];
             
-            if (time<60) {
+            if (time<180) {
                 
                 NSString *content = [NSString stringWithFormat:@"{\"code\":1001,\"message\":\"请按照要求再试玩%d秒\"}", 180-time];
                 [self writeWebMsg:webSocket msg:content];
