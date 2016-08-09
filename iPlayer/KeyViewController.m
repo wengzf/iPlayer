@@ -29,6 +29,8 @@
 
 #import "JailBrokenClass.h"
 
+#import "SocketClient.h"
+
 @interface KeyViewController ()<PSWebSocketServerDelegate>
 {
     NSString *curAppBundleid;        // 需要检查的bundleid列表
@@ -37,9 +39,16 @@
     NSDate *curAppOpenTime;             // 任务打开时间
     
     NSMutableDictionary *appOpenTimeDic;  // 任务打开时间字典
+    
+    NSTimer *checkTimer;
+    int countNum;
 }
 
+@property (nonatomic, strong) SocketClient *client;
+
 @property (nonatomic, strong) PSWebSocketServer *server;
+
+@property (weak, nonatomic) IBOutlet UILabel *checkTimerLabel;
 
 @end
 
@@ -51,8 +60,26 @@
     // 开始赚钱圆角边框
     [self.startMakeMoneyBtn setRoundCornerWithColor:[UIColor whiteColor] radius:6 width:1];
     self.startMakeMoneyBtn.layer.masksToBounds = YES;
-    
+ 
+    // 开始监听
     [self startMonitor];
+    
+    // 发送请求监听服务器是否在线
+    self.client = [[SocketClient alloc] init];
+    
+    // 发送请求
+    NSURL *url = [NSURL URLWithString:@""];
+    
+    // 在线时间统计，定时检查app server是否在线
+    checkTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkingTimerAction) userInfo:nil repeats:YES];
+}
+- (void)checkingTimerAction
+{
+    ++countNum;
+    self.checkTimerLabel.text = [NSString stringWithFormat:@"在线定时器 %d",countNum];
+    
+//    NSString *content = @"{\"path\":\"c/app/isopen\"}";
+//    [self.client sendMessage:content];
 }
 - (void)startMonitor
 {
@@ -245,7 +272,7 @@
                 [FSNetworkManagerDefaultInstance POST:path parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                     
                     NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                    NSLog(@"%@  message:%@",str,responseDic[@"message"]);
+                
                     if ([path isEqualToString:@"c/task/receive"]) {
                         // 做任务
                         curAppBundleid = responseDic[@"data"][@"bundle_id"];
@@ -254,6 +281,9 @@
                         
                     }else if ([path isEqualToString:@"c/task/drop"]) {
                         // 放弃任务
+                        [appOpenTimeDic removeObjectForKey:curAppBundleid];
+                        curAppOpenTime = nil;
+                        
                         curAppBundleid = @"";
                         curTaskid = @"";
                         
@@ -362,7 +392,7 @@
         [Global saveUserInfo];
         
         // 打开赚么网页
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.shoujizhuan.com.cn/load?token=%@",Global.token] ];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@load?token=%@",BaseURL,Global.token] ];
         [[UIApplication sharedApplication] openURL:url];
         
     }];
@@ -442,9 +472,10 @@
     
     NSString *content = @"试玩最新应用，日入几十，月入上千，让轻松赚钱变成习惯。";
     NSArray* imageArray = @[[UIImage imageNamed:@"icon_60"]];
+
     [shareParams SSDKSetupShareParamsByText:content
                                      images:imageArray
-                                        url:[NSURL URLWithString:@"http://shoujizhuan.me/"]
+                                        url:[NSURL URLWithString:BaseURL]
                                       title:@"有手机 随时赚外快"
                                        type:SSDKContentTypeAuto];
     
@@ -551,18 +582,6 @@
                            break;
                    }
                }];
-    
-    //另附：设置跳过分享编辑页面，直接分享的平台。
-    //        SSUIShareActionSheetController *sheet = [ShareSDK showShareActionSheet:view
-    //                                                                         items:nil
-    //                                                                   shareParams:shareParams
-    //                                                           onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-    //                                                           }];
-    //
-    //        //删除和添加平台示例
-    //        [sheet.directSharePlatforms removeObject:@(SSDKPlatformTypeWechat)];
-    //        [sheet.directSharePlatforms addObject:@(SSDKPlatformTypeSinaWeibo)];
-    
 }
 
 @end

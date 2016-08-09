@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyViewController">
             <connections>
+                <outlet property="checkTimerLabel" destination="P1y-YC-G26" id="zzM-Hz-ckp"/>
                 <outlet property="contentLabel" destination="73h-9i-pjd" id="bQq-id-4GG"/>
                 <outlet property="startMakeMoneyBtn" destination="SHx-Zb-L4c" id="MQZ-8A-Tc5"/>
                 <outlet property="titleLabel" destination="EUh-Mk-phu" id="Pws-w8-JbJ"/>
@@ -59,6 +60,15 @@
                         <constraint firstAttribute="height" constant="90" id="cTq-y1-EBL"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在线定时器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1y-YC-G26">
+                    <rect key="frame" x="125" y="327" width="70" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="mIa-fv-5Xi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.078431372550000003" green="0.58431372550000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -71,6 +81,9 @@
                 <constraint firstItem="73h-9i-pjd" firstAttribute="centerX" secondItem="EUh-Mk-phu" secondAttribute="centerX" id="OLp-06-quk"/>
                 <constraint firstItem="73h-9i-pjd" firstAttribute="top" secondItem="EUh-Mk-phu" secondAttribute="bottom" constant="1" id="Vw8-vv-qoR"/>
                 <constraint firstItem="EUh-Mk-phu" firstAttribute="centerX" secondItem="BPq-jm-tc8" secondAttribute="centerX" id="f6Y-PY-Prs"/>
+                <constraint firstItem="P1y-YC-G26" firstAttribute="centerX" secondItem="SHx-Zb-L4c" secondAttribute="centerX" id="gMK-un-3X0"/>
+                <constraint firstItem="SHx-Zb-L4c" firstAttribute="leading" secondItem="P1y-YC-G26" secondAttribute="trailing" constant="-48" id="j0M-kD-s4C"/>
+                <constraint firstItem="P1y-YC-G26" firstAttribute="top" secondItem="SHx-Zb-L4c" secondAttribute="bottom" constant="16" id="jTp-8b-KEK"/>
                 <constraint firstItem="SHx-Zb-L4c" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.2" id="oKL-PP-Vzp"/>
                 <constraint firstItem="BPq-jm-tc8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.6" id="y4s-Lk-3sc"/>
             </constraints>
@@ -80,9 +93,10 @@
                     <exclude reference="Mj9-SX-1Zx"/>
                     <exclude reference="11f-PP-2JC"/>
                     <exclude reference="NRo-o7-qUX"/>
+                    <exclude reference="j0M-kD-s4C"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-496" y="385"/>
+            <point key="canvasLocation" x="-420" y="376"/>
         </view>
     </objects>
     <resources>

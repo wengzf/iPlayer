@@ -27,7 +27,6 @@
 
         
             instance.networkingManager.requestSerializer.timeoutInterval = 10;
-        
         }
     }
     return instance;
@@ -36,10 +35,10 @@
 
 + (NSString *)packingURL:(NSString *) url
 {
-    NSString *baseURL = @"http://zhuanme.cc/";
+    
 //    NSString *baseURL = @"http://www.shoujizhuan.com.cn/";    
     
-    return [baseURL stringByAppendingString:url];
+    return  [BaseURL stringByAppendingString:url];
 }
 
 

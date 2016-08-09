@@ -9,6 +9,13 @@
 #ifndef GlobalDefine_h
 #define GlobalDefine_h
 
+// 正式环境
+//#define BaseURL @"http://www.zhuanme.cc/"
+
+// 测试环境
+#define BaseURL @"http://www.shoujizhuan.com.cn/"
+
+
 
 #define ApplicationLoginNotification    @"ApplicationLogin"
 #define ApplicztionLoginOutNotification @"ApplicztionLoginOut"

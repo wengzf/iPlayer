@@ -136,7 +136,7 @@
          *  如果您使用的时服务端托管平台信息时，第二、四项参数可以传入nil，第三项参数则根据服务端托管平台来决定要连接的社交SDK。
          */
         
-        [ShareSDK registerApp:@"88ff9736d7c0"
+        [ShareSDK registerApp:@"15ebd87594b1f"
               activePlatforms:@[
                                 @(SSDKPlatformTypeSinaWeibo),
                                 @(SSDKPlatformTypeWechat),

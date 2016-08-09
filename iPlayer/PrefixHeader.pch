@@ -14,6 +14,7 @@
 #import "MusicRule.h"
 #import "MusicNote.h"
 
+#import "GlobalDefine.h"
 
 #import "GlobalVar.h"           // 全局变量
 

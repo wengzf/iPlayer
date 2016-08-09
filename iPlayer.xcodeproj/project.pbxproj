@@ -60,6 +60,7 @@
 		2148FC551D12A33A00CD862A /* ALARM1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 2148FC541D12A33A00CD862A /* ALARM1.WAV */; };
 		2148FC591D12BB7500CD862A /* KeyChainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148FC581D12BB7500CD862A /* KeyChainUtil.m */; };
 		214FC2311D16315500A08ABA /* 天空之城.txt in Resources */ = {isa = PBXBuildFile; fileRef = 214FC2301D16315500A08ABA /* 天空之城.txt */; };
+		215626291D5A2771003B0EF7 /* SocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 215626281D5A2771003B0EF7 /* SocketClient.m */; };
 		21711F011D1E13F50032D31C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21711F001D1E13F50032D31C /* MessageUI.framework */; };
 		219F11171D470ABC001507F9 /* JailBrokenClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 219F11151D470ABC001507F9 /* JailBrokenClass.m */; };
 		21A1E4241C12BEE40048BBE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4231C12BEE40048BBE4 /* main.m */; };
@@ -288,6 +289,8 @@
 		2148FC571D12BB7500CD862A /* KeyChainUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainUtil.h; sourceTree = "<group>"; };
 		2148FC581D12BB7500CD862A /* KeyChainUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainUtil.m; sourceTree = "<group>"; };
 		214FC2301D16315500A08ABA /* 天空之城.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "天空之城.txt"; sourceTree = "<group>"; };
+		215626271D5A2771003B0EF7 /* SocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketClient.h; sourceTree = "<group>"; };
+		215626281D5A2771003B0EF7 /* SocketClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClient.m; sourceTree = "<group>"; };
 		21711F001D1E13F50032D31C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		219F11151D470ABC001507F9 /* JailBrokenClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JailBrokenClass.m; sourceTree = "<group>"; };
 		219F11161D470ABC001507F9 /* JailBrokenClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JailBrokenClass.h; sourceTree = "<group>"; };
@@ -739,6 +742,8 @@
 				21A1E4261C12BEE40048BBE4 /* AppDelegate.m */,
 				21A1E4281C12BEE40048BBE4 /* ViewController.h */,
 				21A1E4291C12BEE40048BBE4 /* ViewController.m */,
+				215626271D5A2771003B0EF7 /* SocketClient.h */,
+				215626281D5A2771003B0EF7 /* SocketClient.m */,
 				210C38101D1E3D5A005971FF /* KeyViewController.h */,
 				210C38111D1E3D5A005971FF /* KeyViewController.m */,
 				210C38131D1E3D6D005971FF /* KeyViewController.xib */,
@@ -1139,7 +1144,7 @@
 				TargetAttributes = {
 					21A1E41E1C12BEE40048BBE4 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 6T6K856R56;
+						DevelopmentTeam = 3HUUWY9C4G;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1314,6 +1319,7 @@
 				AD3848521D1A792200510DC5 /* README.md in Sources */,
 				210C38121D1E3D5A005971FF /* KeyViewController.m in Sources */,
 				21A1E4241C12BEE40048BBE4 /* main.m in Sources */,
+				215626291D5A2771003B0EF7 /* SocketClient.m in Sources */,
 				210C37EB1D1E1C5E005971FF /* AFURLRequestSerialization.m in Sources */,
 				210C37EE1D1E1C5E005971FF /* FSNetworkManager.m in Sources */,
 				210C384E1D1E5C82005971FF /* BaseModel.m in Sources */,
@@ -1480,7 +1486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhifang Weng (8W3ANPNN7J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Yonglibao Financial Information Service Co., Ltd.";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1508,9 +1514,9 @@
 					"$(PROJECT_DIR)/iPlayer/lib",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wzf.player;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yonglibao.FireShadowTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b53c63ff-7481-461c-8b6a-9ddb73d7d3cc";
+				PROVISIONING_PROFILE = "7fc2b5a1-d270-45ad-8b7d-a22c92fc4f9c";
 			};
 			name = Debug;
 		};
@@ -1520,7 +1526,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhifang Weng (8W3ANPNN7J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Yonglibao Financial Information Service Co., Ltd.";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1548,9 +1554,9 @@
 					"$(PROJECT_DIR)/iPlayer/lib",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wzf.player;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yonglibao.FireShadowTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b53c63ff-7481-461c-8b6a-9ddb73d7d3cc";
+				PROVISIONING_PROFILE = "7fc2b5a1-d270-45ad-8b7d-a22c92fc4f9c";
 			};
 			name = Release;
 		};
