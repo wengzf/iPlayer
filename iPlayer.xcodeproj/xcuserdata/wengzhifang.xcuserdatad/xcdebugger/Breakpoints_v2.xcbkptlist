@@ -83,61 +83,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iPlayer/Network/FSNetworkManager.m"
-            timestampString = "492317177.36491"
+            filePath = "iPlayer/KeyViewController.m"
+            timestampString = "492509732.559592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-POST:parameters:success:failure:"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-reopenServer"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FSNetworkManager POST:parameters:success:failure:]"
-                  moduleName = "iPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wengzhifang/Desktop/iPlayer/iPlayer/Network/FSNetworkManager.m"
-                  timestampString = "492317270.424522"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "272">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__52-[FSNetworkManager POST:parameters:success:failure:]_block_invoke"
-                  moduleName = "iPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wengzhifang/Desktop/iPlayer/iPlayer/Network/FSNetworkManager.m"
-                  timestampString = "492317270.424645"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iPlayer/Network/FSNetworkManager.m"
-            timestampString = "492317184.343992"
+            filePath = "iPlayer/SocketClient.m"
+            timestampString = "492505638.573861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-POST:parameters:success:failure:"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-webSocket:didReceiveMessage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -147,13 +115,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iPlayer/Network/FSNetworkManager.m"
-            timestampString = "492317185.244382"
+            filePath = "iPlayer/SocketClient.m"
+            timestampString = "492505659.540952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-POST:parameters:success:failure:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-webSocketDidOpen:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

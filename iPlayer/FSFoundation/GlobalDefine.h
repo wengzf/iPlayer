@@ -20,7 +20,7 @@
 #define ApplicationLoginNotification    @"ApplicationLogin"
 #define ApplicztionLoginOutNotification @"ApplicztionLoginOut"
 
-
+#define ReOpenServerNotification        @"ReOpenServerNotification"
 
 // 枚举类型定义
 // 全局常量定义

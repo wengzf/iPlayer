@@ -12,6 +12,9 @@
 
 
 @interface SocketClient : NSObject<PSWebSocketDelegate>
+{
+    BOOL flagRecerveMessage;
+}
 
 @property (nonatomic, strong) PSWebSocket *client;
 

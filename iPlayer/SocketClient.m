@@ -37,6 +37,19 @@
 #pragma mark -
 - (void)webSocketDidOpen:(PSWebSocket *)webSocket
 {
+    // 发送数据
+    NSString *content = @"{\"path\":\"c/app/isopen\"}";
+    [self sendMessage:content];
+
+    // 检查是否收到数据了
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if (!flagRecerveMessage) {
+            
+            // 发送重启了服务器请求
+            [[NSNotificationCenter defaultCenter] postNotificationName:ReOpenServerNotification object:nil];
+        }
+    });
     
 }
 - (void)webSocket:(PSWebSocket *)webSocket didFailWithError:(NSError *)error
@@ -65,8 +78,9 @@
     NSInteger status = [dict[@"code"] integerValue];
     if (status == 1000) {
         // 在线
+        flagRecerveMessage = YES;
         
-        
+        [[UIApplication sharedApplication].keyWindow showLoadingWithMessage:@"本地请求成功" hideAfter:1];
     }
 }
 - (void)webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean

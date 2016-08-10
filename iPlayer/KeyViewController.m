@@ -41,7 +41,10 @@
     NSMutableDictionary *appOpenTimeDic;  // 任务打开时间字典
     
     NSTimer *checkTimer;
+    NSDate *lastCheckDate;
     int countNum;
+    
+    int errNum;
 }
 
 @property (nonatomic, strong) SocketClient *client;
@@ -64,22 +67,37 @@
     // 开始监听
     [self startMonitor];
     
-    // 发送请求监听服务器是否在线
-    self.client = [[SocketClient alloc] init];
-    
-    // 发送请求
-    NSURL *url = [NSURL URLWithString:@""];
-    
     // 在线时间统计，定时检查app server是否在线
     checkTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkingTimerAction) userInfo:nil repeats:YES];
+    
+    // 注册重启服务器通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reopenServer) name:ReOpenServerNotification object:nil];
+    
+    // 注册app进入前台通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 - (void)checkingTimerAction
 {
     ++countNum;
     self.checkTimerLabel.text = [NSString stringWithFormat:@"在线定时器 %d",countNum];
+ 
     
-//    NSString *content = @"{\"path\":\"c/app/isopen\"}";
-//    [self.client sendMessage:content];
+    lastCheckDate = [NSDate date];
+    
+    // 发送请求监听服务器是否在线
+    if (countNum%5==0) {
+        
+        self.client = [[SocketClient alloc] init];
+        
+        return;
+    }
+
+        // 发送请求
+//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:555/ss"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+//        
+//    }];
 }
 - (void)startMonitor
 {
@@ -97,7 +115,7 @@
             self.startMakeMoneyBtn.hidden = YES;
         }else{
             // 开始监听本地端口
-            [self initServer:555];
+            [self initServer];
             
             // 检查app
             curAppBundleid = @"";
@@ -115,11 +133,37 @@
         }
     });
 }
-
-
--(void)initServer:(int) port{
+- (void)reopenServer
+{
+    ++errNum;
+    if (errNum>5) {
+        UIAlertView *alv = [[UIAlertView alloc] initWithTitle:@"请重新启动助手" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alv show];
+        
+    }
     
-    self.server = [PSWebSocketServer serverWithHost:@"127.0.0.1" port:port];
+    [self.server stop];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self initServer];
+    });
+}
+- (void)applicationDidBecomeActive
+{
+    int duration = [[NSDate date] timeIntervalSinceDate:lastCheckDate];
+    if (duration > 30) {
+        NSString *content = [NSString stringWithFormat:@"定时器掉线%d秒",duration];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:content
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+-(void)initServer{
+    
+    self.server = [PSWebSocketServer serverWithHost:@"127.0.0.1" port:555];
     self.server.delegate = self;
     [self.server start];
 }
@@ -140,7 +184,7 @@
 - (void)serverDidStop:(PSWebSocketServer *)server {
     NSLog(@"serverDidStop");
     
-    [self initServer:555];
+    [self initServer];
 }
 - (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
 }
