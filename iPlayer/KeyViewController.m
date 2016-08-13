@@ -129,7 +129,11 @@
                 Global.token = dic[@"data"][@"token"];
                 Global.userID = dic[@"data"][@"userid"];
                 [Global saveUserInfo];
+                
+                [self startMakeMoneyBtnClked:nil];
             }];
+        }else{
+            [self startMakeMoneyBtnClked:nil];
         }
     });
 }

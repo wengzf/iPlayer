@@ -183,7 +183,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "476"
             endingLineNumber = "476"
-            landmarkName = "-showShareActionSheet:source:"
+            landmarkName = "-registerLocalNotification:content:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -199,8 +199,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "452"
             endingLineNumber = "452"
-            landmarkName = "-registerLocalNotification:content:"
-            landmarkType = "5">
+            landmarkName = "@implementation KeyViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -215,7 +215,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "384"
             endingLineNumber = "384"
-            landmarkName = "-startMakeMoneyBtnClked:"
+            landmarkName = "-getRewardsWithWebSocket:params:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -359,7 +359,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
             endingLineNumber = "186"
-            landmarkName = "-server:webSocket:didReceiveMessage:"
+            landmarkName = "-serverDidStop:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -375,7 +375,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
             endingLineNumber = "141"
-            landmarkName = "-serverDidStop:"
+            landmarkName = "-reopenServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -137,7 +137,6 @@ static BOOL flagPlayMode = NO;
         while (!isStart) {
             [self playerTimerAction];
         }
-        
     }
 
     // 添加横线
