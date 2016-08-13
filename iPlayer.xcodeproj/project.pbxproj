@@ -51,6 +51,7 @@
 		210C38621D1E5C82005971FF /* UIView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 210C38481D1E5C82005971FF /* UIView+Category.m */; };
 		210C38631D1E5C82005971FF /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 210C384A1D1E5C82005971FF /* UIView+Extension.m */; };
 		210C38641D1E5C82005971FF /* UIView+ImageShot.m in Sources */ = {isa = PBXBuildFile; fileRef = 210C384C1D1E5C82005971FF /* UIView+ImageShot.m */; };
+		213569971D5EEB0B0072301F /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213569961D5EEB0B0072301F /* UMMobClick.framework */; };
 		213CB9E91D16394100DFA820 /* 花儿为什么这样红.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9E81D16394100DFA820 /* 花儿为什么这样红.txt */; };
 		213CB9EB1D16458500DFA820 /* 雨的印记.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9EA1D16458500DFA820 /* 雨的印记.txt */; };
 		213CB9EE1D16493800DFA820 /* 樱花.txt in Resources */ = {isa = PBXBuildFile; fileRef = 213CB9ED1D16493800DFA820 /* 樱花.txt */; };
@@ -67,11 +68,8 @@
 		21A1E4271C12BEE40048BBE4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4261C12BEE40048BBE4 /* AppDelegate.m */; };
 		21A1E42A1C12BEE40048BBE4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E4291C12BEE40048BBE4 /* ViewController.m */; };
 		21A1E42D1C12BEE40048BBE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E42B1C12BEE40048BBE4 /* Main.storyboard */; };
-		21A1E4301C12BEE40048BBE4 /* iPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E42E1C12BEE40048BBE4 /* iPlayer.xcdatamodeld */; };
 		21A1E4321C12BEE40048BBE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E4311C12BEE40048BBE4 /* Assets.xcassets */; };
 		21A1E4351C12BEE40048BBE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E4331C12BEE40048BBE4 /* LaunchScreen.storyboard */; };
-		21A1E4401C12BEE40048BBE4 /* iPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E43F1C12BEE40048BBE4 /* iPlayerTests.m */; };
-		21A1E44B1C12BEE40048BBE4 /* iPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A1E44A1C12BEE40048BBE4 /* iPlayerUITests.m */; };
 		21A1E4B41C12BF110048BBE4 /* 穿越时空的思念.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45A1C12BF110048BBE4 /* 穿越时空的思念.txt */; };
 		21A1E4B51C12BF110048BBE4 /* 梁祝.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45B1C12BF110048BBE4 /* 梁祝.txt */; };
 		21A1E4B61C12BF110048BBE4 /* 茉莉花.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21A1E45C1C12BF110048BBE4 /* 茉莉花.txt */; };
@@ -278,6 +276,7 @@
 		210C384B1D1E5C82005971FF /* UIView+ImageShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ImageShot.h"; sourceTree = "<group>"; };
 		210C384C1D1E5C82005971FF /* UIView+ImageShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ImageShot.m"; sourceTree = "<group>"; };
 		210C384D1D1E5C82005971FF /* UIMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMacros.h; sourceTree = "<group>"; };
+		213569961D5EEB0B0072301F /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
 		213CB9E81D16394100DFA820 /* 花儿为什么这样红.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "花儿为什么这样红.txt"; sourceTree = "<group>"; };
 		213CB9EA1D16458500DFA820 /* 雨的印记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "雨的印记.txt"; sourceTree = "<group>"; };
 		213CB9EC1D16463B00DFA820 /* 任务.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "任务.h"; path = "iPlayer/任务.h"; sourceTree = "<group>"; };
@@ -301,16 +300,11 @@
 		21A1E4281C12BEE40048BBE4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		21A1E4291C12BEE40048BBE4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		21A1E42C1C12BEE40048BBE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		21A1E42F1C12BEE40048BBE4 /* iPlayer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iPlayer.xcdatamodel; sourceTree = "<group>"; };
 		21A1E4311C12BEE40048BBE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21A1E4341C12BEE40048BBE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21A1E4361C12BEE40048BBE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21A1E43B1C12BEE40048BBE4 /* iPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21A1E43F1C12BEE40048BBE4 /* iPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPlayerTests.m; sourceTree = "<group>"; };
-		21A1E4411C12BEE40048BBE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21A1E4461C12BEE40048BBE4 /* iPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21A1E44A1C12BEE40048BBE4 /* iPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPlayerUITests.m; sourceTree = "<group>"; };
-		21A1E44C1C12BEE40048BBE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21A1E45A1C12BF110048BBE4 /* 穿越时空的思念.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "穿越时空的思念.txt"; sourceTree = "<group>"; };
 		21A1E45B1C12BF110048BBE4 /* 梁祝.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "梁祝.txt"; sourceTree = "<group>"; };
 		21A1E45C1C12BF110048BBE4 /* 茉莉花.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "茉莉花.txt"; sourceTree = "<group>"; };
@@ -471,6 +465,7 @@
 				AD38484C1D1A792200510DC5 /* ShareSDK.framework in Frameworks */,
 				AD38484D1D1A792200510DC5 /* ShareSDKExtension.framework in Frameworks */,
 				21A5CF741D447FED00B4F8F4 /* SMS_SDK.framework in Frameworks */,
+				213569971D5EEB0B0072301F /* UMMobClick.framework in Frameworks */,
 				AD3848531D1A792200510DC5 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				AD3848501D1A792200510DC5 /* ShareSDKUI.framework in Frameworks */,
 			);
@@ -706,8 +701,6 @@
 				21A5CF4E1D41096F00B4F8F4 /* PocketSocket */,
 				213CB9EC1D16463B00DFA820 /* 任务.h */,
 				21A1E4211C12BEE40048BBE4 /* iPlayer */,
-				21A1E43E1C12BEE40048BBE4 /* iPlayerTests */,
-				21A1E4491C12BEE40048BBE4 /* iPlayerUITests */,
 				21A1E4201C12BEE40048BBE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -761,7 +754,6 @@
 				21A1E4311C12BEE40048BBE4 /* Assets.xcassets */,
 				21A1E4331C12BEE40048BBE4 /* LaunchScreen.storyboard */,
 				21A1E4361C12BEE40048BBE4 /* Info.plist */,
-				21A1E42E1C12BEE40048BBE4 /* iPlayer.xcdatamodeld */,
 				21A1E5181C12EDC70048BBE4 /* PrefixHeader.pch */,
 				2148FC561D12BB7500CD862A /* KeyChain */,
 				21A1E4581C12BF110048BBE4 /* Resource */,
@@ -774,6 +766,7 @@
 			isa = PBXGroup;
 			children = (
 				21A1E4231C12BEE40048BBE4 /* main.m */,
+				213569961D5EEB0B0072301F /* UMMobClick.framework */,
 				AD3848701D1A892B00510DC5 /* AdSupport.framework */,
 				AD38486E1D1A891E00510DC5 /* ImageIO.framework */,
 				AD38486C1D1A890D00510DC5 /* libsqlite3.tbd */,
@@ -783,24 +776,6 @@
 				AD3848641D1A88DF00510DC5 /* libicucore.tbd */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		21A1E43E1C12BEE40048BBE4 /* iPlayerTests */ = {
-			isa = PBXGroup;
-			children = (
-				21A1E43F1C12BEE40048BBE4 /* iPlayerTests.m */,
-				21A1E4411C12BEE40048BBE4 /* Info.plist */,
-			);
-			path = iPlayerTests;
-			sourceTree = "<group>";
-		};
-		21A1E4491C12BEE40048BBE4 /* iPlayerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				21A1E44A1C12BEE40048BBE4 /* iPlayerUITests.m */,
-				21A1E44C1C12BEE40048BBE4 /* Info.plist */,
-			);
-			path = iPlayerUITests;
 			sourceTree = "<group>";
 		};
 		21A1E4581C12BF110048BBE4 /* Resource */ = {
@@ -1302,7 +1277,6 @@
 				210C38071D1E1CF5005971FF /* Base64.m in Sources */,
 				21A5CF681D41096F00B4F8F4 /* PSWebSocketServer.m in Sources */,
 				210C385C1D1E5C82005971FF /* UIImage+ImageEffects.m in Sources */,
-				21A1E4301C12BEE40048BBE4 /* iPlayer.xcdatamodeld in Sources */,
 				21A5CF671D41096F00B4F8F4 /* PSWebSocketNetworkThread.m in Sources */,
 				21A1E5161C12EB830048BBE4 /* MusicPlayViewController.m in Sources */,
 				21F1804E1D321C3B002729EF /* LMApp.m in Sources */,
@@ -1349,7 +1323,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21A1E4401C12BEE40048BBE4 /* iPlayerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1357,7 +1330,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21A1E44B1C12BEE40048BBE4 /* iPlayerUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1498,6 +1470,7 @@
 					"$(PROJECT_DIR)/iPlayer/ThirdParty/ShareSDK/Support/PlatformSDK/RenRenSDK",
 					"$(PROJECT_DIR)/iPlayer/ThirdParty/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/iPlayer/ThirdParty/SMS_SDK",
+					"$(PROJECT_DIR)/iPlayer",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1538,6 +1511,7 @@
 					"$(PROJECT_DIR)/iPlayer/ThirdParty/ShareSDK/Support/PlatformSDK/RenRenSDK",
 					"$(PROJECT_DIR)/iPlayer/ThirdParty/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/iPlayer/ThirdParty/SMS_SDK",
+					"$(PROJECT_DIR)/iPlayer",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1648,19 +1622,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		21A1E42E1C12BEE40048BBE4 /* iPlayer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				21A1E42F1C12BEE40048BBE4 /* iPlayer.xcdatamodel */,
-			);
-			currentVersion = 21A1E42F1C12BEE40048BBE4 /* iPlayer.xcdatamodel */;
-			path = iPlayer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 21A1E4171C12BEE40048BBE4 /* Project object */;
 }

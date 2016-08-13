@@ -9,44 +9,23 @@
 #import "AppDelegate.h"
 #import "KeyChainUtil.h"
 #import <AdSupport/AdSupport.h>
-#import <SMS_SDK/SMSSDK.h>
+#import <SMS_SDK/SMSSDK.h>                              // 短信
+#import <SMS_SDK/Extend/SMSSDK+AddressBookMethods.h>
 
-//＝＝＝＝＝＝＝＝＝＝ShareSDK头文件＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-#import <ShareSDK/ShareSDK.h>
+#import <ShareSDK/ShareSDK.h>                       // 分享
 #import <ShareSDKConnector/ShareSDKConnector.h>
-//以下是ShareSDK必须添加的依赖库：
-//1、libicucore.dylib
-//2、libz.dylib
-//3、libstdc++.dylib
-//4、JavaScriptCore.framework
 
-//＝＝＝＝＝＝＝＝＝＝以下是各个平台SDK的头文件，根据需要继承的平台添加＝＝＝
-//腾讯开放平台（对应QQ和QQ空间）SDK头文件
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
-//以下是腾讯SDK的依赖库：
-//libsqlite3.dylib
 
-//微信SDK头文件
 #import "WXApi.h"
-//以下是微信SDK的依赖库：
-//libsqlite3.dylib
-
-//新浪微博SDK头文件
 #import "WeiboSDK.h"
-//新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
-//以下是新浪微博SDK的依赖库：
-//ImageIO.framework
-//libsqlite3.dylib
-//AdSupport.framework
 
 #import "KeyViewController.h"
 
+#import "JPUSHService.h"            // 推送
 
-
-#import "JPUSHService.h"
-
-
+#import "UMMobClick/MobClick.h"     //  友盟
 
 @interface AppDelegate ()
 {
@@ -86,20 +65,28 @@
 //        [SMSSDK registerApp:appKey withSecret:appSecret];
 //    }
     
+    // 友盟统计 57aeabede0f55a7d5a0015bb
+    {
+        [MobClick setLogEnabled:YES];
+        UMConfigInstance.appKey = @"57aeabede0f55a7d5a0015bb";
+//        UMConfigInstance.secret = @"secretstringaldfkals";
+        [MobClick startWithConfigure:UMConfigInstance];
+    }
+    
+    
     // 短信初始化
     {
-        NSString *appKey = @"11251bfa2495c";                        // CashMaker
+        NSString *appKey = @"11251bfa2495c";              // CashMaker
         NSString *appSecret = @"2ec864e58957d6f61bcc705b80324168";
         [SMSSDK registerApp:appKey withSecret:appSecret];
+        [SMSSDK enableAppContactFriends:NO];
     }
     
     // 极光推送初始化
     {
         //        dc0dddfc8beb393b21fa6cbe      AppKey
         //        57a325412acebaee091c3eaf      MasterSecret
-        
         NSString *advertisingId = nil;
-        
         
         static NSString *appKey = @"dc0dddfc8beb393b21fa6cbe";
         static NSString *channel = @"Publish channel";
@@ -301,92 +288,6 @@ fetchCompletionHandler:
 - (void)application:(UIApplication *)application
 didReceiveLocalNotification:(UILocalNotification *)notification {
     [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
-}
-
-
-
-#pragma mark - Core Data stack
-
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
-- (NSURL *)applicationDocumentsDirectory {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.yonglibao.iPlayer" in the application's documents directory.
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
-- (NSManagedObjectModel *)managedObjectModel {
-    // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
-    if (_managedObjectModel != nil) {
-        return _managedObjectModel;
-    }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"iPlayer" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
-}
-
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it.
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    
-    // Create the coordinator and store
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"iPlayer.sqlite"];
-    NSError *error = nil;
-    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        // Report any error we got.
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
-        dict[NSLocalizedFailureReasonErrorKey] = failureReason;
-        dict[NSUnderlyingErrorKey] = error;
-        error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-        // Replace this with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    return _persistentStoreCoordinator;
-}
-
-
-- (NSManagedObjectContext *)managedObjectContext {
-    // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        return nil;
-    }
-    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    return _managedObjectContext;
-}
-
-#pragma mark - Core Data Saving support
-
-- (void)saveContext {
-    @try {
-        NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-        if (managedObjectContext != nil) {
-            NSError *error = nil;
-            if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                abort();
-            }
-        }
-    } @catch (NSException *exception) {
-        
-    } @finally {
-    }
 }
 
 @end
