@@ -123,7 +123,7 @@
          *  如果您使用的时服务端托管平台信息时，第二、四项参数可以传入nil，第三项参数则根据服务端托管平台来决定要连接的社交SDK。
          */
         
-        [ShareSDK registerApp:@"15ebd87594b1f"
+        [ShareSDK registerApp:@"15ebd87594b1f"          // 音乐练习
               activePlatforms:@[
                                 @(SSDKPlatformTypeSinaWeibo),
                                 @(SSDKPlatformTypeWechat),
@@ -166,7 +166,7 @@
                                                 appSecret:@"64020361b8ec4c99936c0e3999a9f249"];
                           break;
                       case SSDKPlatformTypeQQ:
-                          [appInfo SSDKSetupQQByAppId:@"100371282"
+                          [appInfo SSDKSetupQQByAppId:@"100371282"                  // QQ
                                                appKey:@"aed9b0303e3ed1e27bae87c33761161d"
                                              authType:SSDKAuthTypeBoth];
                           break;
@@ -203,7 +203,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
+
 }
 
 // 永久后台模式
