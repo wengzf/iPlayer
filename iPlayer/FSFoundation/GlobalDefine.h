@@ -10,10 +10,10 @@
 #define GlobalDefine_h
 
 // 正式环境
-//#define BaseURL @"http://www.zhuanme.cc/"
+#define BaseURL @"http://zhuanme.cc/"
 
 // 测试环境
-#define BaseURL @"http://www.shoujizhuan.com.cn/"
+//#define BaseURL @"http://www.shoujizhuan.com.cn/"
 
 
 

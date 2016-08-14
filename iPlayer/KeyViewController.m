@@ -86,7 +86,7 @@
     lastCheckDate = [NSDate date];
     
     // 发送请求监听服务器是否在线
-    if (countNum%5==0) {
+    if (countNum%8==0) {
         
         self.client = [[SocketClient alloc] init];
         
@@ -124,27 +124,7 @@
         }
         
         // 调用登录接口
-        if (Global.userID == nil){
-            [FSNetworkManagerDefaultInstance loginWithIDFAStr:Global.idfa successBlock:^(long status, NSDictionary *dic) {
-                
-                Global.token = dic[@"data"][@"token"];
-                Global.userID = dic[@"data"][@"userid"];
-                
-                NSInteger version = [dic[@"data"][@"version"] integerValue];
-                
-                if (version > CurVersion) {
-                    // 弹出强制更新
-                    LMSUpdateCommentView *commentView = [[LMSUpdateCommentView alloc] initWithFrame:ScreenBounds];
-                    [commentView showWithSting:dic[@"verUpMsg"] canExit:NO];
-                }
-                
-                [Global saveUserInfo];
-                
-                [self startMakeMoneyBtnClked:nil];
-            }];
-        }else{
-            [self startMakeMoneyBtnClked:nil];
-        }
+        [self startMakeMoneyBtnClked:nil];
     });
 }
 - (void)reopenServer
@@ -448,6 +428,23 @@
         
         Global.token = dic[@"data"][@"token"];
         Global.userID = dic[@"data"][@"userid"];
+        
+        
+        NSInteger version = [dic[@"data"][@"version"] integerValue];
+        
+        if (version > CurVersion) {
+            // 弹出强制更新
+            LMSUpdateCommentView *commentView = [[LMSUpdateCommentView alloc] initWithFrame:ScreenBounds];
+            [commentView showWithSting:dic[@"versionContent"] canExit:NO];
+            
+            // 关闭服务器，关闭定时检查器
+            if (checkTimer){
+                [checkTimer invalidate];
+                checkTimer = nil;
+            }
+            [self.server stop];
+        }
+        
         [Global saveUserInfo];
         
         // 打开赚么网页

@@ -80,7 +80,7 @@
         // 在线
         flagRecerveMessage = YES;
         
-        [[UIApplication sharedApplication].keyWindow showLoadingWithMessage:@"本地请求成功" hideAfter:1];
+//        [[UIApplication sharedApplication].keyWindow showLoadingWithMessage:@"本地请求成功" hideAfter:1];
     }
 }
 - (void)webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
