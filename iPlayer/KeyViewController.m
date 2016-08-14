@@ -329,7 +329,9 @@
                         
                     }else if ([path isEqualToString:@"c/task/drop"]) {
                         // 放弃任务
-                        [appOpenTimeDic removeObjectForKey:curAppBundleid];
+                        if (curAppBundleid) {
+                            [appOpenTimeDic removeObjectForKey:curAppBundleid];
+                        }
                         curAppOpenTime = nil;
                         
                         curAppBundleid = @"";
@@ -342,9 +344,11 @@
                         Global.userID = params[@"userid"];
                         [Global saveUserInfo];
                         
+                        appOpenTimeDic = [NSMutableDictionary dictionary];
                         curAppBundleid = @"";
                         curTaskid = @"";
                         curAppOpenTime = nil;
+                        
                     }
                     
                     [self writeWebMsg:webSocket msg:str];
@@ -525,7 +529,7 @@
                                      images:imageArray
                                         url:[NSURL URLWithString:BaseURL]
                                       title:@"有手机 随时赚外快"
-                                       type:SSDKContentTypeAuto];
+                                       type:SSDKContentTypeWebPage];    //SSDKContentTypeAuto
     
     //1.2、自定义分享平台（非必要）
     NSArray *activePlatforms = @[@(SSDKPlatformSubTypeWechatTimeline),
