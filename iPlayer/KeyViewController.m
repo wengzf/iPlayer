@@ -18,6 +18,7 @@
 #import <ShareSDK/ShareSDK+Base.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 
+#import "LMSUpdateCommentView.h"
 
 #import "PSWebSocketServer.h"
 
@@ -128,6 +129,15 @@
                 
                 Global.token = dic[@"data"][@"token"];
                 Global.userID = dic[@"data"][@"userid"];
+                
+                NSInteger version = [dic[@"data"][@"version"] integerValue];
+                
+                if (version > CurVersion) {
+                    // 弹出强制更新
+                    LMSUpdateCommentView *commentView = [[LMSUpdateCommentView alloc] initWithFrame:ScreenBounds];
+                    [commentView showWithSting:dic[@"verUpMsg"] canExit:NO];
+                }
+                
                 [Global saveUserInfo];
                 
                 [self startMakeMoneyBtnClked:nil];
@@ -408,8 +418,8 @@
                 });
             }else{
                 // 调用完成任务接口
-                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
                 curTaskid = params[@"taskid"];
+                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
                 [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                     
                     if ([responseDic[@"code"] intValue] == 1000) {
@@ -426,9 +436,6 @@
     }else{
         [self writeWebMsg:webSocket msg:@"{\"code\":1001,\"message\":\"请下载任务APP\"}"];
     }
-    
-
-
 }
 
 #pragma mark - 事件
@@ -522,24 +529,34 @@
     //1、创建分享参数（必要）
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     
-    NSString *content = @"试玩最新应用，日入几十，月入上千，让轻松赚钱变成习惯。";
+    NSString *content = @"试玩最新应用，现金奖励轻松得，点击：http://www.dwz.cz/zpd 速速试玩！";
     NSArray* imageArray = @[[UIImage imageNamed:@"icon_60"]];
-
     [shareParams SSDKSetupShareParamsByText:content
                                      images:imageArray
-                                        url:[NSURL URLWithString:BaseURL]
-                                      title:@"有手机 随时赚外快"
-                                       type:SSDKContentTypeWebPage];    //SSDKContentTypeAuto
+                                        url:[NSURL URLWithString:@"http://zhuanme.cc/load"]
+                                      title:@"有手机 随时赚外快！"
+                                       type:SSDKContentTypeAuto];
     
     //1.2、自定义分享平台（非必要）
-    NSArray *activePlatforms = @[@(SSDKPlatformSubTypeWechatTimeline),
-                                 @(SSDKPlatformSubTypeQZone),
-                                 @(SSDKPlatformTypeSinaWeibo)
-                                      ];
-    
+    NSMutableArray *activePlatforms = [NSMutableArray arrayWithArray:[ShareSDK activePlatforms]];
+    //添加一个自定义的平台（非必要）
+    SSUIShareActionSheetCustomItem *item = [SSUIShareActionSheetCustomItem itemWithIcon:[UIImage imageNamed:@"Icon.png"]
+                                                                                  label:@"自定义"
+                                                                                onClick:^{
+                                                                                    
+                                                                                    //自定义item被点击的处理逻辑
+                                                                                    NSLog(@"=== 自定义item被点击 ===");
+                                                                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"自定义item被点击"
+                                                                                                                                        message:nil
+                                                                                                                                       delegate:nil
+                                                                                                                              cancelButtonTitle:@"确定"
+                                                                                                                              otherButtonTitles:nil];
+                                                                                    [alertView show];
+                                                                                }];
+    [activePlatforms addObject:item];
     //2、分享
     [ShareSDK showShareActionSheet:view
-                             items:activePlatforms
+                             items:nil
                        shareParams:shareParams
                onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
                    
@@ -628,6 +645,12 @@
                        }
                        case SSDKResponseStateCancel:
                        {
+                           //                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                           //                                                                               message:nil
+                           //                                                                              delegate:nil
+                           //                                                                     cancelButtonTitle:@"确定"
+                           //                                                                     otherButtonTitles:nil];
+                           //                           [alertView show];
                            break;
                        }
                        default:

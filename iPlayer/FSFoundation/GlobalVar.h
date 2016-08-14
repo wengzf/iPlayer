@@ -43,6 +43,8 @@
 
 #define Global [GlobalVar shareInstance]
 
+#define CurVersion 10300
+
 @interface GlobalVar : NSObject
 
 + (GlobalVar *)shareInstance;

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LMSUpdateCommentView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LMSUpdateCommentView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-7w-kiS">
+                    <rect key="frame" x="67" y="254.5" width="240" height="158.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1O-Vo-gEB">
+                            <rect key="frame" x="30" y="84" width="180" height="44"/>
+                            <color key="backgroundColor" red="0.90588235289999997" green="0.20392156859999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="7qv-Mb-Tft"/>
+                                <constraint firstAttribute="width" constant="180" id="U5w-46-70O"/>
+                            </constraints>
+                            <state key="normal" title="更新">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="jumpToUpdate" destination="iN0-l3-epB" eventType="touchUpInside" id="4bB-bm-Xpt"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更新到1.2.2版本" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOO-Cc-EOp">
+                            <rect key="frame" x="59" y="32" width="120.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="235" id="ASM-Ib-TYh"/>
+                        <constraint firstAttribute="height" constant="198" id="E15-Tx-kkZ"/>
+                        <constraint firstItem="e1O-Vo-gEB" firstAttribute="top" secondItem="IOO-Cc-EOp" secondAttribute="bottom" constant="32" id="KJe-I2-baN"/>
+                        <constraint firstAttribute="width" secondItem="rsE-7w-kiS" secondAttribute="height" multiplier="53:59" id="PIt-Cz-TrC"/>
+                        <constraint firstAttribute="width" constant="288" id="PJi-MA-XYw"/>
+                        <constraint firstItem="IOO-Cc-EOp" firstAttribute="leading" secondItem="rsE-7w-kiS" secondAttribute="leading" constant="35" id="U2y-35-f5U"/>
+                        <constraint firstItem="IOO-Cc-EOp" firstAttribute="top" secondItem="rsE-7w-kiS" secondAttribute="top" constant="32" id="VoZ-pi-mHM"/>
+                        <constraint firstAttribute="width" secondItem="rsE-7w-kiS" secondAttribute="height" multiplier="53:47" id="aIG-Xq-pCX"/>
+                        <constraint firstItem="IOO-Cc-EOp" firstAttribute="centerX" secondItem="rsE-7w-kiS" secondAttribute="centerX" id="bgc-Ia-eb7"/>
+                        <constraint firstAttribute="trailing" secondItem="IOO-Cc-EOp" secondAttribute="trailing" constant="35" id="iHX-Wr-Kbn"/>
+                        <constraint firstAttribute="bottom" secondItem="e1O-Vo-gEB" secondAttribute="bottom" constant="30" id="o8x-yn-NID"/>
+                        <constraint firstItem="e1O-Vo-gEB" firstAttribute="centerX" secondItem="rsE-7w-kiS" secondAttribute="centerX" id="p3M-j6-pwW"/>
+                        <constraint firstAttribute="width" constant="240" id="tLO-ak-a7s"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ASM-Ib-TYh"/>
+                            <exclude reference="E15-Tx-kkZ"/>
+                            <exclude reference="PIt-Cz-TrC"/>
+                            <exclude reference="PJi-MA-XYw"/>
+                            <exclude reference="aIG-Xq-pCX"/>
+                            <exclude reference="U2y-35-f5U"/>
+                            <exclude reference="iHX-Wr-Kbn"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="rsE-7w-kiS" secondAttribute="centerX" id="6im-5b-Zdq"/>
+                <constraint firstItem="rsE-7w-kiS" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="265:667" id="NkK-N4-wTp"/>
+                <constraint firstItem="rsE-7w-kiS" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="265:375" id="t0t-83-Qa0"/>
+                <constraint firstAttribute="centerY" secondItem="rsE-7w-kiS" secondAttribute="centerY" id="xek-td-UBE"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="NkK-N4-wTp"/>
+                    <exclude reference="t0t-83-Qa0"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="contentLabel" destination="IOO-Cc-EOp" id="JtS-yE-Sj0"/>
+                <outlet property="contentView" destination="rsE-7w-kiS" id="22P-Rl-Ldb"/>
+            </connections>
+            <point key="canvasLocation" x="584.5" y="302.5"/>
+        </view>
+    </objects>
+</document>
