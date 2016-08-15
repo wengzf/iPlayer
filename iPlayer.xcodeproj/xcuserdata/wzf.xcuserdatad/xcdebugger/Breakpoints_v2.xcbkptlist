@@ -288,12 +288,12 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/Network/FSNetworkManager.m"
-                  timestampString = "492876401.733763"
+                  timestampString = "492965481.097906"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
                   endingLineNumber = "102"
-                  offsetFromSymbolStart = "258">
+                  offsetFromSymbolStart = "272">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -303,12 +303,12 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/Network/FSNetworkManager.m"
-                  timestampString = "492876401.73386"
+                  timestampString = "492965481.098069"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
                   endingLineNumber = "102"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -368,12 +368,12 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/ViewController.m"
-                  timestampString = "492876401.735884"
+                  timestampString = "492965481.099862"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "374">
+                  offsetFromSymbolStart = "396">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -383,12 +383,12 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wzf/Desktop/iPlayer/iPlayer/ViewController.m"
-                  timestampString = "492876401.73603"
+                  timestampString = "492965481.10001"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "103"
                   endingLineNumber = "103"
-                  offsetFromSymbolStart = "76">
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>

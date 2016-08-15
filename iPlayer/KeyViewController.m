@@ -530,7 +530,7 @@
     NSArray* imageArray = @[[UIImage imageNamed:@"icon_60"]];
     [shareParams SSDKSetupShareParamsByText:content
                                      images:imageArray
-                                        url:[NSURL URLWithString:@"http://zhuanme.cc/load"]
+                                        url:[NSURL URLWithString:@"http://zhuanme.cc"]
                                       title:@"有手机 随时赚外快！"
                                        type:SSDKContentTypeAuto];
     
