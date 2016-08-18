@@ -526,7 +526,7 @@
     //1、创建分享参数（必要）
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     
-    NSString *content = @"试玩最新应用，现金奖励轻松得，点击：http://www.dwz.cz/zpd 速速试玩！";
+    NSString *content = @"试玩最新应用，现金奖励轻松得，点击：http://zhuanme.cc 速速试玩！";
     NSArray* imageArray = @[[UIImage imageNamed:@"icon_60"]];
     [shareParams SSDKSetupShareParamsByText:content
                                      images:imageArray
