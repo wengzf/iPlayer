@@ -399,7 +399,8 @@
             }else{
                 // 调用完成任务接口
                 curTaskid = params[@"taskid"];
-                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
+                NSString *account = params[@"account"];
+                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid,@"account":account};
                 [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                     
                     if ([responseDic[@"code"] intValue] == 1000) {
