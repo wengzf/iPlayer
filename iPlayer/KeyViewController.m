@@ -240,8 +240,10 @@
                 NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:curAppBundleid];
                 if (state) {
                     
-                    curAppOpenTime = [NSDate date];
-                    appOpenTimeDic[curAppBundleid] = curAppOpenTime;
+                    if (appOpenTimeDic[curAppBundleid] == nil){
+                        curAppOpenTime = [NSDate date];
+                        appOpenTimeDic[curAppBundleid] = curAppOpenTime;
+                    }
                     
                     [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
                     
@@ -408,6 +410,9 @@
                         [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
                         
                         [self registerLocalNotification:1 content:@"当前任务已完成"];
+                    }else{
+                        NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                        [self writeWebMsg:webSocket msg:str];
                     }
                     
                 } failure:^(NSError *error) {
