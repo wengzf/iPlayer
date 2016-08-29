@@ -240,8 +240,10 @@
                 NSInteger state = [[YingYongYuanetapplicationDSID sharedInstance] getAppState:curAppBundleid];
                 if (state) {
                     
-                    curAppOpenTime = [NSDate date];
-                    appOpenTimeDic[curAppBundleid] = curAppOpenTime;
+                    if (appOpenTimeDic[curAppBundleid] == nil){
+                        curAppOpenTime = [NSDate date];
+                        appOpenTimeDic[curAppBundleid] = curAppOpenTime;
+                    }
                     
                     [[LMAppController sharedInstance] openAppWithBundleIdentifier:curAppBundleid];
                     
@@ -399,7 +401,8 @@
             }else{
                 // 调用完成任务接口
                 curTaskid = params[@"taskid"];
-                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid};
+                NSString *account = params[@"account"];
+                NSDictionary *parameterDic = @{@"userid":Global.userID,@"taskid":curTaskid,@"account":account};
                 [FSNetworkManagerDefaultInstance POST:@"c/task/complete" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                     
                     if ([responseDic[@"code"] intValue] == 1000) {
@@ -407,6 +410,9 @@
                         [self writeWebMsg:webSocket msg:@"{\"code\":1000}"];
                         
                         [self registerLocalNotification:1 content:@"当前任务已完成"];
+                    }else{
+                        NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                        [self writeWebMsg:webSocket msg:str];
                     }
                     
                 } failure:^(NSError *error) {
