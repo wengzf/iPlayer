@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WhB-nv-YSD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rqo-xR-sja">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -102,6 +102,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="462" y="-90"/>
+        </scene>
+        <!--试玩列表-->
+        <scene sceneID="5Os-mh-wOX">
+            <objects>
+                <tableViewController title="试玩列表" id="3BX-F7-QTX" customClass="RootTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MOY-dQ-o0o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="xA5-8R-4ZE" customClass="RootCell">
+                                <rect key="frame" x="0.0" y="92" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xA5-8R-4ZE" id="sGm-i1-oUp">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hqx-kX-pcg">
+                                            <rect key="frame" x="16" y="15" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="XaE-uD-pXZ"/>
+                                                <constraint firstAttribute="height" constant="50" id="qIM-76-OAf"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试玩平台1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdr-fB-T9S">
+                                            <rect key="frame" x="76" y="16" width="76" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="试玩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hk4-xL-6Ue">
+                                            <rect key="frame" x="76" y="48.5" width="28" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="立即加入" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnv-sM-cj7">
+                                            <rect key="frame" x="227" y="22" width="74" height="36"/>
+                                            <color key="backgroundColor" red="0.060243286190000002" green="0.80597132439999997" blue="0.96257263420000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="Whs-Lh-eqs"/>
+                                                <constraint firstAttribute="width" constant="74" id="y2K-H7-e9I"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="18"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Wdr-fB-T9S" firstAttribute="leading" secondItem="hqx-kX-pcg" secondAttribute="trailing" constant="10" id="R8E-tg-nuA"/>
+                                        <constraint firstItem="hk4-xL-6Ue" firstAttribute="top" secondItem="Wdr-fB-T9S" secondAttribute="bottom" constant="12" id="RfN-lI-pRV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jnv-sM-cj7" secondAttribute="trailing" constant="11" id="Vdx-ua-p02"/>
+                                        <constraint firstItem="hqx-kX-pcg" firstAttribute="leading" secondItem="sGm-i1-oUp" secondAttribute="leading" constant="16" id="awX-s4-D4c"/>
+                                        <constraint firstItem="hqx-kX-pcg" firstAttribute="centerY" secondItem="sGm-i1-oUp" secondAttribute="centerY" id="bYu-zF-yU2"/>
+                                        <constraint firstItem="Wdr-fB-T9S" firstAttribute="top" secondItem="sGm-i1-oUp" secondAttribute="topMargin" constant="8" id="lrr-bu-M1B"/>
+                                        <constraint firstItem="hk4-xL-6Ue" firstAttribute="leading" secondItem="Wdr-fB-T9S" secondAttribute="leading" id="wRL-SR-HGG"/>
+                                        <constraint firstItem="jnv-sM-cj7" firstAttribute="centerY" secondItem="sGm-i1-oUp" secondAttribute="centerY" id="wog-Ss-Ddv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="desLabel" destination="hk4-xL-6Ue" id="aRn-ak-lpz"/>
+                                    <outlet property="titleImageView" destination="hqx-kX-pcg" id="L7k-Op-CtU"/>
+                                    <outlet property="titleLabel" destination="Wdr-fB-T9S" id="Ajt-RE-tak"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3BX-F7-QTX" id="ITm-5j-wU8"/>
+                            <outlet property="delegate" destination="3BX-F7-QTX" id="6P8-Jr-zsy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="4VR-u2-rNm"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Nh-6U-4u0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="414" y="581"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6SQ-e8-qQD">
+            <objects>
+                <navigationController id="rqo-xR-sja" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rbf-tr-aVY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3BX-F7-QTX" kind="relationship" relationship="rootViewController" id="sQf-Ke-8uw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qIC-A9-Xrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="39" y="581"/>
         </scene>
     </scenes>
     <resources>

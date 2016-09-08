@@ -262,9 +262,9 @@
                 [self getRewardsWithWebSocket:webSocket params:params];
             }else if ([path isEqualToString:@"c/signin/share"]) {
                 // 分享接口
-//                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.FireShadowTest"];
+                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.FireShadowTest"];
                 
-                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
+//                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
                 
                 
                 [self shareWithSource:@"1"];
