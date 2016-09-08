@@ -99,7 +99,7 @@
         
             NSDictionary *parameterDic = @{@"idfa":Global.idfa,
                                            @"platform":@"zhuanme",
-                                           @"version":@"1.3.1"};
+                                           @"version":@"1.3.2"};
             [FSNetworkManagerDefaultInstance POST:@"c/app/open" parameters:parameterDic success:^(NSDictionary *responseDic, id responseObject) {
                 
                 if ([responseDic[@"data"][@"show"] intValue] == 1)
