@@ -57,7 +57,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "-applicationDidBecomeActive"
+            landmarkName = "-reopenServer"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -132,12 +132,12 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wengzhifang/Desktop/iPlayer/iPlayer/ViewController.m"
-                  timestampString = "494062936.093322"
+                  timestampString = "495021804.621587"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "103"
                   endingLineNumber = "103"
-                  offsetFromSymbolStart = "440">
+                  offsetFromSymbolStart = "454">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -147,12 +147,12 @@
                   moduleName = "iPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wengzhifang/Desktop/iPlayer/iPlayer/ViewController.m"
-                  timestampString = "494062936.093443"
+                  timestampString = "495021804.621718"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
                   endingLineNumber = "105"
-                  offsetFromSymbolStart = "88">
+                  offsetFromSymbolStart = "76">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -201,7 +201,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "370"
             endingLineNumber = "370"
-            landmarkName = "-getRewardsWithWebSocket:params:"
+            landmarkName = "-server:webSocket:didFailWithError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

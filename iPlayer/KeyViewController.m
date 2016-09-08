@@ -109,11 +109,17 @@
         
         // 检查越狱
         if ([JailBrokenClass isJailbroken]) {
-            self.titleLabel.text = @"请在非越狱设备上完成任务";
-            self.contentLabel.text = @"";
+//            self.titleLabel.text = @"请在非越狱设备上完成任务";
+//            self.contentLabel.text = @"";
+//
+//            self.startMakeMoneyBtn.hidden = YES;
             
-            //
-            self.startMakeMoneyBtn.hidden = YES;
+            [self initServer];
+            
+            // 检查app
+            curAppBundleid = @"";
+            curTaskid = @"";
+            
         }else{
             // 开始监听本地端口
             [self initServer];
@@ -256,9 +262,9 @@
                 [self getRewardsWithWebSocket:webSocket params:params];
             }else if ([path isEqualToString:@"c/signin/share"]) {
                 // 分享接口
-//                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.FireShadowTest"];
+                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.yonglibao.FireShadowTest"];
                 
-                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
+//                [[LMAppController sharedInstance] openAppWithBundleIdentifier:@"com.wzf.player"];
                 
                 
                 [self shareWithSource:@"1"];
